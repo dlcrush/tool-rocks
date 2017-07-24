@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Song;
+use App\Album;
 
-class SongController extends Controller
+class AlbumController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        return Song::with('band', 'albums')->get();
+        return Album::with('band', 'songs')->get();
     }
 
     /**

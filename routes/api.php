@@ -17,9 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('bands', 'BandController');
-Route::resource('albums', 'AlbumController');
-Route::resource('songs', 'SongController');
-Route::resource('videos', 'VideoController');
+Route::group(['namespace' => 'API'], function() {
+  Route::resource('bands', 'BandController');
+  Route::resource('albums', 'AlbumController');
+  Route::resource('songs', 'SongController');
+  Route::resource('videos', 'VideoController');
+});
 
 

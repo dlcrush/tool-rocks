@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Video;
 
-class VideoController extends Controller
+class VideoController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
