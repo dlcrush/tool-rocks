@@ -15,6 +15,7 @@ class VideosTableSeeder extends Seeder
     public function run()
     {
       Video::truncate();
+      DB::table('videos_songs')->truncate();
       
       $toolId = Band::where('slug', 'tool')->get()->first()->id;
       

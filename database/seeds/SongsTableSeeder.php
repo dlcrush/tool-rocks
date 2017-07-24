@@ -21,7 +21,8 @@ class SongsTableSeeder extends Seeder
           [
             "name" => "Sweat",
             "slug" => "seat",
-            'albums' => ['opiate' => 1]
+            'albums' => ['opiate' => 1],
+            'lyrics' => "I'm sweating, and breathing and staring and thinking and sinking deeper.\n\nIt's almost like I'm swimming.\nThe sun is burning hot again on the hunter and the fisherman, and he's trying to remember when, but it makes him dizzy.\n\nSeems like I've been here before. \nSeems so familiar. \nSeems like I'm slipping into a dream within a dream. \n\nMust be the way you whisper. \nThe sun is setting cool again. \nI'm the thinker and the fisherman and I'm trying to remember when but it makes me dizzy.\n\nAnd I'm sweating, and breathing, and staring and thinking and sinking deeper and it's almost like I'm swimming.\n\nSeems like I've been here before. \nSeems so familiar. \nSeems like I'm slipping into a dream within a dream. \n\nIt's the way you whisper. \nIt drags me under and takes me home."
           ],
           [
             "name" => "Hush",
@@ -343,12 +344,15 @@ class SongsTableSeeder extends Seeder
         
         foreach($songs as $song) {
           $albums = array_key_exists('albums', $song) ? $song['albums'] : array();
+          $hasLyrics = array_key_exists('lyrics', $song);
+          $lyrics = $hasLyrics ? $song['lyrics'] : null;
           
           $bacon = Song::create([
             "name" => $song['name'],
             "slug" => $song['slug'],
             "band_id" => $toolBandId,
-            "has_lyrics" => false
+            "has_lyrics" => $hasLyrics,
+            "lyrics" => $lyrics
           ]);
           
           if (is_array($albums) && count($albums) > 0) {
