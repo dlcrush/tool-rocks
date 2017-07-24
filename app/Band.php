@@ -23,4 +23,8 @@ class Band extends Model
     public function songs() {
       return $this->hasMany('App\Song');
     }
+    
+    public function videos() {
+      return $this->hasMany('App\Video');
+    }
 }

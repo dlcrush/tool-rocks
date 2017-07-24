@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('bands', 'BandController');
 Route::resource('albums', 'AlbumController');
 Route::resource('songs', 'SongController');
+Route::resource('videos', 'VideoController');
 
 

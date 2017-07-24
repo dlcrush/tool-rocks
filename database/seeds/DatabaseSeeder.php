@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BandsTableSeeder::class);
         $this->call(AlbumsTableSeeder::class);
         $this->call(SongsTableSeeder::class);
+        $this->call(VideosTableSeeder::class);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
