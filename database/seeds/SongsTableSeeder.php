@@ -16,18 +16,19 @@ class SongsTableSeeder extends Seeder
     {
         Song::truncate();
         DB::table('songs_albums')->truncate();
-        
+
         $songs = [
           [
             "name" => "Sweat",
-            "slug" => "seat",
+            "slug" => "sweat",
             'albums' => ['opiate' => 1],
             'lyrics' => "I'm sweating, and breathing and staring and thinking and sinking deeper.\n\nIt's almost like I'm swimming.\nThe sun is burning hot again on the hunter and the fisherman, and he's trying to remember when, but it makes him dizzy.\n\nSeems like I've been here before. \nSeems so familiar. \nSeems like I'm slipping into a dream within a dream. \n\nMust be the way you whisper. \nThe sun is setting cool again. \nI'm the thinker and the fisherman and I'm trying to remember when but it makes me dizzy.\n\nAnd I'm sweating, and breathing, and staring and thinking and sinking deeper and it's almost like I'm swimming.\n\nSeems like I've been here before. \nSeems so familiar. \nSeems like I'm slipping into a dream within a dream. \n\nIt's the way you whisper. \nIt drags me under and takes me home."
           ],
           [
             "name" => "Hush",
             "slug" => "hush",
-            'albums' => ['72826' => 2, 'opiate' => 2]
+            'albums' => ['72826' => 2, 'opiate' => 2],
+            'lyrics' => "I can't say what I want to, even if I'm not serious.\n\nThings like.... Fuck yourself, kill yourself, you piece of shit. People tell me what to say, what to think, and what to play.\n\nI say...Go fuck yourself, you piece of shit. Why don't you go kill yourself? Just kidding."
           ],
           [
             'name' => 'Part of Me',
@@ -332,7 +333,7 @@ class SongsTableSeeder extends Seeder
             'albums' => ['10000-days' => 11]
           ]
         ];
-        
+
         $toolBandId = Band::where('slug', 'tool')->get()->first()->id;
         $opiateId = Album::where('slug', 'opiate')->get()->first()->id;
         $undertowId = Album::where('slug', 'undertow')->get()->first()->id;
@@ -341,12 +342,12 @@ class SongsTableSeeder extends Seeder
         $aenimaId = Album::where('slug', 'aenima')->get()->first()->id;
         $lateralusId = Album::where('slug', 'lateralus')->get()->first()->id;
         $tenThousandDaysId = Album::where('slug', '10000-days')->get()->first()->id;
-        
+
         foreach($songs as $song) {
           $albums = array_key_exists('albums', $song) ? $song['albums'] : array();
           $hasLyrics = array_key_exists('lyrics', $song);
           $lyrics = $hasLyrics ? $song['lyrics'] : null;
-          
+
           $bacon = Song::create([
             "name" => $song['name'],
             "slug" => $song['slug'],
@@ -354,14 +355,14 @@ class SongsTableSeeder extends Seeder
             "has_lyrics" => $hasLyrics,
             "lyrics" => $lyrics
           ]);
-          
+
           if (is_array($albums) && count($albums) > 0) {
-            
+
             foreach($albums as $aSlug => $sOrder) {
               $albumId = $tenThousandDaysId;
               $songId = $bacon->id;
               $isHidden = array_key_exists('hidden', $song) ? $song['hidden'] == true : false;
-              
+
               if ($aSlug == '72826') {
                 $albumId = $demoId;
               } else if ($aSlug == 'opiate') {
@@ -375,7 +376,7 @@ class SongsTableSeeder extends Seeder
               } else if ($aSlug == 'lateralus') {
                 $albumId = $lateralusId;
               }
-              
+
               DB::table('songs_albums')->insert([
                   'album_id' => $albumId,
                   'song_id' => $songId,
