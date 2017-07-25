@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Band;
+use App\Transformers\BandTransformer;
+use App\Repositories\API\Contracts\BandRepository;
 
 class BandController extends APIController
 {
+
+    public function __construct(BandRepository $band, BandTransformer $bandTransformer) {
+        $this->band = $band;
+        $this->bandTransformer = $bandTransformer;
+    }
+
     /**
     * Display a listing of the resource.
     *
@@ -14,7 +21,10 @@ class BandController extends APIController
     */
     public function index()
     {
-        return Band::with(['albums.songs'])->get();
+        //$this->band->pushCriteria(new ExpandAlbumsAndSongs());
+        $bands = $this->band->all();
+
+        return $this->respond($this->bandTransformer->transformCollection($bands->all()));
     }
 
     /**

@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Song;
 use App\Transformers\SongTransformer;
+use App\Repositories\API\Contracts\SongRepository;
 
 class SongController extends APIController
 {
 
+    protected $song;
     protected $songTransformer;
 
-    public function __construct(SongTransformer $songTransformer) {
+    public function __construct(SongRepository $song, SongTransformer $songTransformer) {
+        $this->song = $song;
         $this->songTransformer = $songTransformer;
     }
 
@@ -22,7 +24,7 @@ class SongController extends APIController
     */
     public function index()
     {
-        $songs = Song::with('band', 'albums')->get();
+        $songs = $this->song->all();
 
         return $this->respond($this->songTransformer->transformCollection($songs->all()));
     }

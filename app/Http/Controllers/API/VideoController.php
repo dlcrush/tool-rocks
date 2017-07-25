@@ -7,6 +7,7 @@ use App\Video;
 
 class VideoController extends APIController
 {
+
     /**
     * Display a listing of the resource.
     *
@@ -14,7 +15,7 @@ class VideoController extends APIController
     */
     public function index()
     {
-        return Video::with('band', 'songs')->get();
+        return Video::with('band')->with('songs')->get();
     }
 
     /**
