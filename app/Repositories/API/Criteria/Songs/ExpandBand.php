@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Repositories\API\Criteria\Bands;
+namespace App\Repositories\API\Criteria\Songs;
 
 use App\Repositories\API\Criteria\Criteria;
 use App\Repositories\API\Contracts\Repository;
 
-class ExpandAlbumsAndSongs extends Criteria {
+class ExpandBand extends Criteria {
 
     public function apply($model, Repository $repository) {
-        $query = $model->with('albums.songs');
+        $query = $model->with('band');
         return $query;
     }
 

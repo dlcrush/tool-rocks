@@ -5,9 +5,13 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Transformers\BandTransformer;
 use App\Repositories\API\Contracts\BandRepository;
+use App\Repositories\API\Criteria\Bands\ExpandAlbumsAndSongs;
 
 class BandController extends APIController
 {
+
+    protected $band;
+    protected $bandTransformer;
 
     public function __construct(BandRepository $band, BandTransformer $bandTransformer) {
         $this->band = $band;
@@ -21,10 +25,10 @@ class BandController extends APIController
     */
     public function index()
     {
-        //$this->band->pushCriteria(new ExpandAlbumsAndSongs());
+        $this->band->pushCriteria(new ExpandAlbumsAndSongs());
         $bands = $this->band->all();
 
-        return $this->respond($this->bandTransformer->transformCollection($bands->all()));
+        return $this->respond($this->bandTransformer->transformCollection($bands->toArray()));
     }
 
     /**

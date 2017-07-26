@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Collection;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -24,19 +25,19 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('App\Repositories\API\Contracts\SongRepository', function($app) {
-            return new \App\Repositories\API\SongRepository($this->app);
+            return new \App\Repositories\API\SongRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
 
         $this->app->bind('App\Repositories\API\Contracts\BandRepository', function($app) {
-            return new \App\Repositories\API\BandRepository($this->app);
+            return new \App\Repositories\API\BandRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
 
         $this->app->bind('App\Repositories\API\Contracts\AlbumRepository', function($app) {
-            return new \App\Repositories\API\AlbumRepository($this->app);
+            return new \App\Repositories\API\AlbumRepository($this->app, Illuminate\Support\Collection);
         });
 
         $this->app->bind('App\Repositories\API\Contracts\VideoRepository', function($app) {
-            return new \App\Repositories\API\VideoRepository($this->app);
+            return new \App\Repositories\API\VideoRepository($this->app, Illuminate\Support\Collection);
         });
     }
 }
