@@ -29,7 +29,7 @@ class SongController extends APIController
 
         $songs = fractal()
            ->collection($this->song->all())
-           ->transformWith(new SongTransformer())
+           ->transformWith($this->songTransformer)
            ->includeBand()
            ->includeAlbums()
            ->toArray();
