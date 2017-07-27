@@ -26,9 +26,15 @@ class SongController extends APIController
     public function index()
     {
         $this->song->pushCriteria(new ExpandBand());
-        $songs = $this->song->all();
 
-        return $this->respond($this->songTransformer->transformCollection($songs->toArray()));
+        $songs = fractal()
+           ->collection($this->song->all())
+           ->transformWith(new SongTransformer())
+           ->includeBand()
+           ->includeAlbums()
+           ->toArray();
+
+        return $this->respond($songs);
     }
 
     /**

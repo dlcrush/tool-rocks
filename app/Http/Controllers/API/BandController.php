@@ -26,9 +26,14 @@ class BandController extends APIController
     public function index()
     {
         $this->band->pushCriteria(new ExpandAlbumsAndSongs());
-        $bands = $this->band->all();
 
-        return $this->respond($this->bandTransformer->transformCollection($bands->toArray()));
+        $bands = fractal()
+           ->collection($this->band->all())
+           ->transformWith($this->bandTransformer)
+           ->parseIncludes('albums.songs')
+           ->toArray();
+
+        return $this->respond($bands);
     }
 
     /**

@@ -2,26 +2,41 @@
 
 namespace App\Transformers;
 
-class AlbumTransformer extends Transformer {
+use League\Fractal\TransformerAbstract;
+use App\Album;
 
-    protected $songTransformer;
+class AlbumTransformer extends TransformerAbstract {
 
-    public function __construct() {
-        //$this->songTransformer = $songTransformer;
+    protected $availableIncludes = [
+        'songs',
+        'band'
+    ];
+
+    public function transform(Album $album)
+    {
+        return [
+            'id' => (int) $album->id,
+            'name' => $album->name,
+            'slug' => $album->slug,
+            'image' => [
+                'url' => $album->image_url
+            ],
+            "released" => $album->release_date
+        ];
     }
 
-    public function transform($item)
+    public function includeSongs(Album $album)
     {
+        $songs = $album->songs;
 
-        return [
-            'id' => $item['id'],
-            'name' => $item['name'],
-            'slug' => $item['slug'],
-            'image' => [
-                'url' => $item['image_url']
-            ],
-            "songs" => array_key_exists('songs', $item) ? $item['songs'] : null
-        ];
+        return $this->collection($songs, new SongTransformer());
+    }
+
+    public function includeBand(Album $album)
+    {
+        $band = $album->band;
+
+        return $this->item($band, new BandTransformer());
     }
 
 }
