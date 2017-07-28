@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+    Route::resource('band', 'BandController');
+    Route::resource('album', 'AlbumController');
 });
