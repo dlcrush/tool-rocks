@@ -18,4 +18,8 @@ interface Repository {
 
     public function findBy($field, $value, $columns = array('*'));
 
+    public function findWhere($field, $value, $columns = array('*'));
+
+    public function findIn($field, $values, $columns = array('*'));
+
 }

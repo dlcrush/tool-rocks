@@ -4,10 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\API\Contracts\BandRepository;
 use App\Band;
 
 class BandController extends Controller
 {
+
+    protected $bandRepo;
+
+    public function __construct(BandRepository $bandRepo) {
+        $this->bandRepo = $bandRepo;
+    }
 
     /**
     * Display a listing of the resource.
@@ -16,7 +23,7 @@ class BandController extends Controller
     */
     public function index()
     {
-        $bands = Band::all();
+        $bands = $this->bandRepo->all();
 
         return view('admin.bands.index', compact('bands'));
     }

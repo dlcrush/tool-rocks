@@ -68,6 +68,16 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
 
+    public function findWhere($field, $value, $columns = array('*')) {
+        $this->applyCriteria();
+        return $this->model->where($field, $value)->get($columns);
+    }
+
+    public function findIn($field, $values, $columsn = array('*')) {
+        $this->applyCriteria();
+        return $this->model->whereIn($field, $values)->get($columns);
+    }
+
     public function resetScope() {
         $this->skipCriteria(false);
         return $this;

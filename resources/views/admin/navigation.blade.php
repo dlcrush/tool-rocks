@@ -17,6 +17,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+                        <a href="/"> Main site</a>
+                    </li>
+                    <li>
                         <a href="/admin/band"> Bands</a>
                     </li>
                     <li>

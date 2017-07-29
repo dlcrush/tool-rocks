@@ -2,6 +2,6 @@
 
 namespace App\Repositories\API\Contracts;
 
-interface BandRepository extends Repository {
+interface VideoRepository extends Repository {
 
 }

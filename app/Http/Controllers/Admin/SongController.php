@@ -4,23 +4,43 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Band;
-use App\Album;
-use App\Song;
+use App\Repositories\API\Contracts\BandRepository;
+use App\Repositories\API\Contracts\AlbumRepository;
+use App\Repositories\API\Contracts\SongRepository;
+use App\Repositories\API\Criteria\Bands\ExpandSongs;
 
 class SongController extends Controller
 {
+
+    protected $bandRepo;
+    protected $albumRepo;
+    protected $songRepo;
+
+    public function __construct(SongRepository $songRepo, AlbumRepository $albumRepo, BandRepository $bandRepo) {
+        $this->songRepo = $songRepo;
+        $this->albumRepo = $albumRepo;
+        $this->bandRepo = $bandRepo;
+    }
 
     /**
     * Display a listing of the resource.
     *
     * @return \Illuminate\Http\Response
     */
-    public function index()
+    public function index(Request $request)
     {
-        $songs = Song::all();
+        $bands = $this->bandRepo->all();
 
-        return view('admin.songs.index', compact('songs'));
+        $bandId =  $request->input('bandId', -1);
+
+        if ($bandId == -1) {
+            $bandId = $bands->first()->id;
+        }
+
+        $this->bandRepo->pushCriteria(new ExpandSongs());
+        $band = $this->bandRepo->find($bandId);
+
+        return view('admin.songs.index', compact('band', 'bands'));
     }
 
     /**

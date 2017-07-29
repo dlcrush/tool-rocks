@@ -3,18 +3,24 @@
 @section('content')
     <h1>Albums</h1>
 
-    <form>
-        <select name="band" id="band">
-            <option value="">Please select a band</option>
-            @foreach($bands as $band)
-                @if ($bandId == $band->id)
-                    <option value="{{ $band->id }}" selected="selected">{{ $band->name }}</option>
-                @else
-                    <option value="{{ $band->id }}">{{ $band->name }}</option>
-                @endif
-            @endforeach
-        </select>
-    </form>
+    <div class="row">
+        <div class="col-md-8">
+            <form>
+                <select name="band" id="band">
+                    @foreach($bands as $band)
+                        @if ($bandId == $band->id)
+                            <option value="{{ $band->id }}" selected="selected">{{ $band->name }}</option>
+                        @else
+                            <option value="{{ $band->id }}">{{ $band->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <a href="/admin/album/create" class="btn btn-primary btn-lg pull-right">New Album</a>
+        </div>
+    </div>
 
     <table class="table" style="color: black">
         <thead>
@@ -41,7 +47,6 @@
     </table>
 
     <script>
-        console.log(window);
         $(function() {
             $('#band').on('change', function() {
                 var bandId = $(this).val();

@@ -18,4 +18,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::resource('band', 'BandController');
     Route::resource('album', 'AlbumController');
+    Route::resource('song', 'SongController');
+    Route::get('/', function() {
+        return view('admin.home');
+    });
 });

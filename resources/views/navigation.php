@@ -16,7 +16,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/admin/videos"> Videos</a>
+                        <a href="/admin/"> Admin</a>
                     </li>
                     <li>
                         <a href="/admin/tags"> Tags</a>

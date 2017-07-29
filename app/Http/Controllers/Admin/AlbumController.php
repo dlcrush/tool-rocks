@@ -4,11 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Band;
-use App\Album;
+use App\Repositories\API\Contracts\BandRepository;
+use App\Repositories\API\Contracts\AlbumRepository;
+use App\Repositories\API\Contracts\SongRepository;
+use App\Repositories\API\Criteria\Albums\ExpandBand;
+use App\Repositories\API\Criteria\Albums\ExpandSongs;
 
 class AlbumController extends Controller
 {
+    protected $bandRepo;
+    protected $albumRepo;
+    protected $songRepo;
+
+    public function __construct(AlbumRepository $albumRepo, BandRepository $bandRepo, SongRepository $songRepo) {
+        $this->albumRepo = $albumRepo;
+        $this->bandRepo = $bandRepo;
+        $this->songRepo = $songRepo;
+    }
 
     /**
     * Display a listing of the resource.
@@ -17,7 +29,7 @@ class AlbumController extends Controller
     */
     public function index(Request $request)
     {
-        $bands = Band::all();
+        $bands = $this->bandRepo->all();
 
         $bandId =  $request->input('bandId', -1);
 
@@ -25,7 +37,7 @@ class AlbumController extends Controller
             $bandId = $bands->first()->id;
         }
 
-        $albums = Album::where('band_id', $bandId)->get();
+        $albums = $this->albumRepo->findWhere('band_id', $bandId);
 
         return view('admin.albums.index', compact('bands', 'albums', 'bandId'));
     }
@@ -37,7 +49,7 @@ class AlbumController extends Controller
     */
     public function create()
     {
-        //
+        return view('admin.albums.create');
     }
 
     /**
@@ -70,7 +82,17 @@ class AlbumController extends Controller
     */
     public function edit($id)
     {
-        //
+        $this->albumRepo->pushCriteria(new ExpandBand());
+        $this->albumRepo->pushCriteria(new ExpandSongs());
+        $album = $this->albumRepo->find($id);
+
+        $input = [
+            'id' => $album->id,
+            'name' => $album->name,
+            'slug' => $album->slug
+        ];
+
+        return view('admin.albums.edit', compact('album'))->withInput($input);
     }
 
     /**

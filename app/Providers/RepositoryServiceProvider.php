@@ -33,11 +33,11 @@ class RepositoryServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('App\Repositories\API\Contracts\AlbumRepository', function($app) {
-            return new \App\Repositories\API\AlbumRepository($this->app, Illuminate\Support\Collection);
+            return new \App\Repositories\API\AlbumRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
 
         $this->app->bind('App\Repositories\API\Contracts\VideoRepository', function($app) {
-            return new \App\Repositories\API\VideoRepository($this->app, Illuminate\Support\Collection);
+            return new \App\Repositories\API\VideoRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
     }
 }
