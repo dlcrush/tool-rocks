@@ -15,7 +15,7 @@
         </select>
     </form>
 
-    <table class="table" style="color: black">
+    <table class="table">
         <thead>
             <tr>
                 <th>id</th>
