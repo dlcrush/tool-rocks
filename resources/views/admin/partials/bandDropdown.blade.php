@@ -1,7 +1,7 @@
 <form>
     <select name="band" id="band">
         @foreach($bands as $band)
-            <option value="{{ $band->id }}" @if($bandId == $band->id) selected="selected" @endif>{{ $band->name }}</option>
+            <option value="{{ $band->id }}" @if($selected == $band->id) selected="selected" @endif>{{ $band->name }}</option>
         @endforeach
     </select>
 </form>

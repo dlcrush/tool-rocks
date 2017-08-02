@@ -1,5 +1,15 @@
 @include("admin.pageTypes.all", [
     'title' => 'Albums',
+    'filters' => [
+        'band' => [
+            'bands' => $bands,
+            'current' => $bandId
+        ]
+    ],
+    'createButton' => [
+        'text' => 'New Album',
+        'href' => '#'
+    ],
     'table' => [
         'columns' => [
             [

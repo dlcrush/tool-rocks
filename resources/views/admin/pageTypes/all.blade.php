@@ -4,6 +4,27 @@
 @section('content')
     <h1>{{ $title }}</h1>
 
+    <div class="row">
+        <div class="col-md-8">
+            @if(isset($filters))
+                @if(array_has($filters, 'band'))
+                    @include("admin.partials.bandDropdown", ["bands" => array_get($filters, 'band.bands'), "selected" => array_get($filters, 'band.current')])
+                @endif
+            @endif
+        </div>
+        <div class="col-md-4">
+            @if(isset($createButton))
+                @include("admin.partials.button", [
+                    'text' => array_get($createButton, 'text'),
+                    'href' => array_get($createButton, 'href'),
+                    'type' => 'create',
+                    'size' => 'large',
+                    'float' => 'right'
+                ])
+            @endif
+        </div>
+    </div>
+
     <table class="table">
         <thead>
             <tr>

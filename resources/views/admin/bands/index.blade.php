@@ -1,5 +1,9 @@
 @include("admin.pageTypes.all", [
     'title' => 'Albums',
+    'createButton' => [
+        'text' => 'New Band',
+        'href' => '#'
+    ],
     'table' => [
         'columns' => [
             [
