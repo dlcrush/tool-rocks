@@ -53,9 +53,28 @@
                             @elseif ($type == 'buttons' or $type == 'button')
                                 {{-- This is a button or button group --}}
                                 @foreach(array_get($col, 'buttons', [array_get($col, 'button')]) as $button)
+
+                                    <?php
+                                        $buttonHref = array_get($button, 'href');
+
+                                        if (is_array($buttonHref)) {
+                                            $buttonAction = array_get($buttonHref, 'action');
+                                            // I'll make this more flexible sometime (or maybe not)
+                                            $buttonActionParams = array_get($buttonHref, 'params');
+                                            if (is_array($buttonActionParams)) {
+                                                $buttonActionParams = [
+                                                    'id' => $entry->id
+                                                ];
+                                            } else {
+                                                $buttonActionParams = [];
+                                            }
+                                            $buttonHref = action($buttonAction, $buttonActionParams);
+                                        }
+                                     ?>
+
                                     @include("admin.partials.button", [
                                         'text' => array_get($button, 'text'),
-                                        'href' => array_get($button, 'href'),
+                                        'href' => $buttonHref,
                                         'type' => array_get($button, 'type'),
                                         'full_width' => $type == 'button'
                                     ])

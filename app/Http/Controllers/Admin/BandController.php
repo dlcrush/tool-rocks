@@ -35,7 +35,7 @@ class BandController extends Controller
     */
     public function create()
     {
-        //
+        return view('admin.bands.create');
     }
 
     /**
@@ -46,7 +46,17 @@ class BandController extends Controller
     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+           'name' => 'required',
+           'slug' => 'required|unique:bands'
+        ]);
+
+        $this->bandRepo->create([
+            'name' => $request->name,
+            'slug' => $request->slug
+        ]);
+
+        return redirect(action('Admin\BandController@index'));
     }
 
     /**

@@ -2,7 +2,7 @@
     'title' => 'Bands',
     'createButton' => [
         'text' => 'New Band',
-        'href' => '#'
+        'href' => action('Admin\BandController@create')
     ],
     'table' => [
         'columns' => [
@@ -23,7 +23,12 @@
                 'button' => [
                     'type' => 'edit',
                     'text' => 'Edit',
-                    'href' => '#'
+                    'href' => [
+                        'action' => 'Admin\BandController@edit',
+                        'params' => [
+                            'id' => 'id'
+                        ]
+                    ]
                 ]
             ],
             [
@@ -31,7 +36,12 @@
                 'button' => [
                     'type' => 'delete',
                     'text' => 'Delete',
-                    'href' => '#'
+                    'href' => [
+                        'action' => 'Admin\BandController@edit',
+                        'params' => [
+                            'id' => 'id'
+                        ]
+                    ]
                 ]
             ]
         ],
