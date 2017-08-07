@@ -39,5 +39,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\API\Contracts\VideoRepository', function($app) {
             return new \App\Repositories\API\VideoRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
+
+        $this->app->bind('App\Repositories\API\Contracts\IpsumRepository', function($app) {
+            return new \App\Repositories\API\IpsumRepository($this->app, $app->make('Illuminate\Support\Collection'));
+        });
     }
 }

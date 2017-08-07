@@ -25,6 +25,12 @@
                     <li>
                         <a href="/admin/album"> Albums</a>
                     </li>
+                    <li>
+                        <a href="/admin/song"> Songs</a>
+                    </li>
+                    <li>
+                        <a href="/admin/ipsums"> Ipsums</a>
+                    </li>
                 </ul>
             </div>
         </div>

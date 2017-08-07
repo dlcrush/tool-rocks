@@ -22,6 +22,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
   Route::resource('albums', 'AlbumController');
   Route::resource('songs', 'SongController');
   Route::resource('videos', 'VideoController');
+  Route::resource('ipsums', 'IpsumController');
 });
-
-
