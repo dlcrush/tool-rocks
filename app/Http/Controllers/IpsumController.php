@@ -18,10 +18,11 @@ class IpsumController extends Controller
     }
 
     public function generate(Request $request) {
-        $numParagraphs = max($request->get('paragraphs', 4), 0);
+        $numParagraphs = min(max($request->get('paragraphs', 4), 0), 100);
         $bandSlug = 'tool';
         $bandId = $this->bandRepo->findWhere('slug', $bandSlug)->first()->id;
-        $sizeOfParagraph = 8; // how many items per paragraph
+        $sizeOfParagraph = $request->get('paragraphSize', 'medium');
+        $itemsPerParagraph = $this->itemsPerParagraph($sizeOfParagraph);
         $paragraphs = new Collection();
 
         $ipsums = $this->ipsumRepo->findWhere('band_id', $bandId);
@@ -29,7 +30,7 @@ class IpsumController extends Controller
 
         for($i = 0; $i < $numParagraphs; $i ++) {
             $paragraph = '';
-            for($j = 0; $j < $sizeOfParagraph; $j ++) {
+            for($j = 0; $j < $itemsPerParagraph; $j ++) {
                 $idx = rand(0, $numIpsums-1);
 
                 $ipsum = $ipsums->get($idx)->content;
@@ -40,5 +41,16 @@ class IpsumController extends Controller
         }
 
         return view('ipsum', compact('paragraphs'));
+    }
+
+    protected function itemsPerParagraph($paragraphSize) {
+        $mappings = [
+            'small' => 5,
+            'medium' => 8,
+            'large' => 15,
+            'huge' => 25
+        ];
+
+        return $mappings[$paragraphSize];
     }
 }
