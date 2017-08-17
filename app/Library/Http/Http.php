@@ -13,19 +13,24 @@ class Http implements HttpInterface {
         $this->client = $client;
     }
 
-    public function get($url) {
+    public function get(String $url) {
+        $response = $this->client->get($url);
+        return $response->getBody()->getContents();
+    }
+
+    public function getAsync(String $url) {
+        return $this->client->getAsync($url);
+    }
+
+    public function post(String $url, $data=[]) {
+        $response = $this->client->post();
+    }
+
+    public function put(String $url, $data=[]) {
 
     }
 
-    public function post($url) {
-
-    }
-
-    public function put($url) {
-
-    }
-
-    public function delete($url) {
+    public function delete(String $url, $data=[]) {
 
     }
 

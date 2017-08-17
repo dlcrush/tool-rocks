@@ -16,9 +16,9 @@ interface UrlBuilder {
 
     public function setParams(array $params);
 
-    public function setResource(String $resource);
+    public function setPath(String $path);
 
-    public function resource(String $resource);
+    public function path(String $path);
 
     public function params(array $params);
 

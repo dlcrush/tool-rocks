@@ -9,7 +9,7 @@ class UrlBuilder implements UrlBuilderInterface {
 
     protected $baseUrl;
     protected $paramsBuilder;
-    protected $resource;
+    protected $path;
 
     public function __construct(ParamsBuilder $paramsBuilder) {
         $this->paramsBuilder = $paramsBuilder;
@@ -44,13 +44,13 @@ class UrlBuilder implements UrlBuilderInterface {
         return $this;
     }
 
-    public function setResource(String $resource) {
-        $this->resource = $resource;
+    public function setPath(String $path) {
+        $this->path = $path;
         return $this;
     }
 
-    public function resource(String $resource) {
-        return $this->setResource($resource);
+    public function path(String $path) {
+        return $this->setPath($path);
     }
 
     public function params(array $params) {
@@ -58,7 +58,7 @@ class UrlBuilder implements UrlBuilderInterface {
     }
 
     public function build() {
-        return $this->baseUrl . $this->resource . $this->paramsBuilder->build();
+        return $this->baseUrl . $this->path . $this->paramsBuilder->build();
     }
 
 }

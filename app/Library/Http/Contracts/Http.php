@@ -1,15 +1,17 @@
-<?<?php
+<?php
 
 namespace App\Library\Http\Contracts;
 
 interface Http {
 
-    public function get();
+    public function get(String $url);
 
-    public function post();
+    public function getAsync(String $url);
 
-    public function put();
+    public function post(String $url, $data=[]);
 
-    public function delete();
+    public function put(String $url, $data=[]);
+
+    public function delete(String $url, $data=[]);
 
 }
