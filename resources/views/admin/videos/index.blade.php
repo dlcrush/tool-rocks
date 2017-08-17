@@ -1,5 +1,5 @@
 @include("admin.pageTypes.all", [
-    'title' => 'Albums',
+    'title' => 'Videos',
     'filters' => [
         'band' => [
             'bands' => $bands,
@@ -7,8 +7,8 @@
         ]
     ],
     'createButton' => [
-        'text' => 'New Album',
-        'href' => action('Admin\AlbumController@create')
+        'text' => 'New Video',
+        'href' => action('Admin\VideoController@create')
     ],
     'table' => [
         'columns' => [
@@ -25,11 +25,20 @@
                 'valueKey' => 'slug'
             ],
             [
+                'header' => 'Description',
+                'valueKey' => 'description'
+            ],
+            [
                 'type' => 'button',
                 'button' => [
                     'type' => 'edit',
                     'text' => 'Edit',
-                    'href' => '#'
+                    'href' => [
+                        'action' => 'Admin\VideoController@edit',
+                        'params' => [
+                            'id' => 'id'
+                        ]
+                    ]
                 ]
             ],
             [
@@ -37,10 +46,15 @@
                 'button' => [
                     'type' => 'delete',
                     'text' => 'Delete',
-                    'href' => '#'
+                    'href' => [
+                        'action' => 'Admin\VideoController@edit',
+                        'params' => [
+                            'id' => 'id'
+                        ]
+                    ]
                 ]
             ]
         ],
-        'data' => $albums
+        'data' => $videos
     ]
 ])

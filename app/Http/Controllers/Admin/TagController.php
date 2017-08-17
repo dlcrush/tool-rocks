@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\API\Contracts\BandRepository;
-use App\Band;
+use App\Repositories\API\Contracts\TagRepository;
 
-class BandController extends Controller
+class TagController extends Controller
 {
 
-    protected $bandRepo;
+    protected $tagRepo;
 
-    public function __construct(BandRepository $bandRepo) {
-        $this->bandRepo = $bandRepo;
+    public function __construct(TagRepository $tagRepo) {
+        $this->tagRepo = $tagRepo;
     }
 
     /**
@@ -23,9 +22,9 @@ class BandController extends Controller
     */
     public function index()
     {
-        $bands = $this->bandRepo->all();
+        $tags = $this->tagRepo->all();
 
-        return view('admin.bands.index', compact('bands'));
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -35,7 +34,7 @@ class BandController extends Controller
     */
     public function create()
     {
-        return view('admin.bands.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -48,15 +47,15 @@ class BandController extends Controller
     {
         $this->validate($request, [
            'name' => 'required',
-           'slug' => 'required|unique:bands'
+           'slug' => 'required|unique:tags'
         ]);
 
-        $this->bandRepo->create([
+        $this->tagRepo->create([
             'name' => $request->name,
             'slug' => $request->slug
         ]);
 
-        return redirect(action('Admin\BandController@index'));
+        return redirect(action('Admin\TagController@index'));
     }
 
     /**
@@ -78,9 +77,9 @@ class BandController extends Controller
     */
     public function edit($id)
     {
-        $band = $this->bandRepo->find($id);
+        $tag = $this->tagRepo->find($id);
 
-        return view('admin.bands.edit', compact('band'));
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -92,12 +91,17 @@ class BandController extends Controller
     */
     public function update(Request $request, $id)
     {
-        $this->bandRepo->update([
+        $this->validate($request, [
+           'name' => 'required',
+           'slug' => 'required|unique:tags'
+        ]);
+
+        $this->tagRepo->update([
             'name' => $request->name,
             'slug' => $request->slug
         ], $id);
 
-        return redirect(action('Admin\BandController@index'));
+        return redirect(action('Admin\TagController@index'));
     }
 
     /**

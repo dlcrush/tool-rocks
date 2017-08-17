@@ -1,14 +1,8 @@
 @include("admin.pageTypes.all", [
-    'title' => 'Albums',
-    'filters' => [
-        'band' => [
-            'bands' => $bands,
-            'current' => $bandId
-        ]
-    ],
+    'title' => 'Tags',
     'createButton' => [
-        'text' => 'New Album',
-        'href' => action('Admin\AlbumController@create')
+        'text' => 'New Tag',
+        'href' => action('Admin\TagController@create')
     ],
     'table' => [
         'columns' => [
@@ -41,6 +35,6 @@
                 ]
             ]
         ],
-        'data' => $albums
+        'data' => $tags
     ]
 ])

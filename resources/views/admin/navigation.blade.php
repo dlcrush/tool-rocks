@@ -29,6 +29,12 @@
                         <a href="/admin/song"> Songs</a>
                     </li>
                     <li>
+                        <a href="/admin/tags"> Tags</a>
+                    </li>
+                    <li>
+                        <a href="/admin/videos"> Videos</a>
+                    </li>
+                    <li>
                         <a href="/admin/ipsums"> Ipsums</a>
                     </li>
                 </ul>

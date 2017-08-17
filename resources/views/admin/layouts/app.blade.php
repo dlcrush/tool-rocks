@@ -24,7 +24,7 @@
                 <footer>
                     <div class="padding">
                         <p>
-                            <center>Copyright Tool Rocks 2017. Thanks for visiting, bitches.</center>
+                            <center>Copyright Tool Rocks 2017. Thanks for visiting.</center>
                         </p>
                 </footer>
             </div>

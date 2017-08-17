@@ -15,7 +15,7 @@
             @include('../navigation')
 
             <div class="content">
-                <div class="main-content">
+                <div class="main-content wide">
                     @yield('content')
                 </div>
 

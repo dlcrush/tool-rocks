@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('ipsum', 'IpsumController@generate');
+Route::get('video/test', function() {
+    return view('videos.show');
+});
 
 // Admin routes
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
@@ -23,7 +26,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::resource('album', 'AlbumController');
     Route::resource('song', 'SongController');
     Route::resource('ipsums', 'IpsumController');
+    Route::resource('tags', 'TagController');
+    Route::resource('videos', 'VideoController');
     Route::get('/', function() {
         return view('admin.home');
+    });
+    Route::get('video/preview', function() {
+        return view('admin.videos.preview');
     });
 });

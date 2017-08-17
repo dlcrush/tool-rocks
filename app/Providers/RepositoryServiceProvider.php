@@ -43,5 +43,18 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\API\Contracts\IpsumRepository', function($app) {
             return new \App\Repositories\API\IpsumRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
+
+        $this->app->bind('App\Repositories\API\Contracts\TagRepository', function($app) {
+            return new \App\Repositories\API\TagRepository($this->app, $app->make('Illuminate\Support\Collection'));
+        });
+
+        $this->app->bind('App\Repositories\API\Contracts\VideoRepository', function($app) {
+            return new \App\Repositories\API\VideoRepository($this->app, $app->make('Illuminate\Support\Collection'));
+        });
+
+        $this->app->bind('App\Repositories\API\Contracts\YouTubeRepository', function($app) {
+            $apiKey = config('youtube.api_key', '');
+            return new \App\Repositories\API\YouTubeRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'), $apiKey);
+        });
     }
 }

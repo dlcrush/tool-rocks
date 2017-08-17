@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Tag extends Model
 {
     use SoftDeletes;
-    
+
+    protected $fillable = ['name', 'slug'];
+
     /**
      * The attributes that should be mutated to dates.
      *

@@ -5,15 +5,20 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\API\Contracts\BandRepository;
-use App\Band;
+use App\Repositories\API\Contracts\SongRepository;
+use App\Repositories\API\Contracts\VideoRepository;
+use App\Repositories\API\Criteria\Bands\ExpandSongs;
 
-class BandController extends Controller
+class VideoController extends Controller
 {
 
     protected $bandRepo;
+    protected $songRepo;
 
-    public function __construct(BandRepository $bandRepo) {
+    public function __construct(SongRepository $songRepo, BandRepository $bandRepo, VideoRepository $videoRepo) {
+        $this->songRepo = $songRepo;
         $this->bandRepo = $bandRepo;
+        $this->videoRepo = $videoRepo;
     }
 
     /**
@@ -21,11 +26,19 @@ class BandController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-    public function index()
+    public function index(Request $request)
     {
         $bands = $this->bandRepo->all();
 
-        return view('admin.bands.index', compact('bands'));
+        $bandId =  $request->input('bandId', -1);
+
+        if ($bandId == -1) {
+            $bandId = $bands->first()->id;
+        }
+
+        $videos = $this->videoRepo->findWhere('band_id', $bandId);
+
+        return view('admin.videos.index', compact('bands', 'videos', 'bandId'));
     }
 
     /**
@@ -35,7 +48,7 @@ class BandController extends Controller
     */
     public function create()
     {
-        return view('admin.bands.create');
+        return view('admin.videos.create');
     }
 
     /**
@@ -46,17 +59,7 @@ class BandController extends Controller
     */
     public function store(Request $request)
     {
-        $this->validate($request, [
-           'name' => 'required',
-           'slug' => 'required|unique:bands'
-        ]);
-
-        $this->bandRepo->create([
-            'name' => $request->name,
-            'slug' => $request->slug
-        ]);
-
-        return redirect(action('Admin\BandController@index'));
+        //
     }
 
     /**
@@ -78,9 +81,7 @@ class BandController extends Controller
     */
     public function edit($id)
     {
-        $band = $this->bandRepo->find($id);
-
-        return view('admin.bands.edit', compact('band'));
+        //
     }
 
     /**
@@ -92,12 +93,7 @@ class BandController extends Controller
     */
     public function update(Request $request, $id)
     {
-        $this->bandRepo->update([
-            'name' => $request->name,
-            'slug' => $request->slug
-        ], $id);
-
-        return redirect(action('Admin\BandController@index'));
+        //
     }
 
     /**
