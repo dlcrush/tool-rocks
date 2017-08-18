@@ -8,8 +8,8 @@ class ParamsBuilder implements ParamsBuilderInterface {
 
     protected $params;
 
-    public function __construct() {
-        $this->params = [];
+    public function __construct($params=[]) {
+        $this->params = $params;
     }
 
     // Alias for set (because I prefer add)
@@ -28,7 +28,7 @@ class ParamsBuilder implements ParamsBuilderInterface {
     }
 
     public function has(String $key) {
-        return array_key_exists($key, $params);
+        return array_key_exists($key, $this->params);
     }
 
     public function get(String $key) {
