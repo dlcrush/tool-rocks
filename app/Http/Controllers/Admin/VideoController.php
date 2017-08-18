@@ -14,6 +14,7 @@ class VideoController extends Controller
 
     protected $bandRepo;
     protected $songRepo;
+    protected $videoRepo;
 
     public function __construct(SongRepository $songRepo, BandRepository $bandRepo, VideoRepository $videoRepo) {
         $this->songRepo = $songRepo;
@@ -59,7 +60,23 @@ class VideoController extends Controller
     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+           'name' => 'required',
+           'slug' => 'required|unique:videos',
+           'description' => 'required',
+           'youtube_id' => 'required'
+        ]);
+
+        $this->videoRepo->create([
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'description' => $request->description,
+            'video_id' => $request->youtube_id,
+            'band_id' => 1,
+            'source' => 'youtube'
+        ]);
+
+        return redirect(action('Admin\VideoController@index'));
     }
 
     /**

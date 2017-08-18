@@ -3,7 +3,7 @@
     <input type="text" class="form-control" name="youtube_id" id="youtube_id" value="{{ isset($video->video_id) ? $video->video_id : '' }}">
 </div>
 <div class="form-group">
-    <button id="fetchVideoInfo" class="btn btn-default">Fetch Video Info</button>
+    <a href="#" id="fetchVideoInfo" class="btn btn-default">Fetch Video Info</a>
 </div>
 <div class="form-group">
     <label for="name">Name</label>
@@ -19,7 +19,7 @@
 </div>
 <div class="form-group">
     <label for="tags">Tags</label>
-    <input type="text" class="form-control" id="tags" name="tags" value="{{ isset($video->tags) ? $video->tags : "" }}">
+    <input type="text" id="tags" name="tags" value="{{ isset($video->tags) ? $video->tags : "1,2,3" }}">
 </div>
 <button type="submit" class="btn btn-default btn-lg">Submit</button>
 
@@ -46,6 +46,35 @@
                 }
             });
         });
+
+        var tags = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: {
+                url: '/api/v1/tags',
+                filter: function(data) {
+                    var bacon = data && data.data;
+                    return $.map(bacon, function(tag) {
+                        return { id: tag.id, name: tag.name };
+                    });
+                }
+            }
+        });
+        tags.initialize();
+
+        $('#tags').tagsinput({
+            itemValue: 'id',
+            itemText: 'name',
+            cancelConfirmKeysOnEmpty: true,
+            freeInput: false,
+            typeaheadjs: {
+                name: 'tags',
+                displayKey: 'name',
+                source: tags.ttAdapter()
+            }
+        });
+
+        //$('#tags').tagsinput('add', { "id": 1 , "name": "Remastered" });
 
     });
 

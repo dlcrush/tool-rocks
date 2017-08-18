@@ -9,6 +9,8 @@
         <link href="/css/app.css" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
         <script src="/js/app.js"></script>
+        <script src="/js/bootstrap-tagsinput.min.js"></script>
+        <script src="/js/typeahead.min.js"></script>
     </head>
 
     <body>
