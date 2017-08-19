@@ -20,22 +20,22 @@
                         <a href="/"> Main site</a>
                     </li>
                     <li>
-                        <a href="/admin/band"> Bands</a>
+                        <a href="{{ action('Admin\BandController@index') }}"> Bands</a>
                     </li>
                     <li>
-                        <a href="/admin/album"> Albums</a>
+                        <a href="{{ action('Admin\AlbumController@index') }}"> Albums</a>
                     </li>
                     <li>
-                        <a href="/admin/song"> Songs</a>
+                        <a href="{{ action('Admin\SongController@index') }}"> Songs</a>
                     </li>
                     <li>
-                        <a href="/admin/tags"> Tags</a>
+                        <a href="{{ action('Admin\TagController@index') }}"> Tags</a>
                     </li>
                     <li>
-                        <a href="/admin/videos"> Videos</a>
+                        <a href="{{ action('Admin\VideoController@index') }}"> Videos</a>
                     </li>
                     <li>
-                        <a href="/admin/ipsums"> Ipsums</a>
+                        <a href="{{ action('Admin\IpsumController@index') }}"> Ipsums</a>
                     </li>
                 </ul>
             </div>

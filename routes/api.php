@@ -36,8 +36,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
     Route::get('ipsums/{id}', 'IpsumController@getIpsum');
 
     /** YouTube **/
-    Route::get('youtube/video/{id}', 'YouTubeController@getVideo');
+    Route::get('youtube/videos/{id}', 'YouTubeController@getVideo');
     Route::get('youtube/videos', 'YouTubeController@getVideos');
-    Route::get('youtube/channel/{channelName}/videos', 'YouTubeController@getVideosByChannel');
-    Route::get('youtube/channel/{id}', 'YouTubeController@getChannel');
+    Route::get('youtube/channels/{channelName}/videos', 'YouTubeController@getVideosByChannel');
+    Route::get('youtube/channels/{id}', 'YouTubeController@getChannel');
 });

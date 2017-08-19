@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\API\Contracts\BandRepository;
 use App\Repositories\API\Contracts\AlbumRepository;
 use App\Repositories\API\Contracts\SongRepository;
-use App\Repositories\API\Criteria\Bands\ExpandSongs;
+use App\Repositories\API\Criteria\Expand;
 
 class SongController extends Controller
 {
@@ -37,7 +37,7 @@ class SongController extends Controller
             $bandId = $bands->first()->id;
         }
 
-        $this->bandRepo->pushCriteria(new ExpandSongs());
+        $this->bandRepo->pushCriteria(new Expand('songs'));
         $band = $this->bandRepo->find($bandId);
 
         return view('admin.songs.index', compact('band', 'bands'));

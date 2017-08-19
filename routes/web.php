@@ -22,16 +22,13 @@ Route::get('video/test', function() {
 
 // Admin routes
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
-    Route::resource('band', 'BandController');
-    Route::resource('album', 'AlbumController');
-    Route::resource('song', 'SongController');
+    Route::resource('bands', 'BandController');
+    Route::resource('albums', 'AlbumController');
+    Route::resource('songs', 'SongController');
     Route::resource('ipsums', 'IpsumController');
     Route::resource('tags', 'TagController');
     Route::resource('videos', 'VideoController');
     Route::get('/', function() {
         return view('admin.home');
-    });
-    Route::get('video/preview', function() {
-        return view('admin.videos.preview');
     });
 });
