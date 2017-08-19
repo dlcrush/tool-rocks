@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\API\Contracts\BandRepository;
 use App\Repositories\API\Contracts\SongRepository;
 use App\Repositories\API\Contracts\VideoRepository;
-use App\Repositories\API\Criteria\Bands\ExpandSongs;
+use App\Repositories\API\Criteria\Expand;
 
 class VideoController extends Controller
 {
@@ -49,7 +49,10 @@ class VideoController extends Controller
     */
     public function create()
     {
-        return view('admin.videos.create');
+        $this->bandRepo->pushCriteria(new Expand('songs'));
+        $bands = $this->bandRepo->all();
+
+        return view('admin.videos.create', compact('bands'));
     }
 
     /**
@@ -64,7 +67,8 @@ class VideoController extends Controller
            'name' => 'required',
            'slug' => 'required|unique:videos',
            'description' => 'required',
-           'youtube_id' => 'required'
+           'youtube_id' => 'required',
+           'band' => 'required'
         ]);
 
         $this->videoRepo->create([
@@ -72,7 +76,7 @@ class VideoController extends Controller
             'slug' => $request->slug,
             'description' => $request->description,
             'video_id' => $request->youtube_id,
-            'band_id' => 1,
+            'band_id' => $request->band,
             'source' => 'youtube'
         ]);
 
@@ -98,7 +102,12 @@ class VideoController extends Controller
     */
     public function edit($id)
     {
-        //
+        $this->videoRepo->pushCriteria(new Expand('songs'));
+        $video = $this->videoRepo->find($id);
+        $this->bandRepo->pushCriteria(new Expand('songs'));
+        $bands = $this->bandRepo->all();
+
+        return view('admin.videos.edit', compact('video', 'bands'));
     }
 
     /**

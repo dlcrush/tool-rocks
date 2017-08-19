@@ -7,8 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\API\Contracts\BandRepository;
 use App\Repositories\API\Contracts\AlbumRepository;
 use App\Repositories\API\Contracts\SongRepository;
-use App\Repositories\API\Criteria\Albums\ExpandBand;
-use App\Repositories\API\Criteria\Albums\ExpandSongs;
+use App\Repositories\API\Criteria\Expand;
 
 class AlbumController extends Controller
 {
@@ -60,7 +59,14 @@ class AlbumController extends Controller
     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+           'name' => 'required|unique:posts|max:255',
+           'body' => 'required',
+       ]);
+
+        $input = $request->all();
+
+
     }
 
     /**
@@ -82,8 +88,7 @@ class AlbumController extends Controller
     */
     public function edit($id)
     {
-        $this->albumRepo->pushCriteria(new ExpandBand());
-        $this->albumRepo->pushCriteria(new ExpandSongs());
+        $this->albumRepo->pushCriteria(new Expand(['band', 'songs']));
         $album = $this->albumRepo->find($id);
 
         $input = [

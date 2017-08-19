@@ -29,7 +29,12 @@
                 'button' => [
                     'type' => 'edit',
                     'text' => 'Edit',
-                    'href' => '#'
+                    'href' => [
+                        'action' => 'Admin\AlbumController@edit',
+                        'params' => [
+                            'id' => 'id'
+                        ]
+                    ]
                 ]
             ],
             [
