@@ -4,28 +4,31 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Transformers\BandTransformer;
+use App\Transformers\SongTransformer;
+use App\Transformers\AlbumTransformer;
 use App\Repositories\API\Contracts\BandRepository;
-use App\Repositories\API\Criteria\Bands\ExpandAlbumsAndSongs;
+use App\Repositories\API\Criteria\Expand;
 
 class BandController extends APIController
 {
 
     protected $band;
     protected $bandTransformer;
+    protected $songTransformer;
 
-    public function __construct(BandRepository $band, BandTransformer $bandTransformer) {
+    public function __construct(BandRepository $band,
+        BandTransformer $bandTransformer,
+        SongTransformer $songTransformer,
+        AlbumTransformer $albumTransformer) {
         $this->band = $band;
         $this->bandTransformer = $bandTransformer;
+        $this->songTransformer = $songTransformer;
+        $this->albumTransformer = $albumTransformer;
     }
 
-    /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function index()
+    public function getBands()
     {
-        $this->band->pushCriteria(new ExpandAlbumsAndSongs());
+        $this->band->pushCriteria(new Expand('albums.songs'));
 
         $bands = fractal()
            ->collection($this->band->all())
@@ -36,69 +39,49 @@ class BandController extends APIController
         return $this->respond($bands);
     }
 
-    /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function create()
-    {
-        //
+    public function getSongs($bandId) {
+        $this->band->pushCriteria(new Expand('songs'));
+
+        $band = $this->getBandByIdOrSlug($bandId);
+
+        $songs = fractal()
+           ->collection($band->songs)
+           ->transformWith($this->songTransformer)
+           ->toArray();
+
+        return $this->respond($songs);
     }
 
-    /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
-    public function store(Request $request)
-    {
-        //
+    public function getAlbums($bandId) {
+        $this->band->pushCriteria(new Expand('albums'));
+
+        $band = $this->band->find($id);
+
+        $albums = fractal()
+           ->collection($band->albums)
+           ->transformWith($this->albumTransformer)
+           ->toArray();
+
+        return $this->respond($albums);
     }
 
-    /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function show($id)
-    {
-        //
+    public function getBand($bandId='tool') {
+        $this->band->pushCriteria(new Expand('albums.songs'));
+
+        $band = $this->getBandByIdOrSlug($bandId);
+
+        $bandResp = fractal()
+            ->item($band)
+            ->transformWith($this->bandTransformer)
+            ->parseIncludes('albums.songs')
+            ->toArray();
+
+        return $this->response($bandResp);
     }
 
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function edit($id)
-    {
-        //
-    }
+    private function getBandByIdOrSlug($bandId='tool') {
+        $bandId = isset($bandId) ? $bandId : 'tool';
 
-    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    public function destroy($id)
-    {
-        //
+        return $this->band->findByIdOrSlug($bandId);
     }
 }
