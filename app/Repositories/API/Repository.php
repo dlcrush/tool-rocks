@@ -78,6 +78,29 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
         return $this->model->whereIn($field, $values)->get($columns);
     }
 
+    public function findByIdOrSlug($idOrSlug, $field='slug') {
+        $idOrSlug = isset($idOrSlug) ? $idOrSlug : 'tool';
+        $assumption = 'id';
+
+        if (is_int($idOrSlug)) {
+            // $idOrSlug is an integer, we assume it's an id
+            $item = $this->find($idOrSlug);
+        } else {
+            // $idOrSlug is not an integer, we assume slug
+            $assumption = 'slug';
+            $item = $this->findBy($field, $idOrSlug);
+        }
+
+        if (! isset($item) && $assumption == 'id') {
+            // In this case, we assumed $idOrSlug as an id but we found nothing.
+            // Now, let's check and make sure it wasn't a slug that just happened
+            // to be an integer.
+            $item = $this->find($idOrSlug);
+        }
+
+        return $item;
+    }
+
     public function resetScope() {
         $this->skipCriteria(false);
         return $this;
