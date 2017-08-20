@@ -25,4 +25,8 @@ class Video extends Model
     public function songs() {
       return $this->belongsToMany('App\Song', 'videos_songs')->withPivot('order', 'start_time', 'end_time')->orderBy('order');
     }
+
+    public function tags() {
+        return $this->belongsToMany('App\Tag', 'videos_tags');
+    }
 }

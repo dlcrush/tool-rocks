@@ -135,7 +135,7 @@ class VideoController extends Controller
     */
     public function edit($id)
     {
-        $this->videoRepo->pushCriteria(new Expand('songs'));
+        $this->videoRepo->pushCriteria(new Expand(['songs', 'tags']));
         $video = $this->videoRepo->find($id);
         $this->bandRepo->pushCriteria(new Expand('songs'));
         $bands = $this->bandRepo->all();
@@ -161,7 +161,53 @@ class VideoController extends Controller
             'video_id' => $request->youtube_id,
             'band_id' => $request->band,
             'source' => 'youtube'
-        ]);
+        ], $id);
+
+        // This is kinda dumb, should probably pull the existing to see if anything has changed.
+        // But for now, I'll go with this.
+        \DB::table('videos_tags')->where('video_id', $id)->delete();
+        \DB::table('videos_songs')->where('video_id', $id)->delete();
+
+        if ($request->has('tags')) {
+            $tags = explode(",", $request->tags);
+            $videosTags = [];
+            foreach($tags as $tag) {
+                array_push($videosTags, [
+                    'video_id' => $id,
+                    'tag_id' => $tag
+                ]);
+            }
+
+            \DB::table('videos_tags')->insert($videosTags);
+        }
+
+        if ($request->has('songs')) {
+            $songs = $request->songs;
+            $startTimes = $request->start_time;
+            $endTimes = $request->end_time;
+
+            $songsVideos = [];
+
+            for($i = 0; $i < count($songs); $i ++) {
+                $songId = $songs[$i];
+                $startTime = $startTimes[$i];
+                $endTime = $endTimes[$i];
+
+                if ($songId != '' && $songId != null) {
+                    array_push($songsVideos, [
+                        'video_id' => $id,
+                        'song_id' => $songId,
+                        'start_time' => $startTime,
+                        'end_time' => $endTime,
+                        'order' => $i + 1
+                    ]);
+                }
+            }
+
+            \DB::table('videos_songs')->insert($songsVideos);
+        }
+
+        return redirect(action('Admin\VideoController@index'));
     }
 
     /**
@@ -176,12 +222,27 @@ class VideoController extends Controller
     }
 
     private function validateRequest($request) {
-        $this->validate($request, [
-           'name' => 'required',
-           'slug' => 'required|unique:videos',
-           'description' => 'required',
-           'youtube_id' => 'required',
-           'band' => 'required'
-        ]);
+        switch($request->method()) {
+            case 'POST':
+                $this->validate($request, [
+                   'name' => 'required',
+                   'slug' => 'required|unique:videos',
+                   'description' => 'required',
+                   'youtube_id' => 'required',
+                   'band' => 'required'
+                ]);
+                break;
+            case 'PUT':
+                $this->validate($request, [
+                   'name' => 'required',
+                   'slug' => 'required|unique:videos,id,' . $request->id,
+                   'description' => 'required',
+                   'youtube_id' => 'required',
+                   'band' => 'required'
+                ]);
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -27,11 +27,11 @@
 </div>
 <div class="form-group">
     <label for="tags">Tags</label>
-    <input type="hidden" id="tags" name="tags" value="{{ isset($video->tags) ? $video->tags : "1,3,4" }}">
+    <input type="hidden" id="tags" name="tags" value="{{ isset($video->tags) ? implode(",", $video->tags->pluck('id')->toArray()) : "" }}">
 </div>
 <div class="form-group">
     <label for="songs">Setlist</label>
-    @if(! isset($video->songs))
+    @if(! isset($video->songs) || $video->songs->isEmpty())
         <div class="entry">
             <div class="col-sm-3">
                 <select name="songs[]" class="form-control">
