@@ -26,6 +26,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
 
     /** Videos **/
     Route::get('videos', 'VideoController@getVideos');
+    Route::get('videos/{id}', 'VideoController@getVideo');
 
     /** Tags **/
     Route::get('tags', 'TagController@getTags');

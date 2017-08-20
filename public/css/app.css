@@ -11686,6 +11686,9 @@ form input[type="submit"] {
 .video-info-wrapper .content {
   padding-left: 10px;
   padding-right: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
 }
 
 @media (max-width: 768px) {

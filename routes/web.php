@@ -16,11 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('ipsum', 'IpsumController@generate');
-Route::get('video/test', function() {
-    return view('videos.show');
+Route::get('videos/{id}/{slug?}', 'VideoController@getVideo');
+Route::get('static/videos/{id}/{slug?}', function($id, $slug='') {
+    return view('videos.static');
 });
 
-// Admin routes
+/** Admin Routes **/
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::resource('bands', 'BandController');
     Route::resource('albums', 'AlbumController');

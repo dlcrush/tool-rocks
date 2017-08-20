@@ -16,19 +16,19 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/admin/tags"><i class="fa fa-home"></i> Home</a>
+                        <a href="/"><i class="fa fa-home"></i> Home</a>
                     </li>
                     <li>
-                        <a href="/admin/"><i class="fa fa-book"></i> Blog</a>
+                        <a href="/blog"><i class="fa fa-book"></i> Blog</a>
                     </li>
                     <li>
-                        <a href="/admin/"><i class="fa fa-play"></i> Videos</a>
+                        <a href="/videos/6"><i class="fa fa-play"></i> Videos</a>
                     </li>
                     <li>
-                        <a href="/admin/"><i class="fa fa-music"></i> Lyrics</a>
+                        <a href="/lyrics"><i class="fa fa-music"></i> Lyrics</a>
                     </li>
                     <li>
-                        <a href="/admin/"><i class="fa fa-file-text-o"></i> Ipsum</a>
+                        <a href="/ipsum"><i class="fa fa-file-text-o"></i> Ipsum</a>
                     </li>
                 </ul>
             </div>

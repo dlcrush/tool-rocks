@@ -24,10 +24,10 @@
                 'header' => 'Slug',
                 'valueKey' => 'slug'
             ],
-            [
-                'header' => 'Description',
-                'valueKey' => 'description'
-            ],
+            // [
+            //     'header' => 'Description',
+            //     'valueKey' => 'description'
+            // ],
             [
                 'type' => 'button',
                 'button' => [

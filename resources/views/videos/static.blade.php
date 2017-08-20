@@ -3,26 +3,37 @@
 @section('content')
 <div class="container-fluid video-layout">
 
-    <h3>{{ array_get($video, 'name') }}</h3>
+    <h1>Tool - The Pot Live 2017 HD (NEW MUSIC VIDEO)</h1>
 
     <div class="video-wrapper">
         <div class="video-container">
-             <iframe class="video" width="960" height="540" src="https://www.youtube.com/embed/{{ array_get($video, 'youtube_video_id') }}" frameborder="0" allowfullscreen></iframe>
+             <iframe class="video" width="960" height="540" src="https://www.youtube.com/embed/cfBJ0tV7J6c" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
     <div class="video-info-wrapper">
         <div class="content">
             <a href="https://youtube.com/channel/UCRUq9jueekA0t4uz_z5LZmA">
-                <img class="img-responsive" src="{{ array_get($video, 'channel.images.high.url') }}"></iframe>
+                <img class="img-responsive" src="https://yt3.ggpht.com/-aDQvyWeS2R0/AAAAAAAAAAI/AAAAAAAAAAA/TpeTQvGWFQo/s240-c-k-no-mo-rj-c0xffffff/photo.jpg"></iframe>
             </a>
-            <p> Uploaded By: <a href="#"> &nbsp; {{ array_get($video, 'channel.name') }}</a></p>
+            <p> Uploaded By: <a href="#"> &nbsp; ToolArchive</a></p>
             <p>
-                <i class="fa fa-eye"></i> <span class="stat">{{ array_get($video, 'views') }}</span>
-                <i class="fa fa-thumbs-up"></i> <span class="stat">{{ array_get($video, 'thumbsUp') }}</span>
-                <i class="fa fa-thumbs-down"></i> <span class="stat">{{ array_get($video, 'thumbsDown') }}</span>
+                <i class="fa fa-eye"></i> <span class="stat">152574</span>
+                <i class="fa fa-thumbs-up"></i> <span class="stat">2488</span>
+                <i class="fa fa-thumbs-down"></i> <span class="stat">58</span>
             </p>
             <p>
-                {!! nl2br(array_get($video, 'description')) !!}
+                Tool. The Pot Live 2017 HD. New Music Video.
+
+                Tool's first performance of "The Pot" in over 5 years. The music video shown on the screens is thought to be the unreleased video for The Pot, at least partially. Parts of it have been shown live during Opiate. HQ audio recording by RyanJ, edited. 99% of the video material is from the day after. I tried to focus on the music video shown, instead of the band, so no closeups.
+
+                June 7th, 2017
+                Clarkson, MI
+                DTE Energy Music Theatre
+
+                Get Maynard James Keenan's wine:
+                https://caduceus.org/
+                http://www.puscifer.com
+                http://www.toolband.com
             </p>
         </div>
     </div>

@@ -13,7 +13,6 @@ use App\YouTubeChannel;
 
 class YouTubeRepository implements YouTubeRepositoryInterface {
 
-    // https://www.googleapis.com/youtube/v3/videos?part=id%2Csnippet&id=5vY8EWokf40&key=AIzaSyCSLq4GM4PAxGeELx5FdJl9RngxugCYaCY
     protected $baseAPIUrl = 'https://www.googleapis.com/youtube/v3/';
     protected $apiKey;
     protected $urlBuilder;
@@ -73,20 +72,12 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
     }
 
     public function getVideosByChannel($channelName) {
-        //$channelName = $data['channelName'];
-        //$channelName = 'ToolArchive';
-
         $channel = $this->getChannelByUsername($channelName);
         $channelPlaylistId = $channel->contentDetails->relatedPlaylists->uploads;
 
         $videos = $this->getVideosByPlaylistId($channelPlaylistId);
 
         return $videos;
-
-        //https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&maxResults=50&playlistId=UUpRmvjdu3ixew5ahydZ67uA&key={YOUR_API_KEY}
-        //https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername=jambrose42&key={YOUR_API_KEY}
-        //https://www.googleapis.com/youtube/v3/search?key={your_key_here}&channelId={channel_id_here}&part=snippet,id&order=date&maxResults=20
-
     }
 
     public function getChannel($data=[]) {
@@ -169,7 +160,7 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
     }
 
     public function getVideo($data) {
-        return $this->getVideos($data)->first();
+        return $this->getVideos($data, ['includeChannel' => true])->first();
     }
 
 }
