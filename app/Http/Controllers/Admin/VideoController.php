@@ -63,15 +63,9 @@ class VideoController extends Controller
     */
     public function store(Request $request)
     {
-        $this->validate($request, [
-           'name' => 'required',
-           'slug' => 'required|unique:videos',
-           'description' => 'required',
-           'youtube_id' => 'required',
-           'band' => 'required'
-        ]);
+        $this->validateRequest($request);
 
-        $this->videoRepo->create([
+        $video = $this->videoRepo->create([
             'name' => $request->name,
             'slug' => $request->slug,
             'description' => $request->description,
@@ -79,6 +73,45 @@ class VideoController extends Controller
             'band_id' => $request->band,
             'source' => 'youtube'
         ]);
+
+        if ($request->has('tags')) {
+            $tags = explode(",", $request->tags);
+            $videosTags = [];
+            foreach($tags as $tag) {
+                array_push($videosTags, [
+                    'video_id' => $video->id,
+                    'tag_id' => $tag
+                ]);
+            }
+
+            \DB::table('videos_tags')->insert($videosTags);
+        }
+
+        if ($request->has('songs')) {
+            $songs = $request->songs;
+            $startTimes = $request->start_time;
+            $endTimes = $request->end_time;
+
+            $songsVideos = [];
+
+            for($i = 0; $i < count($songs); $i ++) {
+                $songId = $songs[$i];
+                $startTime = $startTimes[$i];
+                $endTime = $endTimes[$i];
+
+                array_push($songsVideos, [
+                    'video_id' => $video->id,
+                    'song_id' => $songId,
+                    'start_time' => $startTime,
+                    'end_time' => $endTime,
+                    'order' => $i + 1
+                ]);
+            }
+
+            \DB::table('videos_songs')->insert($songsVideos);
+        }
+
+        //die();
 
         return redirect(action('Admin\VideoController@index'));
     }
@@ -119,7 +152,16 @@ class VideoController extends Controller
     */
     public function update(Request $request, $id)
     {
-        //
+        $this->validateRequest($request);
+
+        $this->videoRepo->update([
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'description' => $request->description,
+            'video_id' => $request->youtube_id,
+            'band_id' => $request->band,
+            'source' => 'youtube'
+        ]);
     }
 
     /**
@@ -131,5 +173,15 @@ class VideoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateRequest($request) {
+        $this->validate($request, [
+           'name' => 'required',
+           'slug' => 'required|unique:videos',
+           'description' => 'required',
+           'youtube_id' => 'required',
+           'band' => 'required'
+        ]);
     }
 }
