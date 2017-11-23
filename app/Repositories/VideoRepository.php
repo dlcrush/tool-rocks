@@ -13,7 +13,7 @@ class VideoRepository implements VideoRepositoryInterface {
     public function __construct(Http $http, UrlBuilder $urlBuilder) {
         $this->http = $http;
         $this->urlBuilder = $urlBuilder;
-        $this->urlBuilder->setBaseUrl('http://toolrocks.app/api/v1/');
+        $this->urlBuilder->setBaseUrl(url('/') . '/api/v1/');
     }
 
     public function getVideo($id) {
