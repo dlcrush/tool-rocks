@@ -30,7 +30,7 @@ class AlbumController extends Controller
     {
         $bands = $this->bandRepo->all();
 
-        $bandId =  $request->input('bandId', -1);
+        $bandId = $request->input('bandId', -1);
 
         if ($bandId == -1) {
             $bandId = $bands->first()->id;

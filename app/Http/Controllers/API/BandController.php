@@ -76,12 +76,37 @@ class BandController extends APIController
             ->parseIncludes('albums.songs')
             ->toArray();
 
-        return $this->response($bandResp);
+        return $this->respond($bandResp);
+    }
+
+    public function getSong($bandId='tool',$songId) {
+        $this->band->pushCriteria(new Expand('songs'));
+
+        $band = $this->getBandByIdOrSlug($bandId);
+        $song = $this->getSongByIdOrSlug($band->songs, $songId);
+
+        $songResp = fractal()
+            ->item($song)
+            ->transformWith($this->songTransformer)
+            ->parseIncludes('band')
+            ->toArray();
+
+        return $this->respond($songResp);
     }
 
     private function getBandByIdOrSlug($bandId='tool') {
         $bandId = isset($bandId) ? $bandId : 'tool';
 
         return $this->band->findByIdOrSlug($bandId);
+    }
+
+    private function getSongByIdOrSlug($songs, $songId) {
+        $song = $songs->where('id', $songId)->first();
+
+        if (! isset($song)) {
+            $song = $songs->where('slug', $songId)->first();
+        }
+
+        return $song;
     }
 }

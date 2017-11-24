@@ -23,6 +23,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
     Route::get('bands/{bandId}/albums', 'BandController@getAlbums');
     Route::get('bands/{bandId}/albums/{albumId}', 'BandController@getAlbum');
     Route::get('bands/{bandId}/songs', 'BandController@getSongs');
+    Route::get('bands/{bandId}/songs/{songId}', 'BandController@getSong');
 
     /** Videos **/
     Route::get('videos', 'VideoController@getVideos');

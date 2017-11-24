@@ -25,7 +25,7 @@ class SongController extends APIController
     */
     public function index()
     {
-        $this->song->pushCriteria(new ExpandBand());
+        $this->song->pushCriteria(new Expand(['songs.band', 'songs.album']));
 
         $songs = fractal()
            ->collection($this->song->all())
@@ -66,7 +66,16 @@ class SongController extends APIController
     */
     public function show($id)
     {
-        //
+        $this->song->pushCriteria(new Expand(['songs.band', 'songs.album']));
+
+        $song = fractal()
+           ->item($this->song->find($id))
+           ->transformWith($this->songTransformer)
+           ->includeBand()
+           ->includeAlbums()
+           ->toArray();
+
+        return $this->respond($song);
     }
 
     /**

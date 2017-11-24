@@ -40,7 +40,9 @@ class SongController extends Controller
         $this->bandRepo->pushCriteria(new Expand('songs'));
         $band = $this->bandRepo->find($bandId);
 
-        return view('admin.songs.index', compact('band', 'bands'));
+        $songs = $band->songs;
+
+        return view('admin.songs.index', compact('band', 'bands', 'bandId', 'songs'));
     }
 
     /**
@@ -50,7 +52,9 @@ class SongController extends Controller
     */
     public function create()
     {
-        //
+        $bands = $this->bandRepo->all();
+
+        return view('admin.songs.create', compact('bands'));
     }
 
     /**
@@ -61,7 +65,26 @@ class SongController extends Controller
     */
     public function store(Request $request)
     {
-        //
+        var_dump($request->all());
+        //die();
+
+        $this->validate($request, [
+            'band_id' => 'required|numeric',
+            'name' => 'required',
+            'slug' => 'required',
+            'has_lyircs' => 'nullable|boolean',
+            'lyrics' => 'nullable|string'
+         ]);
+
+         $this->songRepo->create([
+             'name' => $request->name,
+             'slug' => $request->slug,
+             'band_id' => $request->band_id,
+             'has_lyrics' => $request->has_lyrics == true,
+             'lyrics' => $request->lyrics
+         ]);
+
+         return redirect(action('Admin\SongController@index'));
     }
 
     /**
@@ -83,7 +106,10 @@ class SongController extends Controller
     */
     public function edit($id)
     {
-        //
+        $song = $this->songRepo->find($id);
+        $bands = $this->bandRepo->all();
+
+        return view('admin.songs.edit', compact('song', 'bands'));
     }
 
     /**
@@ -95,7 +121,23 @@ class SongController extends Controller
     */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'band_id' => 'required|numeric',
+            'name' => 'required',
+            'slug' => 'required',
+            'has_lyircs' => 'nullable|boolean',
+            'lyrics' => 'nullable|string'
+         ]);
+
+         $this->songRepo->update([
+             'name' => $request->name,
+             'slug' => $request->slug,
+             'band_id' => $request->band_id,
+             'has_lyrics' => $request->has_lyrics == true,
+             'lyrics' => $request->lyrics
+         ], $id);
+
+         return redirect(action('Admin\SongController@index'));
     }
 
     /**
@@ -106,6 +148,8 @@ class SongController extends Controller
     */
     public function destroy($id)
     {
-        //
+        $this->songRepo->delete($id);
+
+        return redirect(action('Admin\SongController@index'));
     }
 }
