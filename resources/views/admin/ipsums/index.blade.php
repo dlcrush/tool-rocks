@@ -1,5 +1,6 @@
 @include("admin.pageTypes.all", [
     'title' => 'Ipsums',
+    'page' => 'ipsums',
     'filters' => [
         'band' => [
             'bands' => $bands,

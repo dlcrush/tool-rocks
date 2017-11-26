@@ -1,5 +1,6 @@
 @include("admin.pageTypes.all", [
     'title' => 'Videos',
+    'page' => 'videos',
     'filters' => [
         'band' => [
             'bands' => $bands,

@@ -8,7 +8,7 @@
         <div class="col-md-8">
             @if(isset($filters))
                 @if(array_has($filters, 'band'))
-                    @include("admin.partials.bandDropdown", ["bands" => array_get($filters, 'band.bands'), "selected" => array_get($filters, 'band.current')])
+                    @include("admin.partials.bandDropdown", ["bands" => array_get($filters, 'band.bands'), "selected" => array_get($filters, 'band.current'), "page" => $page])
                 @endif
             @endif
         </div>

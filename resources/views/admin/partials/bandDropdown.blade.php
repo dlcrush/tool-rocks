@@ -13,7 +13,7 @@
             var bandId = $(this).val();
 
             if (bandId != '') {
-                window.location = '/admin/album?bandId=' + bandId;
+                window.location = '/admin/' + '{{ $page }}' + '?bandId=' + bandId;
             }
         });
     });
