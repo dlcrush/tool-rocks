@@ -104,6 +104,12 @@ class TagController extends Controller
         return redirect(action('Admin\TagController@index'));
     }
 
+    public function delete($id) {
+        $tag = $this->tagRepo->find($id);
+
+        return view('admin.tags.delete', compact('tag'));
+    }
+
     /**
     * Remove the specified resource from storage.
     *

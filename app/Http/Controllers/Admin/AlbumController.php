@@ -64,7 +64,7 @@ class AlbumController extends Controller
            'body' => 'required',
        ]);
 
-        $input = $request->all();
+
 
 
     }
@@ -110,6 +110,12 @@ class AlbumController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function delete($id) {
+        $album = $this->albumRepo->find($id);
+
+        return view('admin.albums.delete', compact('album'));
     }
 
     /**

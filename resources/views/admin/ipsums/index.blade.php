@@ -39,7 +39,7 @@
                     'type' => 'delete',
                     'text' => 'Delete',
                     'href' => [
-                        'action' => 'Admin\IpsumController@edit',
+                        'action' => 'Admin\IpsumController@delete',
                         'params' => [
                             'id' => 'id'
                         ]

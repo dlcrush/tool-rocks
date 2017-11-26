@@ -140,6 +140,12 @@ class SongController extends Controller
          return redirect(action('Admin\SongController@index'));
     }
 
+    public function delete($id) {
+        $song = $this->songRepo->find($id);
+
+        return view('admin.songs.delete', compact('song'));
+    }
+
     /**
     * Remove the specified resource from storage.
     *

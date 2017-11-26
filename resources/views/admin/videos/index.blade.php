@@ -47,7 +47,7 @@
                     'type' => 'delete',
                     'text' => 'Delete',
                     'href' => [
-                        'action' => 'Admin\VideoController@edit',
+                        'action' => 'Admin\VideoController@delete',
                         'params' => [
                             'id' => 'id'
                         ]

@@ -42,7 +42,12 @@
                 'button' => [
                     'type' => 'delete',
                     'text' => 'Delete',
-                    'href' => '#'
+                    'href' => [
+                        'action' => 'Admin\AlbumController@delete',
+                        'params' => [
+                            'id' => 'id'
+                        ]
+                    ]
                 ]
             ]
         ],

@@ -46,7 +46,12 @@
                 'button' => [
                     'type' => 'delete',
                     'text' => 'Delete',
-                    'href' => '#'
+                    'href' => [
+                        'action' => 'Admin\SongController@delete',
+                        'params' => [
+                            'id' => 'id'
+                        ]
+                    ]
                 ]
             ]
         ],

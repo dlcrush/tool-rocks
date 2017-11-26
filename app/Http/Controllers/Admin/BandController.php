@@ -67,7 +67,9 @@ class BandController extends Controller
     */
     public function show($id)
     {
-        //
+        $band = $this->bandRepo->find($id);
+
+        return view('admin.bands.show', compact('band'));
     }
 
     /**
@@ -98,6 +100,12 @@ class BandController extends Controller
         ], $id);
 
         return redirect(action('Admin\BandController@index'));
+    }
+
+    public function delete($id) {
+        $band = $this->bandRepo->find($id);
+
+        return view('admin.bands.delete', compact('band'));
     }
 
     /**

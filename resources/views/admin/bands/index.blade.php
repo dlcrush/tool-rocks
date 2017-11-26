@@ -37,7 +37,7 @@
                     'type' => 'delete',
                     'text' => 'Delete',
                     'href' => [
-                        'action' => 'Admin\BandController@edit',
+                        'action' => 'Admin\BandController@delete',
                         'params' => [
                             'id' => 'id'
                         ]

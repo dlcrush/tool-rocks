@@ -210,6 +210,12 @@ class VideoController extends Controller
         return redirect(action('Admin\VideoController@index'));
     }
 
+    public function delete($id) {
+        $video = $this->videoRepo->find($id);
+
+        return view('admin.videos.delete', compact('video'));
+    }
+
     /**
     * Remove the specified resource from storage.
     *

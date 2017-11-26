@@ -31,7 +31,12 @@
                 'button' => [
                     'type' => 'delete',
                     'text' => 'Delete',
-                    'href' => '#'
+                    'href' => [
+                        'action' => 'Admin\TagController@delete',
+                        'params' => [
+                            'id' => 'id'
+                        ]
+                    ]
                 ]
             ]
         ],

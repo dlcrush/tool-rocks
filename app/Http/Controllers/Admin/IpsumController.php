@@ -105,6 +105,12 @@ class IpsumController extends Controller
         //
     }
 
+    public function delete($id) {
+        $ipsum = $this->ipsumRepo->find($id);
+
+        return view('admin.ipsums.delete', compact('ipsum'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
