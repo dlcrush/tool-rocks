@@ -7,15 +7,25 @@
         <meta name="description" content="Because Tool Rocks">
         <link href="/css/app.css" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
     <body>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=114546565996433';
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
         <div class="container frame-wrapper">
             @include('../navigation')
 
             <div class="content">
-                <div class="main-content wide">
+                <div class="main-content @if(isset($wide) && $wide == true) {{ 'wide' }} @endif">
                     @yield('content')
                 </div>
 

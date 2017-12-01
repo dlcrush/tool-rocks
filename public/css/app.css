@@ -11432,7 +11432,7 @@ div.container.frame-wrapper {
 }
 
 .main-content {
-  max-width: 1024px;
+  max-width: 1240px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -11491,8 +11491,7 @@ div.container.frame-wrapper {
 }
 
 .content {
-  background-color: #fff;
-  color: #000;
+  color: white;
 }
 
 footer {
@@ -11736,5 +11735,85 @@ textarea {
 span.stat {
   padding-left: 5px;
   padding-right: 10px;
+}
+
+.lyrics-layout .lyric-card {
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.lyrics-layout .lyric-card.left {
+  float: left;
+}
+
+.lyrics-layout .lyric-card.right {
+  float: right;
+}
+
+.lyrics-layout .lyric-card .lyric-card-inner {
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+}
+
+.lyrics-layout .lyric-card .lyric-card.middle .lyric-card-inner {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.lyrics-layout .lyric-card .lyric-card.right .lyric-card-inner {
+  float: right;
+}
+
+.lyrics-layout .lyric-card .lyric-card.left .lyric-card-inner {
+  float: left;
+}
+
+.lyrics-layout .lyrics-collection {
+  width: 100%;
+}
+
+.lyrics-layout .lyric-songs-list {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.lyrics-layout a {
+  color: #fff;
+}
+
+.lyric-layout .header,
+.lyrics-layout .header {
+  position: relative;
+}
+
+.lyric-layout .header .text,
+.lyrics-layout .header .text {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+  font-size: 36px;
+  background-color: black;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lyric-layout .video,
+.lyrics-layout .video {
+  display: block;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.lyric-layout .lyrics-content,
+.lyrics-layout .lyrics-content {
+  text-align: center;
 }
 

@@ -20,6 +20,8 @@ Route::get('videos/{id}/{slug?}', 'VideoController@getVideo');
 Route::get('static/videos/{id}/{slug?}', function($id, $slug='') {
     return view('videos.static');
 });
+Route::get('lyrics', 'LyricController@getLyrics');
+Route::get('lyrics/song/{songId}', 'LyricController@getLyric');
 
 /** Admin Routes **/
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {

@@ -90,8 +90,10 @@ div.container.frame-wrapper {
 }
 
 .content {
-  background-color: $white;
-  color: $black;
+  //background-color: $white;
+  //background: url(img/main-background.jpg) repeat;
+  //background: url(/img/main-background.jpg) repeat;
+  color: white;
 }
 
 footer {
@@ -313,4 +315,104 @@ form {
 span.stat {
   padding-left: 5px;
   padding-right: 10px;
+}
+
+.lyrics-layout {
+    .lyric-card {
+        margin-bottom: 15px;
+        display: inline-block;
+
+        &.left {
+            float: left;
+        }
+        &.right {
+            float: right;
+        }
+
+        .lyric-card-inner {
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .lyric-card.middle .lyric-card-inner {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .lyric-card.right .lyric-card-inner {
+            float: right;
+        }
+
+        .lyric-card.left .lyric-card-inner {
+            float: left;
+        }
+    }
+
+    .lyrics-collection {
+        width: 100%;
+    }
+
+    .lyric-songs-list {
+        list-style: none;
+        margin-top: 15px;
+    }
+
+    // .header {
+    //     position: relative;
+    // }
+
+    // .header .text {
+    //     position: absolute;
+    //     top: 30%;
+    //     left: 40%;
+    //     max-width: 400px;
+    //     margin-right: auto;
+    //     margin-left: auto;
+    //     color: white;
+    //     font-size: 36px;
+    //     background-color: black;
+    //     padding-left: 50px;
+    //     padding-right: 50px;
+    //     padding-top: 25px;
+    //     padding-bottom: 25px;
+    //     background-color:rgba(0, 0, 0, 0.8)
+    // }
+
+    a {
+        color: #fff;
+    }
+}
+
+.lyric-layout,.lyrics-layout {
+    .header {
+        position: relative;
+    }
+
+    .header .text {
+        position: absolute;
+        top: 30%;
+        left: 40%;
+        max-width: 400px;
+        margin-right: auto;
+        margin-left: auto;
+        color: white;
+        font-size: 36px;
+        background-color: black;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        background-color:rgba(0, 0, 0, 0.8)
+    }
+
+    .video {
+        display: block;
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    .lyrics-content {
+        text-align: center
+    }
 }

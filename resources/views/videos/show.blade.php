@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts/app', ['wide' => true])
 
 @section('content')
 <div class="container-fluid video-layout">
