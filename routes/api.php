@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
     /** Bands **/
     Route::get('bands', 'BandController@getBands');
+    Route::get('bands/{bandId}', 'BandController@getBand');
     Route::get('bands/{bandId}/albums', 'BandController@getAlbums');
     Route::get('bands/{bandId}/albums/{albumId}', 'BandController@getAlbum');
     Route::get('bands/{bandId}/songs', 'BandController@getSongs');
