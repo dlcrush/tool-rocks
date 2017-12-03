@@ -24,7 +24,7 @@ Route::get('lyrics', 'LyricController@getLyrics');
 Route::get('lyrics/song/{songId}', 'LyricController@getLyric');
 
 /** Admin Routes **/
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['AdminAuth']], function() {
     Route::resource('bands', 'BandController');
     Route::get('bands/{id}/delete', 'BandController@delete');
     Route::resource('albums', 'AlbumController');
