@@ -21,4 +21,9 @@
 <div class="form-group">
     <label for="lyrics">Lyrics</label>
     <textarea name="lyrics" id="lyrics" class="form-control" rows="20">{{ isset($song->lyrics) ? $song->lyrics : '' }}</textarea>
+</div>
+<div class="form-group">
+    <label for="lyrics_video_id">Lyrics Video ID</label>
+    <input type="text" class="form-control" id="lyrics_video_id" name="lyrics_video_id" value="{{ isset($song->lyrics_video_id) ? $song->lyrics_video_id : '' }}">
+</div>
 <button type="submit" class="btn btn-default">Submit</button>

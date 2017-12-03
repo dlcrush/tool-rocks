@@ -9,7 +9,7 @@ class Song extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'slug', 'band_id', 'has_lyrics', 'lyrics'];
+    protected $fillable = ['name', 'slug', 'band_id', 'has_lyrics', 'lyrics', 'lyrics_video_id'];
 
     /**
      * The attributes that should be mutated to dates.

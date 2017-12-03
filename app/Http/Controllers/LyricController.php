@@ -13,8 +13,8 @@ class LyricController extends Controller
         $this->bandRepo = $bandRepo;
     }
 
-    public function getLyric($bandId='tool', $songId) {
-        $song = $this->bandRepo->getSong($bandId, $songId);
+    public function getLyric($songId) {
+        $song = $this->bandRepo->getSong('tool', $songId);
 
         return view('lyrics.show', compact('song'));
     }

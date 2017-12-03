@@ -73,7 +73,8 @@ class SongController extends Controller
             'name' => 'required',
             'slug' => 'required',
             'has_lyircs' => 'nullable|boolean',
-            'lyrics' => 'nullable|string'
+            'lyrics' => 'nullable|string',
+            'lyrics_video_id' => 'nullable|string'
          ]);
 
          $this->songRepo->create([
@@ -81,7 +82,8 @@ class SongController extends Controller
              'slug' => $request->slug,
              'band_id' => $request->band_id,
              'has_lyrics' => $request->has_lyrics == true,
-             'lyrics' => $request->lyrics
+             'lyrics' => $request->lyrics,
+             'lyrics_video_id' => $request->lyrics_video_id
          ]);
 
          return redirect(action('Admin\SongController@index'));
@@ -126,7 +128,8 @@ class SongController extends Controller
             'name' => 'required',
             'slug' => 'required',
             'has_lyircs' => 'nullable|boolean',
-            'lyrics' => 'nullable|string'
+            'lyrics' => 'nullable|string',
+            'lyrics_video_id' => 'nullable|string'
          ]);
 
          $this->songRepo->update([
@@ -134,7 +137,8 @@ class SongController extends Controller
              'slug' => $request->slug,
              'band_id' => $request->band_id,
              'has_lyrics' => $request->has_lyrics == true,
-             'lyrics' => $request->lyrics
+             'lyrics' => $request->lyrics,
+             'lyrics_video_id' => $request->lyrics_video_id
          ], $id);
 
          return redirect(action('Admin\SongController@index'));
