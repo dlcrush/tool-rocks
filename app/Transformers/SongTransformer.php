@@ -18,7 +18,7 @@ class SongTransformer extends TransformerAbstract {
             'id' => (int) $song->id,
             'name' => $song->name,
             'slug' => $song->slug,
-            'has_lyrics' => $song->has_lyrics,
+            'has_lyrics' => (bool) $song->has_lyrics,
             'lyrics' => [
                 'body' => $song->lyrics
             ],

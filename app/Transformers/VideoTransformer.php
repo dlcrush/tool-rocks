@@ -8,7 +8,8 @@ use App\Video;
 class VideoTransformer extends TransformerAbstract {
 
     protected $availableIncludes = [
-        'channel'
+        'channel',
+        'songs'
     ];
 
     public function transform(Video $video)
@@ -33,6 +34,12 @@ class VideoTransformer extends TransformerAbstract {
         $channel = $videoData->channel;
 
         return $this->item($channel, new ChannelTransformer);
+    }
+
+    public function includeSongs(Video $video) {
+        $songs = $video->songs;
+
+        return $this->collection($songs, new SetlistSongTransformer);
     }
 
 }

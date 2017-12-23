@@ -42,7 +42,7 @@ class VideoController extends APIController
         $video = fractal()
            ->item($video)
            ->transformWith($this->videoTransformer)
-           ->parseIncludes('channel')
+           ->parseIncludes(['channel', 'songs'])
            ->toArray();
 
         return $this->respond($video);

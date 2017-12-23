@@ -9,7 +9,7 @@
     </div>
 
     <div class="lyrics-container row col-xs-12">
-        <div class="lyrics-content" style="max-width: 500px; text-align: left; display: inline-block; float: left;">
+        <div class="lyrics-content col-xs-12 col-sm-12 col-md-6 col-lg-6" style="max-width: 500px; text-align: left; display: inline-block; float: left;">
             <h1>{{ array_get($song, 'name') }}</h1>
             <p>
                 @if (array_get($song, 'has_lyrics'))
@@ -19,8 +19,13 @@
                 @endif
             </p>
         </div>
-        <div class="lyrics-video" style="display: inline-block; max-width: 560px; float: right;">
-            <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/-eYb5f1LqZ0" frameborder="0" allowfullscreen></iframe>
+        <div class="lyrics-video col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: inline-block; max-width: 560px; float: right;">
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/-eYb5f1LqZ0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
             <p>
                 <h4>Song Info</h4>
                 <ul class="list-unstyled">
