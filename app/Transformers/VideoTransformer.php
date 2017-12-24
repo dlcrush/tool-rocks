@@ -9,7 +9,9 @@ class VideoTransformer extends TransformerAbstract {
 
     protected $availableIncludes = [
         'channel',
-        'songs'
+        'songs',
+        'tags',
+        'related'
     ];
 
     public function transform(Video $video)
@@ -40,6 +42,18 @@ class VideoTransformer extends TransformerAbstract {
         $songs = $video->songs;
 
         return $this->collection($songs, new SetlistSongTransformer);
+    }
+
+    public function includeTags(Video $video) {
+        $tags = $video->tags;
+
+        return $this->collection($tags, new TagTransformer);
+    }
+
+    public function includeRelated(Video $video) {
+        $related = $video->related;
+
+        return $this->collection($related, new VideoTransformer);
     }
 
 }
