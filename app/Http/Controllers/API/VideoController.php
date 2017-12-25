@@ -61,6 +61,7 @@ class VideoController extends APIController
     public function getRelatedVideos(\App\Video $video) {
         $videoIds = $this->db->table('videos')
             ->where('band_id', $video->band_id)
+            ->where('videos.id', '<>', $video->id)
             ->join('videos_tags', 'videos.id', '=', 'videos_tags.video_id')
             ->select('videos.id')
             ->groupBy('videos.id')
