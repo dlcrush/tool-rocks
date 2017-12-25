@@ -445,6 +445,31 @@ span.stat {
     }
 }
 
+.video-layout {
+    .nav-tabs {
+        border-bottom: 1px solid #444;
+    }
+
+    .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+        //color: #444;
+        background-color: #222;
+        border-color: #444 #444 #222;
+    }
+
+    .nav-tabs a {
+        color: white;
+    }
+
+    .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+        border-color: #444 #444 #444;
+        background-color: #222;
+    }
+
+    .related-video {
+        display: inline-block;
+    }
+}
+
 .slick-slider {
     position: relative;
     display: block;

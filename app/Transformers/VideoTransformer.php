@@ -27,7 +27,10 @@ class VideoTransformer extends TransformerAbstract {
             'thumbsUp' => $videoData->thumbsUp,
             'thumbsDown' => $videoData->thumbsDown,
             'youtube_video_id' => $videoData->id,
-            'images' => $videoData->images
+            'images' => $videoData->images,
+            'links' => [
+                'web' => action('VideoController@getVideo', ['id' => $video->id, 'slug' => $video->slug])
+            ]
         ];
     }
 

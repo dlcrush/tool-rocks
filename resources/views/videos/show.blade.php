@@ -3,28 +3,7 @@
 @section('content')
 
 <style>
-    .nav-tabs {
-        border-bottom: 1px solid #444;
-    }
 
-    .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-        //color: #444;
-        background-color: #222;
-        border-color: #444 #444 #222;
-    }
-
-    .nav-tabs a {
-        color: white;
-    }
-
-    .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
-        border-color: #444 #444 #444;
-        background-color: #222;
-    }
-
-    .related-video {
-        display: inline-block;
-    }
 </style>
 
 <div class="container-fluid video-layout">
@@ -78,16 +57,19 @@
         <h3>You May Also Like</h3>
 
         <div class="row related-videos">
-            @foreach([1,2,3,4] as $x)
-                <div class="related-video col-sm-6 col-lg-3">
-                    <img src="http://fakeimg.pl/240x180/" class="img-responsive">
-                    <div class="related-video-info" style="background-color: #131313; max-width: 240px;">
-                        <div style="padding: 20px;">
-                            <h4>Video Title</h4>
-                            <p>Video description</p>
+            @foreach(array_get($video, 'related.data') as $i => $x)
+                <?php if (++$i > 4) { break; } ?>
+                <a href="{{ array_get($x, 'links.web') }}" style="color: white">
+                    <div class="related-video col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <img src="{{ array_get($x, 'images.high.url') }}" class="img-responsive" style="max-width: 240px; width: 100%;">
+                        <div class="related-video-info" style="background-color: #131313; max-width: 240px;">
+                            <div style="padding: 20px;">
+                                <h5>{{ array_get($x, 'name') }}</h5>
+                                <?php /*<p>{{ array_get($x, 'description') }}</p>*/ ?>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
 

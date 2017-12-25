@@ -11,16 +11,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ array_get($meta, 'title', 'Home') }} - ToolRocks.com</title>
-        <meta name="description" content="Because Tool Rocks">
+        <meta name="description" content="{{ array_get($meta, 'description') }}" />
+        <meta name="keywords" content="{{ array_get($meta, 'keywords') }}" />
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="description" content="{{ array_get($meta, 'description') }}" />
-        <meta name="keywords" content="{{ array_get($meta, 'keywords') }}" />
     </head>
 
     <body>
-
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];

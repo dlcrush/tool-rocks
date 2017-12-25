@@ -11840,6 +11840,30 @@ span.stat {
   display: inline-block;
 }
 
+.video-layout .nav-tabs {
+  border-bottom: 1px solid #444;
+}
+
+.video-layout .nav-tabs .nav-link.active,
+.video-layout .nav-tabs .nav-item.show .nav-link {
+  background-color: #222;
+  border-color: #444 #444 #222;
+}
+
+.video-layout .nav-tabs a {
+  color: white;
+}
+
+.video-layout .nav-tabs .nav-link:focus,
+.video-layout .nav-tabs .nav-link:hover {
+  border-color: #444 #444 #444;
+  background-color: #222;
+}
+
+.video-layout .related-video {
+  display: inline-block;
+}
+
 .slick-slider {
   position: relative;
   display: block;
