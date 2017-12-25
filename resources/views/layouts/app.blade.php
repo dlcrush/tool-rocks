@@ -1,13 +1,22 @@
+@if(! isset($meta))
+    <?php $meta = array(); ?>
+@endif
+@if(! isset($wide))
+    <?php $wide = false; ?>
+@endif
+
 <!doctype html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>@yield('title', 'Home') - ToolRocks.com</title>
+        <title>{{ array_get($meta, 'title', 'Home') }} - ToolRocks.com</title>
         <meta name="description" content="Because Tool Rocks">
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="{{ array_get($meta, 'description') }}" />
+        <meta name="keywords" content="{{ array_get($meta, 'keywords') }}" />
     </head>
 
     <body>
@@ -25,7 +34,7 @@
             @include('../navigation')
 
             <div class="content">
-                <div class="main-content @if(isset($wide) && $wide == true) {{ 'wide' }} @endif">
+                <div class="main-content @if($wide == true) {{ 'wide' }} @endif">
                     @yield('content')
                 </div>
 

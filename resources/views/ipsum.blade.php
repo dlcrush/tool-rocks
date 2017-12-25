@@ -1,4 +1,10 @@
-@extends('layouts/app')
+@extends('layouts/app', [
+    'meta' => [
+        'title' => 'Tool Ipsum - ToolRocks.com',
+        'description' => 'Check out this awesome Tool Ipsum generator!',
+        'keywords' => 'tool, tool band, tool ipsum, ipsum, ipsum generator, tool ipsum generator'
+    ]
+])
 
 @section('content')
     <div class="ipsum-layout">
