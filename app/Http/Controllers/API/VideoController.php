@@ -24,9 +24,15 @@ class VideoController extends APIController
     }
 
     public function getVideos() {
+        $videos = $this->videoRepo->all();
+        $videoIds = $videos->pluck('video_id')->toArray();
+        $videosData = $this->youTubeRepo->getVideos(['id' => implode(',', $videoIds)], ['includeChannel' => true]);
+        for($i = 0; $i < sizeof($videosData); $i ++) {
+            $videos[$i]->youTubeData = $videosData[$i];
+        }
 
         $videos = fractal()
-           ->collection($this->videoRepo->all())
+           ->collection($videos)
            ->transformWith($this->videoTransformer)
            ->parseIncludes('')
            ->toArray();
