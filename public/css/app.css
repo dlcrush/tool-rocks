@@ -11797,13 +11797,15 @@ span.stat {
 
 .lyric-layout .header,
 .lyrics-layout .header,
-.videos-layout .header {
+.videos-layout .header,
+.ipsum-layout .header {
   position: relative;
 }
 
 .lyric-layout .header .text,
 .lyrics-layout .header .text,
-.videos-layout .header .text {
+.videos-layout .header .text,
+.ipsum-layout .header .text {
   position: absolute;
   top: 30%;
   left: 40%;
