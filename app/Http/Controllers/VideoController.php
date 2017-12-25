@@ -18,4 +18,10 @@ class VideoController extends Controller
 
         return view('videos.show', compact('video'));
     }
+
+    public function getVideos() {
+        $videos = $this->videoRepo->getVideos();
+
+        return view('videos.index', compact('videos'));
+    }
 }

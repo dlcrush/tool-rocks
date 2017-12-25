@@ -11783,13 +11783,27 @@ span.stat {
   color: #fff;
 }
 
+.lyric-layout .video,
+.lyrics-layout .video {
+  display: block;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.lyric-layout .lyrics-content,
+.lyrics-layout .lyrics-content {
+  text-align: center;
+}
+
 .lyric-layout .header,
-.lyrics-layout .header {
+.lyrics-layout .header,
+.videos-layout .header {
   position: relative;
 }
 
 .lyric-layout .header .text,
-.lyrics-layout .header .text {
+.lyrics-layout .header .text,
+.videos-layout .header .text {
   position: absolute;
   top: 30%;
   left: 40%;
@@ -11806,16 +11820,22 @@ span.stat {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.lyric-layout .video,
-.lyrics-layout .video {
-  display: block;
-  max-width: 560px;
-  margin: 0 auto;
+.videos-layout .videos-collection .video-card {
+  color: white;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 25px;
+  border: 1px solid white;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
-.lyric-layout .lyrics-content,
-.lyrics-layout .lyrics-content {
-  text-align: center;
+.videos-layout .videos-collection .video-card .video-card-image {
+  display: inline-block;
+}
+
+.videos-layout .videos-collection .video-card .video-card-text {
+  display: inline-block;
 }
 
 .slick-slider {

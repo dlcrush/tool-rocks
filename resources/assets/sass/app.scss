@@ -389,6 +389,18 @@ span.stat {
 }
 
 .lyric-layout,.lyrics-layout {
+    .video {
+        display: block;
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    .lyrics-content {
+        text-align: center
+    }
+}
+
+.lyric-layout,.lyrics-layout,.videos-layout {
     .header {
         position: relative;
     }
@@ -409,15 +421,27 @@ span.stat {
         padding-bottom: 25px;
         background-color:rgba(0, 0, 0, 0.8)
     }
+}
 
-    .video {
-        display: block;
-        max-width: 560px;
-        margin: 0 auto;
-    }
+.videos-layout {
+    .videos-collection {
+        .video-card {
+            color: white;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 25px;
+            border: 1px solid white;
+            padding-top: 15px;
+            padding-bottom: 15px;
 
-    .lyrics-content {
-        text-align: center
+            .video-card-image {
+                display: inline-block;
+            }
+
+            .video-card-text {
+                display: inline-block;
+            }
+        }
     }
 }
 

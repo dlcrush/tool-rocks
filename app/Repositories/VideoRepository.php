@@ -26,7 +26,12 @@ class VideoRepository implements VideoRepositoryInterface {
     }
 
     public function getVideos() {
+        $url = $this->urlBuilder
+            ->path('videos')
+            ->params([])
+            ->build();
 
+        return json_decode($this->http->get($url), true);
     }
 
 }

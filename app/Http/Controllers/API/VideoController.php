@@ -34,7 +34,7 @@ class VideoController extends APIController
         $videos = fractal()
            ->collection($videos)
            ->transformWith($this->videoTransformer)
-           ->parseIncludes('')
+           ->parseIncludes(['tags', 'channel'])
            ->toArray();
 
         return $this->respond($videos);

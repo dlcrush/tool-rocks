@@ -22,7 +22,7 @@
                         <a href="/blog"><i class="fa fa-book"></i> Blog</a>
                     </li>
                     <li>
-                        <a href="/videos/6"><i class="fa fa-play"></i> Videos</a>
+                        <a href="/videos"><i class="fa fa-play"></i> Videos</a>
                     </li>
                     <li>
                         <a href="/lyrics"><i class="fa fa-music"></i> Lyrics</a>
