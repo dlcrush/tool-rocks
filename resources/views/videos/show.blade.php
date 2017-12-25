@@ -2,10 +2,6 @@
 
 @section('content')
 
-<style>
-
-</style>
-
 <div class="container-fluid video-layout">
 
     <h3>{{ array_get($video, 'name') }}</h3>
@@ -65,7 +61,6 @@
                         <div class="related-video-info" style="background-color: #131313; max-width: 240px;">
                             <div style="padding: 20px;">
                                 <h5>{{ array_get($x, 'name') }}</h5>
-                                <?php /*<p>{{ array_get($x, 'description') }}</p>*/ ?>
                             </div>
                         </div>
                     </div>
@@ -79,14 +74,4 @@
         </div>
     </div>
 </div>
-
-<script>
-window.onload = function() {
-    // $('.related-videos').slick({
-    //     infinite: true,
-    //     slidesToShow: 3,
-    //     slidesToScroll: 3
-    // });
-};
-</script>
 @endsection

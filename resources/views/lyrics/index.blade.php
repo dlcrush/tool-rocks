@@ -9,7 +9,8 @@
 
     <div class="lyrics-collection">
         <div class="row">
-            @foreach($albums as $i => $album)
+            <?php $i = 0; ?>
+            @foreach($albums as $album)
                 <?php
                     $class = '';
                     if ($i % 3 === 0) {
@@ -39,6 +40,7 @@
                 @if(($i+1) % 3 === 0)
                     <div class="clearfix visible-md visible-lg"></div>
                 @endif
+                <?php $i++ ?>
             @endforeach
         </div>
     </div>

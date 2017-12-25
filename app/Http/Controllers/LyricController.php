@@ -22,6 +22,9 @@ class LyricController extends Controller
     public function getLyrics($bandId='tool') {
         $band = $this->bandRepo->getBand($bandId);
         $albums = array_get($band, 'albums.data');
+        $albums = array_where($albums, function($album) {
+            return $album['slug'] != '72826';
+        });
         return view('lyrics.index', compact('albums'));
     }
 }
