@@ -20,7 +20,8 @@ class SongTransformer extends TransformerAbstract {
             'slug' => $song->slug,
             'has_lyrics' => (bool) $song->has_lyrics,
             'lyrics' => [
-                'body' => $song->lyrics
+                'body' => $song->lyrics,
+                'youtube_video_id' => (isset($song->video)) ? $song->video->video_id : null
             ],
             'links' => [
                 'web' => [

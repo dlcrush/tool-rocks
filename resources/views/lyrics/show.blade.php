@@ -9,7 +9,7 @@
     </div>
 
     <div class="lyrics-container row col-xs-12">
-        <div class="lyrics-content col-xs-12 col-sm-12 col-md-6 col-lg-6" style="max-width: 500px; text-align: left; display: inline-block; float: left;">
+        <div class="lyrics-content col-xs-12 col-sm-12 col-md-6" style="text-align: left; display: inline-block; float: left;">
             <h1>{{ array_get($song, 'name') }}</h1>
             <p>
                 @if (array_get($song, 'has_lyrics'))
@@ -19,20 +19,30 @@
                 @endif
             </p>
         </div>
-        <div class="lyrics-video col-xs-12 col-sm-12 col-md-6 col-lg-6" style="display: inline-block; max-width: 560px; float: right;">
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/-eYb5f1LqZ0" frameborder="0" allowfullscreen></iframe>
+        <div class="lyrics-video col-xs-12 col-sm-12 col-md-6" style="display: inline-block; max-width: 560px; float: right;">
+            @if(array_get($song, 'lyrics.youtube_video_id') != null)
+                <div class="video-wrapper">
+                    <div class="video-container">
+                        <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/{{ array_get($song, 'lyrics.youtube_video_id') }}" frameborder="0" allowfullscreen></iframe>
+                    </div>
                 </div>
-            </div>
+            @endif
 
             <p>
-                <h4>Song Info</h4>
-                <ul class="list-unstyled">
-                    <li>Runtime: 4:56</li>
-                    <li>Released: 1993</li>
-                    <li>Album: Undertow</li>
-                </ul>
+                <h4 style="text-align: center">Appears On:</h4>
+                @foreach(array_get($song, 'albums.data', []) as $album)
+                    <div class="album-card">
+                        <div class="album-card-content" style="margin-right: auto; margin-left: auto;">
+                            <center>
+                                <img src="/img/tool-{{ array_get($album, 'slug') }}-500x500.jpg" class="img-responsive" style="max-width: 200px;">
+                                <ul class="list-unstyled">
+                                    <li>{{ array_get($album, 'name') }}</li>
+                                    <li>Released: {{ Carbon\Carbon::parse(array_get($album, 'released'))->format('Y') }}</li>
+                                </ul>
+                            </center>
+                        </div>
+                    </div>
+                @endforeach
             </p>
         </div>
     </div>

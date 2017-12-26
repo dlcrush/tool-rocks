@@ -66,7 +66,7 @@ class BandController extends APIController
     }
 
     public function getBand($bandId='tool') {
-        $this->band->pushCriteria(new Expand('albums.songs'));
+        $this->band->pushCriteria(new Expand('albums.songs.video'));
 
         $band = $this->getBandByIdOrSlug($bandId);
 
@@ -80,7 +80,7 @@ class BandController extends APIController
     }
 
     public function getSong($bandId='tool',$songId) {
-        $this->band->pushCriteria(new Expand('songs'));
+        $this->band->pushCriteria(new Expand('albums'));
 
         $band = $this->getBandByIdOrSlug($bandId);
         $song = $this->getSongByIdOrSlug($band->songs, $songId);
@@ -88,7 +88,7 @@ class BandController extends APIController
         $songResp = fractal()
             ->item($song)
             ->transformWith($this->songTransformer)
-            ->parseIncludes('band')
+            ->parseIncludes(['band', 'albums'])
             ->toArray();
 
         return $this->respond($songResp);

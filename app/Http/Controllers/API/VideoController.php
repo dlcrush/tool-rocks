@@ -24,7 +24,7 @@ class VideoController extends APIController
     }
 
     public function getVideos() {
-        $videos = $this->videoRepo->all();
+        $videos = $this->videoRepo->all()->take(50);
         $videoIds = $videos->pluck('video_id')->toArray();
         $videosData = $this->youTubeRepo->getVideos(['id' => implode(',', $videoIds)], ['includeChannel' => true]);
         for($i = 0; $i < sizeof($videosData); $i ++) {

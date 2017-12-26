@@ -16,7 +16,7 @@ class Song extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function band() {
       return $this->belongsTo('App\Band');
@@ -24,5 +24,9 @@ class Song extends Model
 
     public function albums() {
       return $this->belongsToMany('App\Album', 'songs_albums')->withPivot('order', 'is_hidden')->orderBy('albums.release_date');
+    }
+
+    public function video() {
+        return $this->hasOne('App\Video', 'id', 'lyrics_video_id');
     }
 }

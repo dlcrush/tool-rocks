@@ -27,7 +27,15 @@
                         <img src="/img/tool-{{ array_get($album, 'slug') }}-500x500.jpg" class="img-responsive">
                         <ul class="lyric-songs-list list-unstyled">
                             @foreach(array_get($album, 'songs.data') as $song)
-                                <li><a href="{{ Action('LyricController@getLyric', ['songId' => array_get($song, 'slug')]) }}">{{ array_get($song, 'name') }}</a></li>
+                                <li>
+                                    @if(array_get($song, 'has_lyrics'))
+                                        <a href="{{ Action('LyricController@getLyric', ['songId' => array_get($song, 'slug')]) }}">
+                                    @endif
+                                        {{ array_get($song, 'name') }}
+                                    @if(array_get($song, 'has_lyrics'))
+                                        </a>
+                                    @endif
+                                </li>
                             @endforeach
                         </ul>
                     </div>
