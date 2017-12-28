@@ -8,25 +8,25 @@
 
     <div class="video-wrapper">
         <div class="video-container">
-             <iframe class="video" width="960" height="540" src="https://www.youtube.com/embed/{{ array_get($video, 'youtube_video_id') }}" frameborder="0" allowfullscreen></iframe>
+             <iframe id="video" class="video" width="960" height="540" src="https://www.youtube.com/embed/{{ array_get($video, 'youtube_video_id') }}?enablejsapi=1&origin=http://toolrocks.dev" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
     <div class="video-info-wrapper">
         <div class="content">
             <ul class="nav nav-tabs">
-                <li class="nav-item">
+                <li class="nav-item" data-tab-id="video-youtube-info">
                     <a class="nav-link active" href="#">Description</a>
                 </li>
                 @if(count(array_get($video, 'songs.data')) > 1)
-                    <li class="nav-item">
+                    <li class="nav-item" data-tab-id="video-setlist">
                         <a class="nav-link" href="#">Set list</a>
                     </li>
                 @endif
-                <li class="nav-item">
+                <li class="nav-item" data-tab-id="video-lyrics">
                     <a class="nav-link" href="#">Lyrics</a>
                 </li>
             </ul>
-            <div class="content-wrapper" style="max-height: 550px; overflow-y: scroll;">
+            <div class="content-wrapper">
                 <div id="video-youtube-info">
                     <a href="https://youtube.com/channel/UCRUq9jueekA0t4uz_z5LZmA">
                         <center><img style="margin-top: 15px; max-height: 120px;" class="img-responsive" src="{{ array_get($video, 'channel.images.high.url') }}"></img></center>
@@ -44,7 +44,35 @@
                     </div>
                 </div>
                 <div id="video-lyrics" style="display: none;">
-                    This be where the lyrics would go.
+                    @foreach(array_get($video, 'songs.data') as $song)
+                        <div id="video-lyrics-song-{{ array_get($song, 'slug') }}">
+                            <h4>{{ array_get($song, 'name') }}</h4>
+                            <p>{!! nl2br(array_get($song, 'lyrics.body')) !!}</p>
+                        </div>
+                        @if( ! $loop->last )
+                            <hr>
+                        @endif
+                    @endforeach
+                </div>
+                <div id="video-setlist" style="display: none;">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                            <table class="table table-condensed borderless">
+                                <tbody>
+                                    <?php $count = 1 ?>
+                                    @foreach(array_get($video, 'songs.data') as $song)
+                                        <tr>
+                                            <td>{{ $count . '.' }}</td>
+                                            <td>{{ array_get($song, 'name') }}</td>
+                                            <td><a class="video-jump-to" href="#" data-timestamp="{{ array_get($song, 'start_time') }}">{{ array_get($song, 'start_time') }}</a></td>
+                                            <td><a href="#">Lyrics</a></td>
+                                        </tr>
+                                        <?php $count = $count + 1 ?>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,4 +102,57 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script>
+        var tag = document.createElement('script');
+        tag.id = 'iframe-demo';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('video', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log('onPlayerReady', event);
+        }
+
+        function onPlayerStateChange(event) {
+            console.log('onStateChange', event);
+        }
+
+        function jumpTo(time) {
+            player.seekTo()
+        }
+
+        $('.video-jump-to').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var timestamp = $(this).data('timestamp');
+            var times = timestamp.split(':');
+
+            if (times.length == 1) {
+                var seconds = parseInt(times[0]);
+            } else if (times.length == 2) {
+                var seconds = parseInt(times[1]);
+                seconds += parseInt(times[0]) * 60;
+            } else if (times.length == 3) {
+                var seconds = parseInt(times[2]);
+                seconds += parseInt(times[1]) * 60;
+                seconds += parseInt(times[0]) * 60 * 60;
+            }
+
+            player.seekTo(seconds);
+        });
+    </script>
 @endsection
