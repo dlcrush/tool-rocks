@@ -27,6 +27,6 @@ class Video extends Model
     }
 
     public function tags() {
-        return $this->belongsToMany('App\Tag', 'videos_tags');
+        return $this->belongsToMany('App\Tag', 'videos_tags')->orderBy('name');
     }
 }

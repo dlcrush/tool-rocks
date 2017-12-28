@@ -11710,10 +11710,36 @@ form input[type="submit"] {
   overflow: hidden;
 }
 
+.well,
+.navbar-inner,
+.popover,
 .btn,
-input.form-control,
-textarea {
-  border-radius: 0 !important;
+.tooltip,
+input,
+select,
+textarea,
+pre,
+.progress,
+.modal,
+.add-on,
+.alert,
+.table-bordered,
+.nav > .active > a,
+.dropdown-menu,
+.tooltip-inner,
+.badge,
+.label,
+.img-polaroid {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 0px !important;
+  border-collapse: collapse !important;
+  background-image: none !important;
+}
+
+select {
+  background-color: #232828;
+  color: #fff;
 }
 
 .btn-default {
