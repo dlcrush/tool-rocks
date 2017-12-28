@@ -9,26 +9,6 @@ require('./bootstrap');
 
 $(function() {
     console.log('loaded');
-
-    //$('iframe.video').
-
-    $('.video-info-wrapper .nav-tabs .nav-item').on('click', function(e) {
-        function loadTab(id) {
-            $('.video-info-wrapper .content-wrapper').children().hide();
-            $('.video-info-wrapper .content-wrapper #' + id).show();
-        }
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        // load tab
-        var tabId = $(this).data('tab-id');
-        loadTab(tabId);
-
-        // change active tab
-        $('.video-info-wrapper .nav-tabs .nav-item .nav-link').removeClass('active');
-        $(this).children('.nav-link').addClass('active');
-    });
 });
 
 //window.Vue = require('vue');

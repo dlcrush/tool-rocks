@@ -11635,14 +11635,11 @@ form input[type="submit"] {
 
 .video-wrapper {
   display: inline-block;
-  max-width: 1024px;
-  width: 100%;
   vertical-align: top;
 }
 
 @media (max-width: 768px) {
   .video-wrapper {
-    width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -11667,8 +11664,6 @@ form input[type="submit"] {
 
 .video-info-wrapper {
   display: inline-block;
-  width: 100%;
-  max-width: 540px;
   vertical-align: top;
   overflow-x: hidden;
 }
@@ -11708,6 +11703,18 @@ form input[type="submit"] {
 .video-info-wrapper .content-wrapper {
   height: 550px;
   overflow-y: scroll;
+}
+
+.video-info-wrapper .description-wrapping {
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .video-info-wrapper .description-wrapping {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .related-videos-wrapper {
