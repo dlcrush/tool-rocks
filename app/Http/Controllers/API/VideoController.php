@@ -7,6 +7,7 @@ use App\Transformers\VideoTransformer;
 use App\Repositories\API\Contracts\VideoRepository;
 use App\Repositories\API\Contracts\YouTubeRepository;
 use Illuminate\Database\DatabaseManager;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class VideoController extends APIController
 {
@@ -24,7 +25,8 @@ class VideoController extends APIController
     }
 
     public function getVideos() {
-        $videos = $this->videoRepo->all()->take(50);
+        $paginator = $this->videoRepo->paginate(15);
+        $videos = $paginator->getCollection();
         $videoIds = $videos->pluck('video_id')->toArray();
         $videosData = $this->youTubeRepo->getVideos(['id' => implode(',', $videoIds)], ['includeChannel' => true]);
         for($i = 0; $i < sizeof($videosData); $i ++) {
@@ -34,6 +36,7 @@ class VideoController extends APIController
         $videos = fractal()
            ->collection($videos)
            ->transformWith($this->videoTransformer)
+           ->paginateWith(new IlluminatePaginatorAdapter($paginator))
            ->parseIncludes(['tags', 'channel'])
            ->toArray();
 

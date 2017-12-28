@@ -34,6 +34,13 @@
                 </div>
             </div>
         @endforeach
+        @if(array_get($videos, 'meta.pagination.total_pages', 1) > 1)
+            <div class="row">
+                <div class="col-xs-12">
+                    @include('components.pagination', ['pagination' => array_get($videos, 'meta.pagination')])
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 @endsection
