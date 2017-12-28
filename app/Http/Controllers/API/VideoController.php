@@ -62,26 +62,30 @@ class VideoController extends APIController
     }
 
     public function getRelatedVideos(\App\Video $video) {
-        $videoIds = $this->db->table('videos')
-            ->where('band_id', $video->band_id)
-            ->where('videos.id', '<>', $video->id)
-            ->join('videos_tags', 'videos.id', '=', 'videos_tags.video_id')
+        $tagsIds = $video->tags->pluck('id');
+        $videoIds = $this->db->table('videos_tags')
+            ->whereIn('tag_id', $tagsIds)
+            ->join('videos', 'videos_tags.video_id', '=', 'videos.id')
             ->select('videos.id')
-            ->groupBy('videos.id')
+            ->where('videos.id', '<>', $video->id)
             ->inRandomOrder()
+            ->groupBy('videos.id')
             ->take(5)
             ->get()
             ->pluck('id');
 
-        $videos = array();
-        foreach($videoIds as $videoId) {
-            $video = $this->videoRepo->find($videoId);
-            $videoData = $this->youTubeRepo->getVideo(['id' => $video->video_id]);
+        $videos = $this->videoRepo->findIn('id', $videoIds);
+        $videosData = $this->youTubeRepo->getVideos(['id' => implode(',', $videos->pluck('video_id')->toArray())]);
+
+        $related = array();
+        for($i = 0; $i < sizeof($videos); $i ++) {
+            $video = $videos[$i];
+            $videoData = $videosData[$i];
             $video->youTubeData = $videoData;
-            array_push($videos, $video);
+            array_push($related, $video);
         }
 
-        return $videos;
+        return $related;
     }
 
 }
