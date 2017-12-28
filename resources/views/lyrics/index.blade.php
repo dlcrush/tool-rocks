@@ -2,10 +2,7 @@
 
 @section('content')
 <div class="container-fluid lyrics-layout">
-    <div class="header" style="margin-top: 15px; margin-bottom: 15px;">
-        <img src="/img/concert.jpg" class="img-responsive">
-        <div class="text">Lyrics</div>
-    </div>
+    @include('components.prettyHeader', ['text' => 'Lyrics'])
 
     <div class="lyrics-collection">
         <div class="row">

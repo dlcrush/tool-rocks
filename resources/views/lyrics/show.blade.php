@@ -3,10 +3,7 @@
 @section('content')
 
 <div class="container-fluid lyric-layout">
-    <div class="header" style="margin-top: 15px; margin-bottom: 15px;">
-        <img src="/img/concert.jpg" class="img-responsive">
-        <div class="text">Lyrics</div>
-    </div>
+    @include('components.prettyHeader', ['text'=> 'Lyrics'])
 
     <div class="lyrics-container row col-xs-12">
         <div class="lyrics-content col-xs-12 col-sm-12 col-md-6" style="text-align: left; display: inline-block; float: left;">

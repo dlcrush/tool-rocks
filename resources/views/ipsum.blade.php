@@ -10,10 +10,7 @@
     <div class="ipsum-layout">
         <div class="row">
             <div class="col-xs-12">
-                <div class="header" style="margin-top: 15px; margin-bottom: 15px;">
-                    <img src="/img/concert.jpg" class="img-responsive">
-                    <div class="text">Ipsum</div>
-                </div>
+                @include('components.prettyHeader', ['text' => 'Ipsum'])
             </div>
         </div>
 

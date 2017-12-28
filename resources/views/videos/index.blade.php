@@ -4,10 +4,7 @@
 <div class="container-fluid videos-layout">
     <div class="row">
         <div class="col-xs-12">
-            <div class="header" style="margin-top: 15px; margin-bottom: 15px;">
-                <img src="/img/concert.jpg" class="img-responsive">
-                <div class="text">Videos</div>
-            </div>
+            @include('components.prettyHeader', ['text' => 'Videos'])
         </div>
     </div>
 
