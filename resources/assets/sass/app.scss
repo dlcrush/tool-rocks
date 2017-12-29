@@ -229,11 +229,11 @@ form {
 .video-wrapper {
   display: inline-block;
   //max-width: 1024px;
-  //width: 100%;
+  width: 100%;
   vertical-align: top;
 
   @media (max-width: 768px) {
-    //width: 100%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -272,11 +272,13 @@ form {
   }
 
   .content {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 80%;
+    @media (min-width: 1092px) {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 80%;
+    }
 
     @media (max-width: 768px) {
       margin-top: 15px;
@@ -354,10 +356,20 @@ span.stat {
         display: inline-block;
 
         &.left .lyric-card-inner {
-            float: left;
+            @media only screen and (min-width : 992px) {
+                float: left;
+            }
+            float: none;
+            margin-right: auto;
+            margin-left: auto;
         }
         &.right .lyric-card-inner {
-            float: right;
+            @media only screen and (min-width : 992px) {
+                float: right;
+            }
+            float: none;
+            margin-right: auto;
+            margin-left: auto;
         }
 
         .lyric-card-inner {
@@ -369,14 +381,6 @@ span.stat {
         &.middle .lyric-card-inner {
             margin-right: auto;
             margin-left: auto;
-        }
-
-        .lyric-card.right .lyric-card-inner {
-            float: right;
-        }
-
-        .lyric-card.left .lyric-card-inner {
-            float: left;
         }
     }
 

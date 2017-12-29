@@ -7,9 +7,11 @@
     <h3>{{ array_get($video, 'name') }}</h3>
 
     <div class="row">
-        <div class="video-wrapper col-xs-12 col-sm-12 col-md-8">
-            <div class="video-container">
-                <iframe id="video" class="video" width="960" height="540" src="https://www.youtube.com/embed/{{ array_get($video, 'youtube_video_id') }}?enablejsapi=1&origin=http://toolrocks.dev" frameborder="0" allowfullscreen></iframe>
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe id="video" class="video" width="960" height="540" src="https://www.youtube.com/embed/{{ array_get($video, 'youtube_video_id') }}?enablejsapi=1&origin=http://toolrocks.dev" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
         <div class="video-info-wrapper col-xs-12 col-sm-12 col-md-4">
@@ -80,23 +82,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="related-videos-wrapper">
-            <h3>You May Also Like</h3>
+        <div class="col-xs-12">
+            <div class="related-videos-wrapper">
+                <h3>You May Also Like</h3>
 
-            <div class="related-videos">
-                @foreach(array_get($video, 'related.data') as $i => $x)
-                    <?php if (++$i > 4) { break; } ?>
-                    <a href="{{ array_get($x, 'links.web') }}" style="color: white">
-                        <div class="related-video col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                            <img src="{{ array_get($x, 'images.high.url') }}" class="img-responsive" style="max-width: 240px; width: 100%;">
-                            <div class="related-video-info" style="background-color: #131313; max-width: 240px;">
-                                <div style="padding: 20px;">
-                                    <h5>{{ array_get($x, 'name') }}</h5>
+                <div class="related-videos">
+                    @foreach(array_get($video, 'related.data') as $i => $x)
+                        <?php //if (++$i > 4) { break; } ?>
+                        <a href="{{ array_get($x, 'links.web') }}" style="color: white">
+                            <div class="related-video col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                                <img src="{{ array_get($x, 'images.high.url') }}" class="img-responsive" style="max-width: 240px; width: 100%;">
+                                <div class="related-video-info" style="background-color: #131313; max-width: 240px;">
+                                    <div style="padding: 20px;">
+                                        <h5>{{ array_get($x, 'name') }}</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                @endforeach
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
@@ -115,7 +119,7 @@
 @section('js')
     <script>
         var tag = document.createElement('script');
-        tag.id = 'iframe-demo';
+        //tag.id = 'iframe-demo';
         tag.src = 'https://www.youtube.com/iframe_api';
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);

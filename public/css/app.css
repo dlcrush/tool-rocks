@@ -11635,11 +11635,13 @@ form input[type="submit"] {
 
 .video-wrapper {
   display: inline-block;
+  width: 100%;
   vertical-align: top;
 }
 
 @media (max-width: 768px) {
   .video-wrapper {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -11678,12 +11680,14 @@ form input[type="submit"] {
   }
 }
 
-.video-info-wrapper .content {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 80%;
+@media (min-width: 1092px) {
+  .video-info-wrapper .content {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -11782,11 +11786,27 @@ span.stat {
 }
 
 .lyrics-layout .lyric-card.left .lyric-card-inner {
-  float: left;
+  float: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media only screen and (min-width: 992px) {
+  .lyrics-layout .lyric-card.left .lyric-card-inner {
+    float: left;
+  }
 }
 
 .lyrics-layout .lyric-card.right .lyric-card-inner {
-  float: right;
+  float: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media only screen and (min-width: 992px) {
+  .lyrics-layout .lyric-card.right .lyric-card-inner {
+    float: right;
+  }
 }
 
 .lyrics-layout .lyric-card .lyric-card-inner {
@@ -11798,14 +11818,6 @@ span.stat {
 .lyrics-layout .lyric-card.middle .lyric-card-inner {
   margin-right: auto;
   margin-left: auto;
-}
-
-.lyrics-layout .lyric-card .lyric-card.right .lyric-card-inner {
-  float: right;
-}
-
-.lyrics-layout .lyric-card .lyric-card.left .lyric-card-inner {
-  float: left;
 }
 
 .lyrics-layout .lyrics-collection {
