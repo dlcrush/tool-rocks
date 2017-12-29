@@ -19,16 +19,22 @@
                         <a href="/"><i class="fa fa-home"></i> Home</a>
                     </li>
                     <li>
-                        <a href="/blog"><i class="fa fa-book"></i> Blog</a>
-                    </li>
-                    <li>
                         <a href="/videos"><i class="fa fa-play"></i> Videos</a>
                     </li>
                     <li>
                         <a href="/lyrics"><i class="fa fa-music"></i> Lyrics</a>
                     </li>
                     <li>
-                        <a href="/ipsum"><i class="fa fa-file-text-o"></i> Ipsum</a>
+                        <a href="/tour"><i class="fa fa-bus"></i> Tour</a>
+                    </li>
+                    <li>
+                        <a href="/blog"><i class="fa fa-book"></i> Blog</a>
+                    </li>
+                    <li>
+                        <a href="/maynardisms"><i class="fa fa-lightbulb-o"></i> Maynardisms</a>
+                    </li>
+                    <li>
+                        <a href="/ipsum"><i class="fa fa-file-text-o"></i> Ipsum Generator</a>
                     </li>
                 </ul>
             </div>
