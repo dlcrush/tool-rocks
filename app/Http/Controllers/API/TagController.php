@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Transformers\TagTransformer;
 use App\Repositories\API\Contracts\TagRepository;
+use App\Repositories\API\Criteria\Filter;
 
 class TagController extends APIController
 {
@@ -19,6 +20,13 @@ class TagController extends APIController
 
     public function getTags()
     {
+        if (\Request::has('filter')) {
+            $filter = \Request::get('filter');
+            if ($filter === 'date') {
+                $this->tagRepo->pushCriteria(new Filter('type', 'date'));
+            }
+        }
+
         $tags = fractal()
            ->collection($this->tagRepo->all())
            ->transformWith($this->tagTransformer)

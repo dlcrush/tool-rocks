@@ -43,6 +43,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
     }
 
     public function paginate($perPage = 15, $columns = ['*']) {
+        $this->applyCriteria();
         return $this->model->paginate($perPage, $columns);
     }
 

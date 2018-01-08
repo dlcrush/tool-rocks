@@ -50,7 +50,11 @@
                         @foreach(array_get($video, 'songs.data') as $song)
                             <div id="video-lyrics-song-{{ array_get($song, 'slug') }}">
                                 <h4>{{ array_get($song, 'name') }}</h4>
-                                <p>{!! nl2br(array_get($song, 'lyrics.body')) !!}</p>
+                                @if(array_get($song, 'has_lyrics', false))
+                                    <p>{!! nl2br(array_get($song, 'lyrics.body')) !!}</p>
+                                @else
+                                    <p>No lyrics.</p>
+                                @endif
                             </div>
                             @if( ! $loop->last )
                                 <hr>

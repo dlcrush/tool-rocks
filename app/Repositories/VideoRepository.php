@@ -25,10 +25,19 @@ class VideoRepository implements VideoRepositoryInterface {
         return json_decode($this->http->get($url), true);
     }
 
-    public function getVideos() {
+    public function getVideos($options=array()) {
+        $params = [];
+
+        if (array_has($options, 'page')) {
+            $params['page'] = array_get($options, 'page');
+        }
+        if (array_has($options, 'tags')) {
+            $params['tags'] = array_get($options, 'tags');
+        }
+
         $url = $this->urlBuilder
             ->path('videos')
-            ->params(['page' => \Request::input('page', 1)])
+            ->params($params)
             ->build();
 
         return json_decode($this->http->get($url), true);

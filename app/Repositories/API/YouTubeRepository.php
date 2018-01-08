@@ -98,7 +98,6 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
 
         $items = json_decode($res)->items;
 
-        // print_r($items);
         if (count($items) > 0) {
             $item = $items[0];
 

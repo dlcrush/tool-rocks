@@ -8,6 +8,8 @@ use App\Repositories\API\Contracts\VideoRepository;
 use App\Repositories\API\Contracts\YouTubeRepository;
 use Illuminate\Database\DatabaseManager;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+use App\Repositories\API\Criteria\Expand;
+use App\Repositories\API\Criteria\Videos\ByTags;
 
 class VideoController extends APIController
 {
@@ -25,7 +27,10 @@ class VideoController extends APIController
     }
 
     public function getVideos() {
-        $paginator = $this->videoRepo->paginate(15);
+        if (\Request::has('tags')) {
+            $this->videoRepo->pushCriteria(new ByTags(explode(",", \Request::get('tags'))));
+        }
+        $paginator = $this->videoRepo->paginate(10);
         $videos = $paginator->getCollection();
         $videoIds = $videos->pluck('video_id')->toArray();
         $videosData = $this->youTubeRepo->getVideos(['id' => implode(',', $videoIds)], ['includeChannel' => true]);

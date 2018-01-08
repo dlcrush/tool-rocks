@@ -17,4 +17,8 @@ class Tag extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function videos() {
+        return $this->belongsToMany('App\Video', 'videos_tags');
+    }
 }

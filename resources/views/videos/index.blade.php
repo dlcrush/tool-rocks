@@ -1,10 +1,53 @@
 @extends('layouts/app')
 
 @section('content')
+<style>
+    .form-group {
+        margin-right: 25px;
+    }
+</style>
+
 <div class="container-fluid videos-layout">
     <div class="row">
         <div class="col-xs-12">
             @include('components.prettyHeader', ['text' => 'Videos'])
+        </div>
+    </div>
+
+    <div class="videos-filter">
+        <div class="row">
+            <div class="col-xs-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>Year:</label>
+                        <select>
+                            <option>Select a Year</option>
+                            @foreach($tags as $tag)
+                                <option value="{{ array_get($tag, 'id') }}">{{ array_get($tag, 'year') }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Type:</label>
+                        <select>
+                            <option>Select a Type</option>
+                            <option>Live</option>
+                            <option>Lyrics</option>
+                            <option>Studio</option>
+                            <option>Music Video</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Sort By:</label>
+                        <select>
+                            <option>Date Added</option>
+                            <option>Views</option>
+                            <option>Thumbs Up</option>
+                            <option>Date Uploaded</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
