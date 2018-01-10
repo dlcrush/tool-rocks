@@ -2,13 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Album extends Model
+class Album extends BaseModel
 {
-    use SoftDeletes;
-
     /**
      * The attributes that should be mutated to dates.
      *

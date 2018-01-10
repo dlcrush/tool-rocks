@@ -2,13 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Ipsum extends Model
+class Ipsum extends BaseModel
 {
-    use SoftDeletes;
-
     protected $fillable = ['content', 'band_id'];
 
     /**

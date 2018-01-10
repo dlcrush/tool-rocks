@@ -2,13 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Tag extends Model
+class Tag extends BaseModel
 {
-    use SoftDeletes;
-
     protected $fillable = ['name', 'slug'];
 
     /**

@@ -5,10 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Song extends Model
+class Song extends BaseModel
 {
-    use SoftDeletes;
-
     protected $fillable = ['name', 'slug', 'band_id', 'has_lyrics', 'lyrics', 'lyrics_video_id'];
 
     /**

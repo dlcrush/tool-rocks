@@ -2,13 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
-class Video extends Model
+class Video extends BaseModel
 {
-    use SoftDeletes;
-
     protected $fillable = ['name', 'slug', 'description', 'video_id', 'source', 'band_id'];
 
     /**
