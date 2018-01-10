@@ -9,7 +9,7 @@ use App\Repositories\API\Contracts\YouTubeRepository;
 use Illuminate\Database\DatabaseManager;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use App\Repositories\API\Criteria\Expand;
-use App\Repositories\API\Criteria\Videos\ByTags;
+use App\Repositories\API\Criteria\Videos\Search;
 
 class VideoController extends APIController
 {
@@ -27,9 +27,21 @@ class VideoController extends APIController
     }
 
     public function getVideos() {
+        $searchCriteria = [];
         if (\Request::has('tags')) {
-            $this->videoRepo->pushCriteria(new ByTags(explode(",", \Request::get('tags'))));
+            $searchCriteria['tags'] = \Request::get('tags');
         }
+        if (\Request::has('year')) {
+            $searchCriteria['year'] = \Request::get('year');
+        }
+        if (\Request::has('type')) {
+            $searchCriteria['type'] = \Request::get('type');
+        }
+
+        if (sizeof($searchCriteria) > 0) {
+            $this->videoRepo->pushCriteria(new Search($searchCriteria));
+        }
+
         $paginator = $this->videoRepo->paginate(10);
         $videos = $paginator->getCollection();
         $videoIds = $videos->pluck('video_id')->toArray();
