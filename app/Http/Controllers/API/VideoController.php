@@ -10,6 +10,7 @@ use Illuminate\Database\DatabaseManager;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use App\Repositories\API\Criteria\Expand;
 use App\Repositories\API\Criteria\Videos\Search;
+use App\Repositories\API\Criteria\OrderBy;
 
 class VideoController extends APIController
 {
@@ -43,6 +44,7 @@ class VideoController extends APIController
         }
 
         $this->videoRepo->pushCriteria(new Expand(['images', 'tags']));
+        $this->videoRepo->pushCriteria(new OrderBy('views', 'desc'));
 
         $paginator = $this->videoRepo->paginate(10);
         $videos = $paginator->getCollection();
