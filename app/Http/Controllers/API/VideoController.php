@@ -42,31 +42,27 @@ class VideoController extends APIController
             $this->videoRepo->pushCriteria(new Search($searchCriteria));
         }
 
+        $this->videoRepo->pushCriteria(new Expand(['images', 'tags']));
+
         $paginator = $this->videoRepo->paginate(10);
         $videos = $paginator->getCollection();
-        $videoIds = $videos->pluck('video_id')->toArray();
-        $videosData = $this->youTubeRepo->getVideos(['id' => implode(',', $videoIds)], ['includeChannel' => true]);
-        for($i = 0; $i < sizeof($videosData); $i ++) {
-            $videos[$i]->youTubeData = $videosData[$i];
-        }
 
         $videos = fractal()
            ->collection($videos)
            ->transformWith($this->videoTransformer)
            ->paginateWith(new IlluminatePaginatorAdapter($paginator))
-           ->parseIncludes(['tags', 'channel'])
+           ->parseIncludes(['tags'])
            ->toArray();
 
         return $this->respond($videos);
     }
 
     public function getVideo($id) {
+        $this->videoRepo->pushCriteria(new Expand(['tags', 'images']));
+
         $video = $this->videoRepo->find($id);
 
-        $videoData = $this->youTubeRepo->getVideo(['id' => $video->video_id]);
-
-        $video->youTubeData = $videoData;
-
+        $video->channel = $this->youTubeRepo->getChannel(['id' => $video->channel_id]);
         $video->related = $this->getRelatedVideos($video);
 
         $video = fractal()
@@ -79,6 +75,7 @@ class VideoController extends APIController
     }
 
     public function getRelatedVideos(\App\Video $video) {
+
         $tagsIds = $video->tags->pluck('id');
         $videoIds = $this->db->table('videos_tags')
             ->whereIn('tag_id', $tagsIds)
@@ -91,18 +88,12 @@ class VideoController extends APIController
             ->get()
             ->pluck('id');
 
+        $this->videoRepo->reset(); // reset query and criteria
+        $this->videoRepo->pushCriteria(new Expand(['images', 'tags']));
         $videos = $this->videoRepo->findIn('id', $videoIds);
-        $videosData = $this->youTubeRepo->getVideos(['id' => implode(',', $videos->pluck('video_id')->toArray())]);
+        $this->videoRepo->reset();
 
-        $related = array();
-        for($i = 0; $i < sizeof($videos); $i ++) {
-            $video = $videos[$i];
-            $videoData = $videosData[$i];
-            $video->youTubeData = $videoData;
-            array_push($related, $video);
-        }
-
-        return $related;
+        return $videos;
     }
 
 }

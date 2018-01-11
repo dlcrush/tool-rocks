@@ -16,18 +16,17 @@ class VideoTransformer extends TransformerAbstract {
 
     public function transform(Video $video)
     {
-        $videoData = $video->youTubeData;
-
         return [
             'id' => (int) $video->id,
             'name' => $video->name,
             'slug' => $video->slug,
             'description' => $video->description,
-            'views' => $videoData->views,
-            'thumbsUp' => $videoData->thumbsUp,
-            'thumbsDown' => $videoData->thumbsDown,
-            'youtube_video_id' => $videoData->id,
-            'images' => $videoData->images,
+            'views' => $video->views,
+            'thumbsUp' => $video->thumbs_up,
+            'thumbsDown' => $video->thumbs_down,
+            'youtube_video_id' => $video->video_id,
+            'images' => $video->images,
+            'published_at' => $video->published_at,
             'links' => [
                 'web' => action('VideoController@getVideo', ['id' => $video->id, 'slug' => $video->slug])
             ]
@@ -35,10 +34,11 @@ class VideoTransformer extends TransformerAbstract {
     }
 
     public function includeChannel(Video $video) {
-        $videoData = $video->youTubeData;
-        $channel = $videoData->channel;
+        $channel = $video->channel;
 
-        return $this->item($channel, new ChannelTransformer);
+        if ($channel) {
+            return $this->item($channel, new ChannelTransformer);
+        }
     }
 
     public function includeSongs(Video $video) {

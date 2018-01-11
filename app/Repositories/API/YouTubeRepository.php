@@ -10,6 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\RequestException;
 use App\YouTubeVideo;
 use App\YouTubeChannel;
+use Carbon\Carbon;
 
 class YouTubeRepository implements YouTubeRepositoryInterface {
 
@@ -32,7 +33,6 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
         }
 
         $includeChannel = array_key_exists('includeChannel', $options) ? $options['includeChannel'] == true : false;
-        $includeChannel = true;
 
         $params = array_merge([
             'part' => 'snippet,statistics'
@@ -58,9 +58,12 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
             $video->id = $v->id;
             $video->channelId = $snippet->channelId;
             $video->images = $snippet->thumbnails;
+            $video->publishedAt = Carbon::parse($snippet->publishedAt)->toDateTimeString();
             $video->views = $statistics->viewCount;
             $video->thumbsUp = $statistics->likeCount;
             $video->thumbsDown = $statistics->dislikeCount;
+            $video->comments = $statistics->commentCount;
+            $video->favorites = $statistics->favoriteCount;
             if ($includeChannel) {
                 $video->channel = $this->getChannelById($video->channelId);
             }
@@ -81,7 +84,11 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
     }
 
     public function getChannel($data=[]) {
+        if (! is_array($data)) {
+            $data = ['id' => $data];
+        }
 
+        return $this->getChannelById($data['id']);
     }
 
     public function getChannelById($id) {

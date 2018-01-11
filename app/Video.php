@@ -4,14 +4,14 @@ namespace App;
 
 class Video extends BaseModel
 {
-    protected $fillable = ['name', 'slug', 'description', 'video_id', 'source', 'band_id'];
+    protected $fillable = ['name', 'slug', 'description', 'video_id', 'source', 'band_id', 'published_at', 'thumbs_up', 'thumbs_down', 'date'];
 
     /**
      * The attributes that should be mutated to dates.
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'published_at', 'date'];
 
     public function band() {
       return $this->belongsTo('App\Band');
@@ -23,5 +23,9 @@ class Video extends BaseModel
 
     public function tags() {
         return $this->belongsToMany('App\Tag', 'videos_tags')->orderBy('name');
+    }
+
+    public function images() {
+        return $this->hasMany('App\VideoImage');
     }
 }

@@ -30,6 +30,9 @@ class VideoController extends Controller
         if (\Request::has('type')) {
             $params['type'] = \Request::get('type');
         }
+        if (\Request::has('page')) {
+            $params['page'] = \Request::get('page');
+        }
         $videos = $this->videoRepo->getVideos($params);
         $tags = [];
         for($i = 2017; $i > 1990; $i --) {

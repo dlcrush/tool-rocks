@@ -37,6 +37,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
         return $this->model = $model;
     }
 
+    public function reset() {
+        $this->makeModel();
+        $this->clearCriteria();
+    }
+
     public function all($columns = ['*']) {
         $this->applyCriteria();
         return $this->model->get($columns);
@@ -123,6 +128,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
 
     public function pushCriteria(Criteria $criteria) {
         $this->criteria->push($criteria);
+        return $this;
+    }
+
+    public function clearCriteria() {
+        $this->criteria = collect();
         return $this;
     }
 

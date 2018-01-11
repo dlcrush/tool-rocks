@@ -14,6 +14,8 @@ interface Criteria {
 
     public function pushCriteria(C $criteria);
 
+    public function clearCriteria();
+
     public function applyCriteria();
 
 }

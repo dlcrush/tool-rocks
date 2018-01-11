@@ -4,6 +4,8 @@ namespace App\Repositories\API\Contracts;
 
 interface Repository {
 
+    public function reset();
+
     public function all($columns = array('*'));
 
     public function paginate($perPage = 15, $columns = array('*'));

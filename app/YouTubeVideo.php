@@ -18,6 +18,9 @@ class YouTubeVideo implements JsonSerializable, Jsonable, Arrayable {
     protected $thumbsDown;
     protected $images;
     protected $channelId;
+    protected $publishedAt;
+    protected $favorites;
+    protected $comments;
 
     public function __construct() {
         // do some initialization shit here
@@ -42,7 +45,10 @@ class YouTubeVideo implements JsonSerializable, Jsonable, Arrayable {
             'thumbsDown' => $this->thumbsDown,
             'views' => $this->views,
             'channel' => $this->channel->toArray(),
-            'images' => $this->images
+            'images' => $this->images,
+            'publishedAt' => $this->publishedAt,
+            'favorites' => $this->favorites,
+            'comments' => $this->comments
         ];
     }
 }
