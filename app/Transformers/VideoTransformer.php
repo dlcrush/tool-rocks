@@ -25,7 +25,7 @@ class VideoTransformer extends TransformerAbstract {
             'thumbsUp' => $video->thumbs_up,
             'thumbsDown' => $video->thumbs_down,
             'youtube_video_id' => $video->video_id,
-            'images' => $video->images,
+            'images' => $this->transformImages($video->images),
             'published_at' => $video->published_at,
             'links' => [
                 'web' => action('VideoController@getVideo', ['id' => $video->id, 'slug' => $video->slug])
@@ -57,6 +57,18 @@ class VideoTransformer extends TransformerAbstract {
         $related = $video->related;
 
         return $this->collection($related, new VideoTransformer);
+    }
+
+    private function transformImages($images) {
+        return $images->mapWithKeys(function ($item) {
+            return [
+                $item['size'] => [
+                    'height' => $item['height'],
+                    'width' => $item['width'],
+                    'url' => $item['url']
+                ]
+            ];
+        });
     }
 
 }
