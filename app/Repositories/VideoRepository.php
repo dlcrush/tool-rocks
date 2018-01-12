@@ -40,6 +40,9 @@ class VideoRepository implements VideoRepositoryInterface {
         if (array_has($options, 'type')) {
             $params['type'] = array_get($options, 'type');
         }
+        if (array_has($options, 'orderBy')) {
+            $params['orderBy'] = array_get($options, 'orderBy');
+        }
 
         $url = $this->urlBuilder
             ->path('videos')

@@ -33,6 +33,9 @@ class VideoController extends Controller
         if (\Request::has('page')) {
             $params['page'] = \Request::get('page');
         }
+        if (\Request::has('orderBy')) {
+            $params['orderBy'] = \Request::get('orderBy');
+        }
         $videos = $this->videoRepo->getVideos($params);
         $tags = [];
         for($i = 2017; $i > 1990; $i --) {

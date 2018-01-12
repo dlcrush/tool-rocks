@@ -29,6 +29,7 @@ class VideoController extends APIController
 
     public function getVideos() {
         $searchCriteria = [];
+        $orderBy = 'views:desc';
         if (\Request::has('tags')) {
             $searchCriteria['tags'] = \Request::get('tags');
         }
@@ -38,13 +39,19 @@ class VideoController extends APIController
         if (\Request::has('type')) {
             $searchCriteria['type'] = \Request::get('type');
         }
+        if (\Request::has('orderBy')) {
+            $orderBy = \Request::get('orderBy');
+        }
 
         if (sizeof($searchCriteria) > 0) {
             $this->videoRepo->pushCriteria(new Search($searchCriteria));
         }
 
         $this->videoRepo->pushCriteria(new Expand(['images', 'tags']));
-        $this->videoRepo->pushCriteria(new OrderBy('views', 'desc'));
+        $orderBy = explode(':', $orderBy);
+        $orderByProp = $orderBy[0];
+        $orderByDirection = sizeof($orderBy) > 1 ? $orderBy[1] : 'asc';
+        $this->videoRepo->pushCriteria(new OrderBy($orderByProp, $orderByDirection));
 
         $paginator = $this->videoRepo->paginate(10);
         $videos = $paginator->getCollection();
