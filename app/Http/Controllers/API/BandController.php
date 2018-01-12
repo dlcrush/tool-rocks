@@ -101,7 +101,11 @@ class BandController extends APIController
     }
 
     private function getSongByIdOrSlug($songs, $songId) {
-        $song = $songs->where('id', $songId)->first();
+        $song = null;
+
+        if (is_int($songId)) {
+            $song = $songs->where('id', $songId)->first();
+        }
 
         if (! isset($song)) {
             $song = $songs->where('slug', $songId)->first();

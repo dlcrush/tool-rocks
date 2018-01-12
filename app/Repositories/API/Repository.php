@@ -101,7 +101,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
             // In this case, we assumed $idOrSlug as an id but we found nothing.
             // Now, let's check and make sure it wasn't a slug that just happened
             // to be an integer.
-            $item = $this->find($idOrSlug);
+            $item = $this->findBy($field, $idOrSlug);
         }
 
         return $item;
