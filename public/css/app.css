@@ -11845,6 +11845,8 @@ span.stat {
   text-align: center;
 }
 
+/** Pretty Header **/
+
 .lyric-layout .header,
 .lyrics-layout .header,
 .videos-layout .header,
@@ -11870,6 +11872,68 @@ span.stat {
   padding-top: 25px;
   padding-bottom: 25px;
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 801px) and (max-width: 1023px) {
+  .lyric-layout .header .text,
+  .lyrics-layout .header .text,
+  .videos-layout .header .text,
+  .ipsum-layout .header .text {
+    top: 25%;
+  }
+}
+
+@media (max-width: 800px) {
+  .lyric-layout .header .text,
+  .lyrics-layout .header .text,
+  .videos-layout .header .text,
+  .ipsum-layout .header .text {
+    top: 20%;
+  }
+}
+
+@media (max-width: 700px) {
+  .lyric-layout .header .text,
+  .lyrics-layout .header .text,
+  .videos-layout .header .text,
+  .ipsum-layout .header .text {
+    top: 17%;
+    left: 36%;
+  }
+}
+
+@media (max-width: 600px) {
+  .lyric-layout .header .text,
+  .lyrics-layout .header .text,
+  .videos-layout .header .text,
+  .ipsum-layout .header .text {
+    top: 11%;
+    left: 33%;
+  }
+}
+
+@media (max-width: 500px) {
+  .lyric-layout .header .text,
+  .lyrics-layout .header .text,
+  .videos-layout .header .text,
+  .ipsum-layout .header .text {
+    top: 10%;
+    left: 34%;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  .lyric-layout .header .text,
+  .lyrics-layout .header .text,
+  .videos-layout .header .text,
+  .ipsum-layout .header .text {
+    top: 3%;
+    left: 29%;
+  }
 }
 
 .videos-layout .videos-collection .video-card {
