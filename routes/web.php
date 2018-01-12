@@ -18,9 +18,6 @@ Route::get('/', function () {
 Route::get('ipsum', 'IpsumController@generate');
 Route::get('videos/{id}/{slug?}', 'VideoController@getVideo');
 Route::get('videos', 'VideoController@getVideos');
-Route::get('static/videos/{id}/{slug?}', function($id, $slug='') {
-    return view('videos.static');
-});
 Route::get('lyrics', 'LyricController@getLyrics');
 Route::get('lyrics/song/{songId}', 'LyricController@getLyric');
 
