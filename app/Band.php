@@ -24,4 +24,8 @@ class Band extends BaseModel
     public function videos() {
       return $this->hasMany('App\Video');
     }
+
+    public function tours() {
+        return $this->hasMany('App\Tour')->orderBy('date', 'desc');
+    }
 }

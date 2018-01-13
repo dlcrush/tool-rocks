@@ -32,6 +32,9 @@
                         <a href="{{ action('Admin\TagController@index') }}"> Tags</a>
                     </li>
                     <li>
+                        <a href="{{ action('Admin\TourController@index') }}"> Tours</a>
+                    </li>
+                    <li>
                         <a href="{{ action('Admin\VideoController@index') }}"> Videos</a>
                     </li>
                     <li>

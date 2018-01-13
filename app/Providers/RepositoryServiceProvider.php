@@ -48,6 +48,10 @@ class RepositoryServiceProvider extends ServiceProvider
             return new \App\Repositories\API\TagRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
 
+        $this->app->bind('App\Repositories\API\Contracts\TourRepository', function($app) {
+            return new \App\Repositories\API\TourRepository($this->app, $app->make('Illuminate\Support\Collection'));
+        });
+
         $this->app->bind('App\Repositories\API\Contracts\VideoRepository', function($app) {
             return new \App\Repositories\API\VideoRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
