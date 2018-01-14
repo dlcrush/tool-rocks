@@ -12,11 +12,11 @@
 </div>
 <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name="name" value="{{ isset($show->name) ? $show->name : '' }}">
+    <input type="text" class="form-control" id="name" name="name" placeholder="Date - Venue - Location" value="{{ isset($show->name) ? $show->name : '' }}">
 </div>
 <div class="form-group">
     <label for="slug">Slug</label>
-    <input type="text" class="form-control" id="slug" name="slug" value="{{ isset($show->slug) ? $show->slug : '' }}">
+    <input type="text" class="form-control" id="slug" name="slug" placeholder="tool-year-location" value="{{ isset($show->slug) ? $show->slug : '' }}">
 </div>
 <div class="form-group">
     <label for="date">Date</label>

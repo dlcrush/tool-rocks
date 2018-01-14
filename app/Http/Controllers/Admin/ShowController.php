@@ -8,6 +8,7 @@ use App\Repositories\API\Contracts\BandRepository;
 use App\Repositories\API\Contracts\ShowRepository;
 use App\Repositories\API\Criteria\Expand;
 use App\Repositories\API\Criteria\Filter;
+use App\Repositories\API\Criteria\OrderBy;
 use Carbon\Carbon;
 
 class ShowController extends Controller
@@ -48,6 +49,7 @@ class ShowController extends Controller
         }
 
         $this->showRepo->pushCriteria(new Filter('tour_id', $tourId));
+        $this->showRepo->pushCriteria(new OrderBy('date'));
         $shows = $this->showRepo->all();
 
         return view('admin.shows.index', compact('band', 'bands', 'bandId', 'tours', 'tourId', 'shows'));
@@ -83,7 +85,7 @@ class ShowController extends Controller
             'date' => 'required',
             'venue_id' => 'nullable|numeric',
             'video_id' => 'nullable|numeric'
-         ]);
+        ]);
 
         $show = $this->showRepo->create([
              'name' => $request->name,
