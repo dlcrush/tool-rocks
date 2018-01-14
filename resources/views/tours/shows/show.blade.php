@@ -12,6 +12,11 @@
     <div class="show-item">
         <div class="row">
             <div class="col-xs-12">
+                @include('components.backTo', [
+                    'url' => action('TourController@getTour', ['id' => $tourId]),
+                    'text' => "Back to All " . $tourId . " Shows"
+                ])
+
                 <h3>{{ array_get($show, 'name') }}</h3>
 
                 <div class="songs-collection list-group">

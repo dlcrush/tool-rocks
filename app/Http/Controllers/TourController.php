@@ -28,6 +28,6 @@ class TourController extends Controller
     public function getShow($tourId, $showId) {
         $show = $this->bandRepo->getShow('tool', $tourId, $showId);
 
-        return view('tours.shows.show', compact('show'));
+        return view('tours.shows.show', compact('show', 'tourId'));
     }
 }

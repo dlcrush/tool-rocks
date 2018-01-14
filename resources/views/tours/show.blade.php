@@ -12,7 +12,12 @@
     <div class="tour-item">
         <div class="row">
             <div class="col-xs-12">
-                <h3>{{ array_get($tour, 'name') }}</h3>
+                @include('components.backTo', [
+                    'url' => action('TourController@getTours'),
+                    'text' => 'Back to All Tours'
+                ])
+
+                <h3>{{ array_get($tour, 'name') }} Tour</h3>
 
                 <div class="shows-collection list-group">
                     @forelse(array_get($tour, 'shows.data') as $show)
