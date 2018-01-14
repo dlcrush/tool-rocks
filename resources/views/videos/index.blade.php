@@ -37,12 +37,6 @@
 @endsection
 
 @section('content')
-<style>
-    .form-group {
-        margin-right: 25px;
-    }
-</style>
-
 <div class="container-fluid videos-layout">
     <div class="row">
         <div class="col-xs-12">
@@ -111,6 +105,10 @@
                                     @foreach(array_get($video, 'tags.data') as $tag)
                                         <span class="label label-primary">{{ array_get($tag, 'name') }}</span>
                                     @endforeach
+                                </div>
+                                <div class="video-statistics">
+                                    <i class="fa fa-eye"></i> <span class="stat">{{ array_get($video, 'views') }}</span>
+                                    <i class="fa fa-thumbs-up"></i> <span class="stat">{{ array_get($video, 'thumbsUp') }}</span>
                                 </div>
                             </div>
                         </div>
