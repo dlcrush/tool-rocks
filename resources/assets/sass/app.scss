@@ -482,7 +482,7 @@ span.stat {
             //border: 1px solid white;
             padding-top: 15px;
             padding-bottom: 15px;
-            background-color: #000202;
+            background-color: darken($primaryColor, 4%);
 
             .video-card-image {
                 display: inline-block;
