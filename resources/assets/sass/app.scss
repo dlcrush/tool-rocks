@@ -350,6 +350,30 @@ span.stat {
   padding-right: 10px;
 }
 
+.tour-layout,.show-layout {
+    .list-group-item {
+        background-color:darken($primaryColor, 4%);
+        color: #fff !important;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        &:hover {
+            background-color:darken($primaryColor, 15%);
+        }
+    }
+    .list-group-item-heading {
+        display: inline-block;
+        color: #fff !important;
+    }
+    .watch-link {
+        display: inline-block;
+
+        &:hover {
+            color: darken(#fff, 15%);
+        }
+    }
+}
+
 .lyrics-layout {
     .lyric-card {
         margin-bottom: 15px;

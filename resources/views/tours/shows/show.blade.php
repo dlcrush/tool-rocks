@@ -21,10 +21,19 @@
 
                 <div class="songs-collection list-group">
                     @foreach(array_get($show, 'songs.data') as $song)
-                        <div class="list-group-item" style="color:black;">
+                        <div class="list-group-item">
                             {{ $loop->iteration }}. {{ array_get($song, 'name') }}
                         </div>
                     @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Comments</h3>
+                <div class="comments">
+                    <div class="fb-comments" data-href="{{ url()->current() }}" data-width="1024" data-numposts="5" data-colorscheme="dark" style="margin: 0 auto;"></div>
                 </div>
             </div>
         </div>

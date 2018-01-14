@@ -1,12 +1,12 @@
 @extends('layouts/app', [
     'wide' => true,
     'meta' => [
-        'title' => array_get($video, 'name') . ' - ToolRocks.com ',
-        'description' => 'Check out this awesome Tool Ipsum generator!',
-        'keywords' => 'tool, tool band, tool ipsum, ipsum, ipsum generator, tool ipsum generator',
+        'title' => array_get($video, 'name'),
+        'description' => array_get($video, 'description'),
+        'keywords' => 'tool, tool band',
         'og.image' => array_get($video, 'images.standard.url'),
         'og.description' => "Check out this awesome performance of Tool!",
-        'og.title' => array_get($video, 'name') . ' - ToolRocks.com '
+        'og.title' => array_get($video, 'name')
     ]
 ])
 

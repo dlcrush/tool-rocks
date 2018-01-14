@@ -17,7 +17,7 @@
         <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta property="fb:app_id" content="114546565996433" />
-        <meta property="og:site_name" content="Tool Rocks"/>
+        <meta property="og:site_name" content="ToolRocks.com"/>
         @if(array_has($meta, 'og.title'))
             <meta property="og:title" content="{{ array_get($meta, 'og.title') }}"/>
         @endif
