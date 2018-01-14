@@ -1,4 +1,10 @@
-@extends('layouts/app')
+@extends('layouts/app', [
+    'meta' => [
+        'title' => 'Tours',
+        'description' => "Check out all of Tool's current and past tours!",
+        'keywords' => 'tool, tool band, tool tour, tool live, tool live show, tool setlist, tool setlists'
+    ]
+])
 
 @section('content')
 

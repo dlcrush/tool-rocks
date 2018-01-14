@@ -1,4 +1,10 @@
-@extends('layouts/app')
+@extends('layouts/app', [
+    'meta' => [
+        'title' => array_get($tour, 'name') . ' Tour',
+        'description' => "Check out all the shows from Tool's " . array_get($tour, 'name') . " Tour!",
+        'keywords' => 'tool, tool band, tool tour, tool live, tool live show, tool setlist, tool setlists'
+    ]
+])
 
 @section('content')
 
