@@ -10,6 +10,9 @@
                 @if(array_has($filters, 'band'))
                     @include("admin.partials.bandDropdown", ["bands" => array_get($filters, 'band.bands'), "selected" => array_get($filters, 'band.current'), "page" => $page])
                 @endif
+                @if(array_has($filters, 'tour'))
+                    @include("admin.partials.tourDropdown", ["tours" => array_get($filters, 'tour.tours'), "selected" => array_get($filters, 'tour.current'), "page" => $page, "bandId" => array_get($filters, 'tour.bandId')])
+                @endif
             @endif
         </div>
         <div class="col-md-4">

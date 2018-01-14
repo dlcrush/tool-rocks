@@ -27,4 +27,8 @@ class Song extends BaseModel
     public function video() {
         return $this->hasOne('App\Video', 'id', 'lyrics_video_id');
     }
+
+    public function shows() {
+        return $this->belongsToMany('App\Show', 'songs_shows')->orderBy('date');
+    }
 }

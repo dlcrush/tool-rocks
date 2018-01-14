@@ -44,6 +44,10 @@ class RepositoryServiceProvider extends ServiceProvider
             return new \App\Repositories\API\IpsumRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
 
+        $this->app->bind('App\Repositories\API\Contracts\ShowRepository', function($app) {
+            return new \App\Repositories\API\ShowRepository($this->app, $app->make('Illuminate\Support\Collection'));
+        });
+
         $this->app->bind('App\Repositories\API\Contracts\TagRepository', function($app) {
             return new \App\Repositories\API\TagRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });

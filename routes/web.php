@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['Adm
     Route::get('songs/{id}/delete', 'SongController@delete');
     Route::resource('ipsums', 'IpsumController');
     Route::get('ipsums/{id}/delete', 'IpsumController@delete');
+    Route::resource('shows', 'ShowController');
+    Route::get('shows/{id}/delete', 'ShowController@delete');
     Route::resource('tags', 'TagController');
     Route::get('tags/{id}/delete', 'TagController@delete');
     Route::resource('tours', 'TourController');

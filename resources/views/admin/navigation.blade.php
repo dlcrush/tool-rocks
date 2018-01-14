@@ -29,6 +29,9 @@
                         <a href="{{ action('Admin\SongController@index') }}"> Songs</a>
                     </li>
                     <li>
+                        <a href="{{ action('Admin\ShowController@index') }}"> Shows</a>
+                    </li>
+                    <li>
                         <a href="{{ action('Admin\TagController@index') }}"> Tags</a>
                     </li>
                     <li>

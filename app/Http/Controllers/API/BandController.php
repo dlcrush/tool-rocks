@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Transformers\BandTransformer;
 use App\Transformers\SongTransformer;
 use App\Transformers\AlbumTransformer;
+use App\Transformers\TourTransformer;
+use App\Transformers\ShowTransformer;
 use App\Repositories\API\Contracts\BandRepository;
 use App\Repositories\API\Criteria\Expand;
 
@@ -15,15 +17,22 @@ class BandController extends APIController
     protected $band;
     protected $bandTransformer;
     protected $songTransformer;
+    protected $albumTransformer;
+    protected $tourTransformer;
+    protected $showTransformer;
 
     public function __construct(BandRepository $band,
         BandTransformer $bandTransformer,
         SongTransformer $songTransformer,
-        AlbumTransformer $albumTransformer) {
+        AlbumTransformer $albumTransformer,
+        TourTransformer $tourTransformer,
+        ShowTransformer $showTransformer) {
         $this->band = $band;
         $this->bandTransformer = $bandTransformer;
         $this->songTransformer = $songTransformer;
         $this->albumTransformer = $albumTransformer;
+        $this->tourTransformer = $tourTransformer;
+        $this->showTransformer = $showTransformer;
     }
 
     public function getBands()
@@ -94,6 +103,54 @@ class BandController extends APIController
         return $this->respond($songResp);
     }
 
+    public function getTours($bandId='tool') {
+        $this->band->pushCriteria(new Expand('tours.shows'));
+
+        $band = $this->getBandByIdOrSlug($bandId);
+
+        $tours = fractal()
+            ->collection($band->tours)
+            ->transformWith($this->tourTransformer)
+            ->parseIncludes(['shows'])
+            ->toArray();
+
+        return $this->respond($tours);
+    }
+
+    public function getTour($bandId='tool', $tourId) {
+        $this->band->pushCriteria(new Expand('tours.shows'));
+
+        $band = $this->getBandByIdOrSlug($bandId);
+
+        $tour = $this->getTourByIdOrSlug($band->tours, $tourId);
+
+        $tourResp = fractal()
+            ->item($tour)
+            ->transformWith($this->tourTransformer)
+            ->parseIncludes(['shows'])
+            ->toArray();
+
+        return $this->respond($tourResp);
+    }
+
+    public function getShow($bandId='tool', $tourId, $showId) {
+        $this->band->pushCriteria(new Expand('tours.shows.songs'));
+
+        $band = $this->getBandByIdOrSlug($bandId);
+
+        $tour = $this->getTourByIdOrSlug($band->tours, $tourId);
+
+        $show = $this->getShowByIdOrSlug($tour->shows, $showId);
+
+        $showResp = fractal()
+            ->item($show)
+            ->transformWith($this->showTransformer)
+            ->parseIncludes(['songs'])
+            ->toArray();
+
+        return $this->respond($showResp);
+    }
+
     private function getBandByIdOrSlug($bandId='tool') {
         $bandId = isset($bandId) ? $bandId : 'tool';
 
@@ -103,7 +160,7 @@ class BandController extends APIController
     private function getSongByIdOrSlug($songs, $songId) {
         $song = null;
 
-        if (is_int($songId)) {
+        if (is_numeric($songId)) {
             $song = $songs->where('id', $songId)->first();
         }
 
@@ -113,4 +170,33 @@ class BandController extends APIController
 
         return $song;
     }
+
+    private function getTourByIdOrSlug($tours, $tourId) {
+        $tour = null;
+
+        if (is_numeric($tourId)) {
+            $tour = $tours->where('id', $tourId)->first();
+        }
+
+        if (! isset($tour)) {
+            $tour = $tours->where('slug', $tourId)->first();
+        }
+
+        return $tour;
+    }
+
+    private function getShowByIdOrSlug($shows, $showId) {
+        $show = null;
+
+        if (is_numeric($showId)) {
+            $show = $shows->where('id', $showId)->first();
+        }
+
+        if (! isset($show)) {
+            $show = $shows->where('slug', $showId)->first();
+        }
+
+        return $show;
+    }
+
 }

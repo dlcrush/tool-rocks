@@ -25,6 +25,9 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
     Route::get('bands/{bandId}/albums/{albumId}', 'BandController@getAlbum');
     Route::get('bands/{bandId}/songs', 'BandController@getSongs');
     Route::get('bands/{bandId}/songs/{songId}', 'BandController@getSong');
+    Route::get('bands/{bandId}/tours', 'BandController@getTours');
+    Route::get('bands/{bandId}/tours/{tourId}', 'BandController@getTour');
+    Route::get('bands/{bandId}/tours/{tourId}/shows/{showId}', 'BandController@getShow');
 
     /** Videos **/
     Route::get('videos', 'VideoController@getVideos');
