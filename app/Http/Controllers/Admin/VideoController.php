@@ -8,6 +8,7 @@ use App\Repositories\API\Contracts\BandRepository;
 use App\Repositories\API\Contracts\SongRepository;
 use App\Repositories\API\Contracts\VideoRepository;
 use App\Repositories\API\Criteria\Expand;
+use App\Jobs\ProcessYTVideo;
 
 class VideoController extends Controller
 {
@@ -111,7 +112,7 @@ class VideoController extends Controller
             \DB::table('videos_songs')->insert($songsVideos);
         }
 
-        //die();
+        ProcessYTVideo::dispatch($video);
 
         return redirect(action('Admin\VideoController@index'));
     }
@@ -206,6 +207,8 @@ class VideoController extends Controller
 
             \DB::table('videos_songs')->insert($songsVideos);
         }
+
+        ProcessYTVideo::dispatch($video);
 
         return redirect(action('Admin\VideoController@index'));
     }
