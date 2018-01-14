@@ -108,7 +108,9 @@
                                 </div>
                                 <div class="video-statistics">
                                     <i class="fa fa-eye"></i> <span class="stat">{{ array_get($video, 'views') }}</span>
-                                    <i class="fa fa-thumbs-up"></i> <span class="stat">{{ array_get($video, 'thumbsUp') }}</span>
+                                    @if(array_get($video, 'thumbsUp') != null)
+                                        <i class="fa fa-thumbs-up"></i> <span class="stat">{{ array_get($video, 'thumbsUp') }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -60,10 +60,10 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
             $video->images = $snippet->thumbnails;
             $video->publishedAt = Carbon::parse($snippet->publishedAt)->toDateTimeString();
             $video->views = $statistics->viewCount;
-            $video->thumbsUp = $statistics->likeCount;
-            $video->thumbsDown = $statistics->dislikeCount;
-            $video->comments = $statistics->commentCount;
-            $video->favorites = $statistics->favoriteCount;
+            $video->thumbsUp = isset($statistics->likeCount) ? $statistics->likeCount : null;
+            $video->thumbsDown = isset($statistics->dislikeCount) ? $statistics->dislikeCount : null;
+            $video->comments = isset($statistics->commentCount) ? $statistics->commentCount : null;
+            $video->favorites = isset($statistics->favoriteCount) ? $statistics->favoriteCount : null;
             if ($includeChannel) {
                 $video->channel = $this->getChannelById($video->channelId);
             }
