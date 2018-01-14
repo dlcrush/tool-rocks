@@ -11,6 +11,7 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use App\Repositories\API\Criteria\Expand;
 use App\Repositories\API\Criteria\Videos\Search;
 use App\Repositories\API\Criteria\OrderBy;
+use App\Repositories\API\Criteria\NotNull;
 
 class VideoController extends APIController
 {
@@ -48,6 +49,7 @@ class VideoController extends APIController
         }
 
         $this->videoRepo->pushCriteria(new Expand(['images', 'tags']));
+        $this->videoRepo->pushCriteria(new NotNull(['views']));
         $orderBy = explode(':', $orderBy);
         $orderByProp = $orderBy[0];
         $orderByDirection = sizeof($orderBy) > 1 ? $orderBy[1] : 'asc';
