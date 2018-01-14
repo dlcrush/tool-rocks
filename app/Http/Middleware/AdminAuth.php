@@ -16,7 +16,7 @@ class AdminAuth
     public function handle($request, Closure $next)
     {
         // TODO: actually implement the hasAccess check
-        $hasAccess = strpos(url()->current(), 'toolrocks.dev') > -1;
+        $hasAccess = strpos(url()->current(), 'toolrocks.test') > -1;
 
         if (! $hasAccess) {
             return redirect('/');
