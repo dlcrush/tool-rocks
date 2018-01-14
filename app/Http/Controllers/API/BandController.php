@@ -118,7 +118,7 @@ class BandController extends APIController
     }
 
     public function getTour($bandId='tool', $tourId) {
-        $this->band->pushCriteria(new Expand('tours.shows'));
+        $this->band->pushCriteria(new Expand('tours.shows.video'));
 
         $band = $this->getBandByIdOrSlug($bandId);
 
@@ -127,14 +127,14 @@ class BandController extends APIController
         $tourResp = fractal()
             ->item($tour)
             ->transformWith($this->tourTransformer)
-            ->parseIncludes(['shows'])
+            ->parseIncludes(['shows.video'])
             ->toArray();
 
         return $this->respond($tourResp);
     }
 
     public function getShow($bandId='tool', $tourId, $showId) {
-        $this->band->pushCriteria(new Expand('tours.shows.songs'));
+        $this->band->pushCriteria(new Expand(['tours.shows.songs', 'tours.shows.video']));
 
         $band = $this->getBandByIdOrSlug($bandId);
 
@@ -145,7 +145,7 @@ class BandController extends APIController
         $showResp = fractal()
             ->item($show)
             ->transformWith($this->showTransformer)
-            ->parseIncludes(['songs'])
+            ->parseIncludes(['songs', 'video'])
             ->toArray();
 
         return $this->respond($showResp);

@@ -8,7 +8,8 @@ use App\Show;
 class ShowTransformer extends TransformerAbstract {
 
     protected $availableIncludes = [
-        'songs'
+        'songs',
+        'video'
     ];
 
     public function transform(Show $show)
@@ -26,6 +27,15 @@ class ShowTransformer extends TransformerAbstract {
         $songs = $show->songs;
 
         return $this->collection($songs, new SetlistSongTransformer);
+    }
+
+    public function includeVideo(Show $show)
+    {
+        $video = $show->video;
+
+        if ($video != null) {
+            return $this->item($video, new VideoTransformer);
+        }
     }
 
     // public function includeVenue(Show $show)

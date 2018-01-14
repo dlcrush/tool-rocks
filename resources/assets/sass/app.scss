@@ -393,27 +393,6 @@ span.stat {
         margin-top: 15px;
     }
 
-    // .header {
-    //     position: relative;
-    // }
-
-    // .header .text {
-    //     position: absolute;
-    //     top: 30%;
-    //     left: 40%;
-    //     max-width: 400px;
-    //     margin-right: auto;
-    //     margin-left: auto;
-    //     color: white;
-    //     font-size: 36px;
-    //     background-color: black;
-    //     padding-left: 50px;
-    //     padding-right: 50px;
-    //     padding-top: 25px;
-    //     padding-bottom: 25px;
-    //     background-color:rgba(0, 0, 0, 0.8)
-    // }
-
     a {
         color: #fff;
     }
@@ -432,7 +411,13 @@ span.stat {
 }
 
 /** Pretty Header **/
-.lyric-layout,.lyrics-layout,.videos-layout,.ipsum-layout {
+.lyric-layout,
+.lyrics-layout,
+.videos-layout,
+.ipsum-layout,
+.tours-layout,
+.tour-layout,
+.show-layout {
     .header {
         position: relative;
     }
@@ -494,9 +479,10 @@ span.stat {
             display: inline-block;
             width: 100%;
             margin-bottom: 25px;
-            border: 1px solid white;
+            //border: 1px solid white;
             padding-top: 15px;
             padding-bottom: 15px;
+            background-color: #000202;
 
             .video-card-image {
                 display: inline-block;

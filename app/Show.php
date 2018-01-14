@@ -22,6 +22,6 @@ class Show extends BaseModel
     }
 
     public function video() {
-        return $this->hasOne('App\Video');
+        return $this->belongsTo('App\Video');
     }
 }

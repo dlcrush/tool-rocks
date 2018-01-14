@@ -25,7 +25,7 @@
                         <a href="/lyrics"><i class="fa fa-music"></i> Lyrics</a>
                     </li>
                     <li>
-                        <a href="/tour"><i class="fa fa-bus"></i> Tour</a>
+                        <a href="/tours"><i class="fa fa-bus"></i> Tours</a>
                     </li>
                     <li>
                         <a href="/blog"><i class="fa fa-book"></i> Blog</a>
