@@ -16,6 +16,16 @@
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta property="og:site_name" content="Tool Rocks"/>
+        @if(array_has($meta, 'og.title'))
+            <meta property="og:title" content="{{ array_get($meta, 'og.title') }}"/>
+        @endif
+        @if(array_has($meta, 'og.image'))
+            <meta property="og:image" content="{{ array_get($meta, 'og.image') }}"/>
+        @endif
+        @if(array_has($meta, 'og.description'))
+            <meta property="og:description" content="{{ array_get($meta, 'og.description') }}"/>
+        @endif
     </head>
 
     <body>
