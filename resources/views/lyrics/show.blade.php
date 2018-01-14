@@ -20,7 +20,11 @@
             @if(array_get($song, 'lyrics.youtube_video_id') != null)
                 <div class="video-wrapper">
                     <div class="video-container">
-                        <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/{{ array_get($song, 'lyrics.youtube_video_id') }}" frameborder="0" allowfullscreen></iframe>
+                        @include('components.ytVideo', [
+                            'width' => '560',
+                            'height' => '315',
+                            'videoId' => array_get($song, 'lyrics.youtube_video_id')
+                        ])
                     </div>
                 </div>
             @endif

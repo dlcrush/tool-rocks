@@ -10,7 +10,11 @@
         <div class="col-xs-12 col-sm-12 col-md-8">
             <div class="video-wrapper">
                 <div class="video-container">
-                    <iframe id="video" class="video" width="960" height="540" src="https://www.youtube.com/embed/{{ array_get($video, 'youtube_video_id') }}?enablejsapi=1&origin=http://toolrocks.dev" frameborder="0" allowfullscreen></iframe>
+                    @include('components.ytVideo', [
+                        'width' => '960',
+                        'height' => '540',
+                        'videoId' => array_get($video, 'youtube_video_id')
+                    ])
                 </div>
             </div>
         </div>
