@@ -1,11 +1,11 @@
+<!DOCTYPE html>
 @if(! isset($meta))
     <?php $meta = array(); ?>
 @endif
 @if(! isset($wide))
     <?php $wide = false; ?>
 @endif
-
-<!doctype html lang="en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
