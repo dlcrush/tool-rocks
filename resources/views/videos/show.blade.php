@@ -14,7 +14,20 @@
 
 <div class="container-fluid video-layout">
 
-    <h3>{{ array_get($video, 'name') }}</h3>
+    <div class="row">
+        <div class="col-xs-12">
+            @include("components.backTo", [
+                'url' => action('VideoController@getVideos'),
+                'text' => 'Back to All Videos'
+            ])
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>{{ array_get($video, 'name') }}</h3>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-8">
