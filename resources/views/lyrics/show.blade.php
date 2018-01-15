@@ -5,7 +5,16 @@
 <div class="container-fluid lyric-layout">
     @include('components.prettyHeader', ['text'=> 'Lyrics'])
 
-    <div class="lyrics-container row col-xs-12">
+    <div class="row">
+        <div class="col-xs-12">
+            @include("components.backTo", [
+                'url' => action('LyricController@getLyrics'),
+                'text' => 'Back to All Lyrics'
+            ])
+        </div>
+    </div>
+
+    <div class="lyrics-container row">
         <div class="lyrics-content col-xs-12 col-sm-12 col-md-6" style="text-align: left; display: inline-block; float: left;">
             <h1>{{ array_get($song, 'name') }}</h1>
             <p>
