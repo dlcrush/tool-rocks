@@ -46,4 +46,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
     Route::get('youtube/videos', 'YouTubeController@getVideos');
     Route::get('youtube/channels/{channelName}/videos', 'YouTubeController@getVideosByChannel');
     Route::get('youtube/channels/{id}', 'YouTubeController@getChannel');
+
+    Route::get('tv', 'TVcontroller@getTV');
 });

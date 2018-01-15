@@ -84,6 +84,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface {
         return $this->model->whereIn($field, $values)->get($columns);
     }
 
+    public function findNotIn($field, $values, $columns = array('*')) {
+        $this->applyCriteria();
+        return $this->model->whereNotIn($field, $values)->get($columns);
+    }
+
     public function findByIdOrSlug($idOrSlug, $field='slug') {
         $idOrSlug = isset($idOrSlug) ? $idOrSlug : 'tool';
         $assumption = 'id';

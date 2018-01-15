@@ -24,6 +24,8 @@ interface Repository {
 
     public function findIn($field, $values, $columns = array('*'));
 
+    public function findNotIn($field, $values, $columns = array('*'));
+
     public function findByIdOrSlug($idOrSlug, $field='slug');
 
 }

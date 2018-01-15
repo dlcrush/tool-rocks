@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\IngestYTData::class
+        Commands\IngestYTData::class,
+        Commands\FillTVQueue::class
     ];
 
     /**

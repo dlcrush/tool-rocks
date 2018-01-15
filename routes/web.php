@@ -23,6 +23,7 @@ Route::get('lyrics/song/{songId}', 'LyricController@getLyric');
 Route::get('tours', 'TourController@getTours');
 Route::get('tours/{id}', 'TourController@getTour');
 Route::get('tours/{tourId}/shows/{showId}/{slug?}', 'TourController@getShow');
+Route::get('tv', 'TVController@index');
 
 /** Admin Routes **/
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['AdminAuth']], function() {

@@ -19,6 +19,9 @@
                         <a href="/"><i class="fa fa-home"></i> Home</a>
                     </li>
                     <li>
+                        <a href="/tv"><i class="fa fa-tv"></i> TV</a>
+                    </li>
+                    <li>
                         <a href="/videos"><i class="fa fa-play"></i> Videos</a>
                     </li>
                     <li>
