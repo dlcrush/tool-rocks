@@ -155,7 +155,7 @@ class VideoController extends Controller
     {
         $this->validateRequest($request);
 
-        $this->videoRepo->update([
+        $video = $this->videoRepo->update([
             'name' => $request->name,
             'slug' => $request->slug,
             'description' => $request->description,
@@ -208,7 +208,7 @@ class VideoController extends Controller
             \DB::table('videos_songs')->insert($songsVideos);
         }
 
-        ProcessYTVideo::dispatch($video);
+        //ProcessYTVideo::dispatch($video);
 
         return redirect(action('Admin\VideoController@index'));
     }
