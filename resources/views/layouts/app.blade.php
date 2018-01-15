@@ -18,11 +18,16 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta property="fb:app_id" content="114546565996433" />
         <meta property="og:site_name" content="ToolRocks.com"/>
+        <meta property="og:type" content="website" />
         @if(array_has($meta, 'og.title'))
             <meta property="og:title" content="{{ array_get($meta, 'og.title') }}"/>
         @endif
-        @if(array_has($meta, 'og.image'))
-            <meta property="og:image" content="{{ array_get($meta, 'og.image') }}"/>
+        @if(array_has($meta, 'image'))
+            <meta property="og:image:width" content="{{ array_get($meta, 'image.width') }}" />
+            <meta property="og:image:height" content="{{ array_get($meta, 'image.height') }}" />
+            <meta property="og:image:url" content="{{ array_get($meta, 'image.url') }}" />
+            <meta property="og:image:secureurl" content="{{ array_get($meta, 'image.url') }}" />
+            <meta property="og:image" content="{{ array_get($meta, 'image.url') }}"/>
         @endif
         @if(array_has($meta, 'og.description'))
             <meta property="og:description" content="{{ array_get($meta, 'og.description') }}"/>
