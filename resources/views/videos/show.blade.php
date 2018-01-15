@@ -2,11 +2,9 @@
     'wide' => true,
     'meta' => [
         'title' => array_get($video, 'name'),
-        'description' => array_get($video, 'Check out this awesome performance of Tool!'),
-        'keywords' => 'tool, tool band',
+        'description' => 'Check out this awesome performance of Tool!',
+        'keywords' => 'tool live, watch tool live, tool live performances',
         'image' => array_get($video, 'images.standard'),
-        'og.description' => "Check out this awesome performance of Tool!",
-        'og.title' => array_get($video, 'name')
     ]
 ])
 

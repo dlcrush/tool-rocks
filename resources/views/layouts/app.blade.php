@@ -12,26 +12,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ array_get($meta, 'title', 'Home') }} - ToolRocks.com</title>
         <meta name="description" content="{{ array_get($meta, 'description') }}" />
-        <meta name="keywords" content="{{ array_get($meta, 'keywords') }}" />
+        <meta name="keywords" content="tool, toolband, tool band, tool rocks, toolrocks, {{ array_get($meta, 'keywords') }}" />
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta property="fb:app_id" content="114546565996433" />
         <meta property="og:site_name" content="ToolRocks.com"/>
         <meta property="og:type" content="website" />
-        @if(array_has($meta, 'og.title'))
-            <meta property="og:title" content="{{ array_get($meta, 'og.title') }}"/>
-        @endif
+        <meta property="og:title" content="{{ array_get($meta, 'title', 'Home') }} - ToolRocks.com"/>
+        <meta property="og:url" content="{{ url()->current() }}" />
         @if(array_has($meta, 'image'))
             <meta property="og:image:width" content="{{ array_get($meta, 'image.width') }}" />
             <meta property="og:image:height" content="{{ array_get($meta, 'image.height') }}" />
             <meta property="og:image:url" content="{{ array_get($meta, 'image.url') }}" />
-            <meta property="og:image:secureurl" content="{{ array_get($meta, 'image.url') }}" />
             <meta property="og:image" content="{{ array_get($meta, 'image.url') }}"/>
         @endif
-        @if(array_has($meta, 'og.description'))
-            <meta property="og:description" content="{{ array_get($meta, 'og.description') }}"/>
-        @endif
+        <meta property="og:description" content="{{ array_get($meta, 'description') }}"/>
     </head>
 
     <body>

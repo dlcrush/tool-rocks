@@ -1,8 +1,8 @@
 @extends('layouts/app', [
     'meta' => [
-        'title' => 'Tool Ipsum - ToolRocks.com',
-        'description' => 'Check out this awesome Tool Ipsum generator!',
-        'keywords' => 'tool, tool band, tool ipsum, ipsum, ipsum generator, tool ipsum generator'
+        'title' => 'Tool Ipsum',
+        'description' => 'Check out this awesome Tool Ipsum generator! The best text to fill space on your site!',
+        'keywords' => 'tool ipsum, ipsum, ipsum generator, tool ipsum generator, tool band ipsum, tool band ipsum generator, tool lorem ipsum, lorem ipsum, lorem ipsum generator'
     ]
 ])
 

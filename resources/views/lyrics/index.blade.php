@@ -1,4 +1,10 @@
-@extends('layouts/app', ['wide' => false])
+@extends('layouts/app', [
+    'meta' => [
+        'title' => 'Lyrics',
+        'description' => "Check out these awesome Tool lyrics including your favorites such as 'Schism', 'Vicarious', 'Lateralus', and more!",
+        'keywords' => 'tool lyrics, tool band lyrics'
+    ]
+])
 
 @section('content')
 <div class="container-fluid lyrics-layout">

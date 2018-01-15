@@ -1,4 +1,10 @@
-@extends('layouts/app')
+@extends('layouts/app', [
+    'meta' => [
+        'title' => 'Videos',
+        'description' => 'Check out this awesome collection of Tool videos including all of your favorite live performances!',
+        'keywords' => 'tool videos, tool band videos, tool live videos, tool live performances'
+    ]
+])
 
 @section('js')
     <script>

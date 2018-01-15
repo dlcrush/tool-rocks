@@ -1,8 +1,8 @@
 @extends('layouts/app', [
     'meta' => [
         'title' => 'Tours',
-        'description' => "Check out all of Tool's current and past tours!",
-        'keywords' => 'tool, tool band, tool tour, tool live, tool live show, tool setlist, tool setlists'
+        'description' => "Check out this awesome collection of Tool's current, past, and upcoming tours!",
+        'keywords' => 'tool tour, tool live, tool live show, tool setlist, tool setlists, tool live shows, tool tours, tool band tours, tool band tour'
     ]
 ])
 

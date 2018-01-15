@@ -1,8 +1,8 @@
 @extends('layouts/app', [
     'meta' => [
         'title' => array_get($show, 'name') . ' Setlist',
-        'description' => "Check out this setlist from " . array_get($show, 'name') . "!",
-        'keywords' => 'tool, tool band, tool tour, tool live, tool live show, tool setlist, tool setlists'
+        'description' => "Check out this setlist from Tool's live show " . array_get($show, 'name') . "!",
+        'keywords' => 'tool tour, tool live, tool live show, tool setlist, tool setlists, tool band tour, tool band live, tool band live show, tool band setlist'
     ]
 ])
 
