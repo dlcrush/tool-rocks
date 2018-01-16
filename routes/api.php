@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'v1', 'namespace' => 'API'], function() {
+Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth']], function() {
     /** Bands **/
     Route::get('bands', 'BandController@getBands');
     Route::get('bands/{bandId}', 'BandController@getBand');
