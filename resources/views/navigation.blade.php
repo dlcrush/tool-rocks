@@ -21,8 +21,13 @@
                     <li>
                         <a href="/tv"><i class="fa fa-tv"></i> TV</a>
                     </li>
-                    <li>
-                        <a href="/videos"><i class="fa fa-play"></i> Videos</a>
+                    <li class="dropdown">
+                        <a href="/videos" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-play"></i> Videos <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/videos">Browse</a></li>
+                            <li><a href="/videos/search">Search</a></li>
+                            <li><a href="/videos?tags=hall-of-fame">Hall of Fame</a></li>
+                        </ul>
                     </li>
                     <li>
                         <a href="/lyrics"><i class="fa fa-music"></i> Lyrics</a>
@@ -33,11 +38,12 @@
                     <li>
                         <a href="/blog"><i class="fa fa-book"></i> Blog</a>
                     </li>
-                    <li>
-                        <a href="/maynardisms"><i class="fa fa-lightbulb-o"></i> Maynardisms</a>
-                    </li>
-                    <li>
-                        <a href="/ipsum"><i class="fa fa-file-text-o"></i> Ipsum Generator</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/ipsum">Ipsum Generator</a></li>
+                            <li><a href="/maynardisms">Maynardisms</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

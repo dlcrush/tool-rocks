@@ -92,6 +92,21 @@ div.container.frame-wrapper {
   }
 }
 
+.navbar-nav > li > .dropdown-menu {
+    background-color: $navbar-bg-color;
+    color: $navbar-color;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: $navbar-bg-color;
+    color: $navbar-color;
+}
+
+.navbar li a:hover, .navbar .navbar-text:hover {
+    background-color: $navbar-bg-color;
+    color: #8C8F8F;
+}
+
 .content {
   //background-color: $white;
   //background: url(img/main-background.jpg) repeat;
