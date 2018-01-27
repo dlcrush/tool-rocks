@@ -95,7 +95,7 @@ class VideoController extends APIController
             ->where('videos.id', '<>', $video->id)
             ->inRandomOrder()
             ->groupBy('videos.id')
-            ->take(5)
+            ->take(6)
             ->get()
             ->pluck('id');
 
