@@ -50,50 +50,56 @@
         </div>
     </div>
 
-    <div class="videos-filter">
-        <div class="row">
-            <div class="col-xs-12">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label>Year:</label>
-                        <select class="year-dropdown">
-                            <option value="">Select a Year</option>
-                            @foreach($tags as $tag)
-                                <option value="{{ array_get($tag, 'id') }}">{{ array_get($tag, 'year') }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Type:</label>
-                        <select class="type-dropdown">
-                            <option value="">Select a Type</option>
-                            <option value="live">Live</option>
-                            <option value="lyrics">Lyrics</option>
-                            <option value="studio">Studio</option>
-                            <option value="music-video">Music Video</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Sort By:</label>
-                        <select class="sort-by-dropdown">
-                            <option value="views:desc">Most Views</option>
-                            <option value="views:asc">Fewest Views</option>
-                            <option value="created_at:asc">Recently Added</option>
-                            <option value="published_at:asc">Recently Uploaded</option>
-                            <option value="thumbs_up:desc">Thumbs Up</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Tags:</label>
-                        <input type="text" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-default apply-criteria-button">Apply Criteria</button>
-                    </div>
-                </form>
+    @if($page !== 'live-dvd' && $page !== 'hall-of-fame')
+        <div class="videos-filter">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label>Year:</label>
+                            <select class="year-dropdown">
+                                <option value="">Select a Year</option>
+                                @foreach($tags as $tag)
+                                    <option value="{{ array_get($tag, 'id') }}">{{ array_get($tag, 'year') }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Type:</label>
+                            <select class="type-dropdown">
+                                <option value="">Select a Type</option>
+                                <option value="live">Live</option>
+                                <option value="lyrics">Lyrics</option>
+                                <option value="studio">Studio</option>
+                                <option value="music-video">Music Video</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Sort By:</label>
+                            <select class="sort-by-dropdown">
+                                <option value="views:desc">Most Views</option>
+                                <option value="views:asc">Fewest Views</option>
+                                <option value="created_at:asc">Recently Added</option>
+                                <option value="published_at:asc">Recently Uploaded</option>
+                                <option value="thumbs_up:desc">Thumbs Up</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tags:</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-default apply-criteria-button">Apply Criteria</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    @elseif ($page === 'live-dvd')
+        <h3>Live DVDs</h3>
+    @elseif ($page === 'hall-of-fame')
+        <h3>Hall of Fame</h3>
+    @endif
 
     <div class="videos-collection">
         @forelse(array_get($videos, 'data') as $video)

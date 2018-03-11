@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('ipsum', 'IpsumController@generate');
+Route::get('videos/search', 'VideoController@getSearch');
 Route::get('videos/{id}/{slug?}', 'VideoController@getVideo');
 Route::get('videos', 'VideoController@getVideos');
 Route::get('lyrics', 'LyricController@getLyrics');

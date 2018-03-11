@@ -42,6 +42,12 @@ class VideoController extends Controller
             array_push($tags, ['id' => $i, 'year' => $i]);
         }
 
-        return view('videos.index', compact('videos', 'tags'));
+        $page = \Request::get('page');
+
+        return view('videos.index', compact('videos', 'tags', 'page'));
+    }
+
+    public function getSearch() {
+        return view('videos.search');
     }
 }
