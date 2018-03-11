@@ -60,7 +60,12 @@
                             <select class="year-dropdown">
                                 <option value="">Select a Year</option>
                                 @foreach($tags as $tag)
-                                    <option value="{{ array_get($tag, 'id') }}">{{ array_get($tag, 'year') }}</option>
+                                    <option
+                                        value="{{ array_get($tag, 'id') }}"
+                                        {{ $year == array_get($tag, 'year') ? 'selected="selected"' : '' }}
+                                    >
+                                        {{ array_get($tag, 'year') }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -68,20 +73,20 @@
                             <label>Type:</label>
                             <select class="type-dropdown">
                                 <option value="">Select a Type</option>
-                                <option value="live">Live</option>
-                                <option value="lyrics">Lyrics</option>
-                                <option value="studio">Studio</option>
-                                <option value="music-video">Music Video</option>
+                                <option value="live" {{ $type == 'live' ? 'selected="selected"' : '' }}>Live</option>
+                                <option value="lyrics" {{ $type == 'lyrics' ? 'selected="selected"' : '' }}>Lyrics</option>
+                                <option value="studio" {{ $type == 'studio' ? 'selected="selected"' : '' }}>Studio</option>
+                                <option value="music-video" {{ $type == 'music-video' ? 'selected="selected"' : '' }}>Music Video</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Sort By:</label>
                             <select class="sort-by-dropdown">
-                                <option value="views:desc">Most Views</option>
-                                <option value="views:asc">Fewest Views</option>
-                                <option value="created_at:asc">Recently Added</option>
-                                <option value="published_at:asc">Recently Uploaded</option>
-                                <option value="thumbs_up:desc">Thumbs Up</option>
+                                <option value="views:desc" {{ $orderBy == 'views:desc' ? 'selected="selected"' : '' }}>Most Views</option>
+                                <option value="views:asc" {{ $orderBy == 'views:asc' ? 'selected="selected"' : '' }}>Fewest Views</option>
+                                <option value="created_at:desc" {{ $orderBy == 'created_at:desc' ? 'selected="selected"' : '' }}>Recently Added</option>
+                                <option value="published_at:asc" {{ $orderBy == 'published_at:asc' ? 'selected="selected"' : '' }}>Recently Uploaded</option>
+                                <option value="thumbs_up:desc" {{ $orderBy == 'thumbs_up:desc' ? 'selected="selected"' : '' }}>Thumbs Up</option>
                             </select>
                         </div>
                         <div class="form-group">

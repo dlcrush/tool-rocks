@@ -36,15 +36,19 @@ class VideoController extends Controller
         if (\Request::has('orderBy')) {
             $params['orderBy'] = \Request::get('orderBy');
         }
+
         $videos = $this->videoRepo->getVideos($params);
         $tags = [];
-        for($i = 2017; $i > 1990; $i --) {
+        for($i = 2018; $i > 1990; $i --) {
             array_push($tags, ['id' => $i, 'year' => $i]);
         }
 
         $page = \Request::get('page');
+        $year = \Request::get('year');
+        $type = \Request::get('type');
+        $orderBy = \Request::get('orderBy');
 
-        return view('videos.index', compact('videos', 'tags', 'page'));
+        return view('videos.index', compact('videos', 'tags', 'page', 'year', 'type', 'orderBy'));
     }
 
     public function getSearch() {
