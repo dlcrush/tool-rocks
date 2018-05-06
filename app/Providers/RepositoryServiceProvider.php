@@ -64,9 +64,21 @@ class RepositoryServiceProvider extends ServiceProvider
             return new \App\Repositories\API\VideoRepository($this->app, $app->make('Illuminate\Support\Collection'));
         });
 
+        $this->app->bind('App\Repositories\API\Contracts\PageRepository', function($app) {
+            return new \App\Repositories\API\PageRepository($this->app, $app->make('Illuminate\Support\Collection'));
+        });
+
+        $this->app->bind('App\Repositories\API\Contracts\PostRepository', function($app) {
+            return new \App\Repositories\API\PostRepository($this->app, $app->make('Illuminate\Support\Collection'));
+        });
+
         $this->app->bind('App\Repositories\API\Contracts\YouTubeRepository', function($app) {
             $apiKey = config('youtube.api_key', '');
             return new \App\Repositories\API\YouTubeRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'), $apiKey);
+        });
+
+        $this->app->bind('App\Repositories\API\Contracts\WordPressRepository', function($app) {
+            return new \App\Repositories\API\WordPressRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
         });
 
         $this->app->bind('App\Repositories\Contracts\VideoRepository', function($app) {

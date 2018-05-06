@@ -47,5 +47,14 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
     Route::get('youtube/channels/{channelName}/videos', 'YouTubeController@getVideosByChannel');
     Route::get('youtube/channels/{id}', 'YouTubeController@getChannel');
 
+    /** Pages */
+    Route::get('pages', 'PageController@getPages');
+
+    /** Posts */
+    Route::get('posts', 'PostController@getPosts');
+
+    /** WordPress */
+    Route::get('wordpress/pages', 'WordPressController@getPages');
+
     Route::get('tv', 'TVcontroller@getTV');
 });
