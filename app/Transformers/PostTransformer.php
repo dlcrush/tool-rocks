@@ -12,6 +12,7 @@ class PostTransformer extends TransformerAbstract {
         return [
             'id' => (int) $post->id,
             'WPID' => (int) $post->wp_id,
+            'slug' => $post->slug,
             'title' => $post->title,
             'excerpt' => $post->excerpt,
             'content' => $post->content,

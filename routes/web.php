@@ -25,6 +25,8 @@ Route::get('tours', 'TourController@getTours');
 Route::get('tours/{id}', 'TourController@getTour');
 Route::get('tours/{tourId}/shows/{showId}/{slug?}', 'TourController@getShow');
 Route::get('tv', 'TVController@index');
+Route::get('blog', 'BlogController@getPosts');
+Route::get('blog/post/{id}/{slug?}', 'BlogController@getPost');
 
 /** Admin Routes **/
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['AdminAuth']], function() {

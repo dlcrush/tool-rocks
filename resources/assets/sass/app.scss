@@ -450,6 +450,7 @@ span.stat {
 }
 
 /** Pretty Header **/
+.blog-layout,
 .lyric-layout,
 .lyrics-layout,
 .videos-layout,
@@ -463,8 +464,9 @@ span.stat {
 
     .header .text {
         position: absolute;
-        top: 30%;
-        left: 40%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         max-width: 400px;
         margin-right: auto;
         margin-left: auto;
@@ -475,29 +477,29 @@ span.stat {
         padding-right: 50px;
         padding-top: 25px;
         padding-bottom: 25px;
-        background-color:rgba(0, 0, 0, 0.8);
+        //background-color:rgba(197, 188, 188, 0.8);
 
         @media (min-width: 801px) and (max-width: 1023px) {
-            top: 25%;
+            //top: 25%;
         }
 
         @media (max-width: 800px) {
-            top: 20%;
+            //top: 20%;
         }
 
         @media (max-width: 700px) {
-            top: 17%;
-            left: 36%;
+            //top: 17%;
+            //left: 36%;
         }
 
         @media (max-width: 600px) {
-            top: 11%;
-            left: 33%;
+            //top: 11%;
+            //left: 33%;
         }
 
         @media (max-width: 500px) {
-            top: 10%;
-            left: 34%;
+            //top: 10%;
+            //left: 34%;
             padding-left: 25px;
             padding-right: 25px;
             padding-top: 15px;
@@ -505,8 +507,30 @@ span.stat {
         }
 
         @media (max-width: 450px) {
-            top: 3%;
-            left: 29%;
+            //top: 3%;
+            //left: 29%;
+        }
+    }
+}
+
+.blog-layout {
+    .posts-collection {
+        .post-card {
+            color: white;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 25px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background-color: darken($primaryColor, 4%);
+
+            .post-card-image {
+                display: inline-block;
+            }
+
+            .post-card-text {
+                display: inline-block;
+            }
         }
     }
 }

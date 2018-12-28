@@ -92,5 +92,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Contracts\TVRepository', function($app) {
             return new \App\Repositories\TVRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
         });
+
+        $this->app->bind('App\Repositories\Contracts\PostRepository', function($app) {
+            return new \App\Repositories\PostRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
+        });
     }
 }

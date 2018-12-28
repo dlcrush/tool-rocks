@@ -12,6 +12,7 @@ class PageTransformer extends TransformerAbstract {
         return [
             'id' => (int) $page->id,
             'WPID' => (int) $page->wp_id,
+            'slug' => $page->slug,
             'title' => $page->title,
             'excerpt' => $page->excerpt,
             'content' => $page->content,

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Transformers\PostTransformer;
 use App\Repositories\API\Contracts\PostRepository;
 use App\Repositories\API\Criteria\Expand;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class PostController extends APIController
 {
@@ -21,12 +22,24 @@ class PostController extends APIController
 
     public function getPosts()
     {
+        $paginator = $this->post->paginate(5);
+
         $posts = fractal()
-           ->collection($this->post->all())
+           ->collection($paginator->getCollection())
            ->transformWith($this->postTransformer)
+           ->paginateWith(new IlluminatePaginatorAdapter($paginator))
            ->toArray();
 
         return $this->respond($posts);
+    }
+
+    public function getPost($id) {
+        $post = fractal()
+            ->item($this->post->find($id))
+            ->transformWith($this->postTransformer)
+            ->toArray();
+
+        return $this->respond($post);
     }
 
 }
