@@ -513,6 +513,34 @@ span.stat {
     }
 }
 
+.tours-layout {
+    .tour-card {
+        background-color: #000202;
+        position: relative;
+        width: 100%;
+        padding-top: 100%;
+
+        &:hover {
+            background-color: darken(#000202, 10%);
+
+            .text {
+                color: white;
+            }
+        }
+
+        .text {
+            color: #909090;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-right: auto;
+            margin-left: auto;
+            font-size: 36px;
+        }
+    }
+}
+
 .blog-layout {
     .posts-collection {
         .post-card {

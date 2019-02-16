@@ -18,10 +18,8 @@
     <div class="tours-collection">
         <div class="row">
             @forelse(array_get($tours, 'data') as $tour)
-                <div class="tour-card col-xs-6 col-sm-3 col-md-2" style="margin-bottom: 15px;">
-                    <a href="/tours/{{ array_get($tour, 'slug') }}">
-                        <img class="img-responsive" src="http://fakeimg.pl/500x500/000202?text={{ array_get($tour, 'name') }}" />
-                    </a>
+                <div class="col-xs-6 col-sm-3 col-md-2" style="margin-bottom: 15px;">
+                    @include('components.tourCard', ['tour' => $tour])
                 </div>
             @empty
                 <div class="col-xs-12">
