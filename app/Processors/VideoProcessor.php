@@ -17,6 +17,11 @@ class VideoProcessor implements VideoProcessorContract {
         \Log::info('START - Processing video id: ' . $video->id);
         $ytVideo = $this->youTubeRepo->getVideo(['id' => $video->video_id]);
 
+        if (! $ytVideo) {
+            \Log::info('MISSING YT VIDEO id: ' . $video->id);
+            return;
+        }
+
         $video->views = $ytVideo->views;
         $video->thumbs_up = $ytVideo->thumbsUp;
         $video->thumbs_down = $ytVideo->thumbsDown;
@@ -30,7 +35,7 @@ class VideoProcessor implements VideoProcessorContract {
             $images = $ytVideo->images;
             foreach($images as $size => $image) {
                 $videoImage = VideoImage::where('video_id', '=', $video->id)->where('size', $size)->get()->first();
-                if (sizeof($videoImage) < 1) {
+                if (! $videoImage) {
                     // no match, let's create a new one!
                     $videoImage = new VideoImage;
                 }
