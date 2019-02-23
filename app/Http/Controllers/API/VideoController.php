@@ -85,6 +85,52 @@ class VideoController extends APIController
         return $this->respond($video);
     }
 
+    public function searchVideos() {
+        $this->videoRepo->pushCriteria(new Expand(['tags', 'images']));
+        $this->videoRepo->pushCriteria(new NotNull(['views']));
+
+        $orderBy = 'views:desc';
+        $searchCriteria = [];
+
+        if (\Request::has('text')) {
+            $searchCriteria['text'] = \Request::get('text');
+        }
+        if (\Request::has('tags')) {
+            $searchCriteria['tags'] = \Request::get('tags');
+        }
+        if (\Request::has('year')) {
+            $searchCriteria['year'] = \Request::get('year');
+        }
+        if (\Request::has('type')) {
+            $searchCriteria['type'] = \Request::get('type');
+        }
+        if (\Request::has('orderBy')) {
+            $orderBy = \Request::get('orderBy');
+        }
+
+        if (sizeof($searchCriteria) > 0) {
+            $this->videoRepo->pushCriteria(new Search($searchCriteria));
+        }
+
+        $orderBy = explode(':', $orderBy);
+        $orderByProp = $orderBy[0];
+        $orderByDirection = sizeof($orderBy) > 1 ? $orderBy[1] : 'asc';
+        $this->videoRepo->pushCriteria(new OrderBy($orderByProp, $orderByDirection));
+
+        $paginator = $this->videoRepo->paginate(10);
+        $videos = $paginator->getCollection();
+
+        $videos = fractal()
+           ->collection($videos)
+           ->transformWith($this->videoTransformer)
+           ->paginateWith(new IlluminatePaginatorAdapter($paginator))
+           ->parseIncludes(['tags'])
+           ->toArray();
+
+        return $this->respond($videos);
+
+    }
+
     public function getRelatedVideos(\App\Video $video) {
 
         $tagsIds = $video->tags->pluck('id');

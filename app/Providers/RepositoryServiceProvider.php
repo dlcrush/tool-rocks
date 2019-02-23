@@ -81,6 +81,11 @@ class RepositoryServiceProvider extends ServiceProvider
             return new \App\Repositories\API\WordPressRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
         });
 
+        $this->app->bind('App\Repositories\API\Contracts\SetlistRepository', function($app) {
+            $apiKey = config('setlist.api_key', '');
+            return new \App\Repositories\API\SetlistRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'), $apiKey);
+        });
+
         $this->app->bind('App\Repositories\Contracts\VideoRepository', function($app) {
             return new \App\Repositories\VideoRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
         });

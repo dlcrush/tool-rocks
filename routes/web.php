@@ -15,16 +15,28 @@ Route::get('/', function () {
     return view('home');
 });
 
+/** Ipsum */
 Route::get('ipsum', 'IpsumController@generate');
+
+/** Videos */
 Route::get('videos/search', 'VideoController@getSearch');
 Route::get('videos/{id}/{slug?}', 'VideoController@getVideo');
 Route::get('videos', 'VideoController@getVideos');
+//Route::post('videos/search', 'VideoController@postSearch');
+
+/** Lyrics */
 Route::get('lyrics', 'LyricController@getLyrics');
 Route::get('lyrics/song/{songId}', 'LyricController@getLyric');
+
+/** Tours */
 Route::get('tours', 'TourController@getTours');
 Route::get('tours/{id}', 'TourController@getTour');
 Route::get('tours/{tourId}/shows/{showId}/{slug?}', 'TourController@getShow');
+
+/** TV */
 Route::get('tv', 'TVController@index');
+
+/** Blog */
 Route::get('blog', 'BlogController@getPosts');
 Route::get('blog/post/{id}/{slug?}', 'BlogController@getPost');
 

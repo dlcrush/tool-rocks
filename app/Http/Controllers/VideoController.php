@@ -52,6 +52,23 @@ class VideoController extends Controller
     }
 
     public function getSearch() {
+        $searchCriteria = [];
+
+        if (\Request::has('text')) {
+           $searchCriteria['text'] = \Request::get('text');
+        }
+        if (\Request::has('page')) {
+            $searchCriteria['page'] = \Request::get('page');
+        }
+
+        if (count($searchCriteria) > 0) {
+            $videos = $this->videoRepo->searchVideos($searchCriteria);
+
+            $text = $searchCriteria['text'];
+
+            return view('videos.search', compact('videos', 'text'));
+        }
+
         return view('videos.search');
     }
 }

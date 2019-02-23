@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    @if($page !== 'live-dvd' && $page !== 'hall-of-fame')
+    @if($page !== 'live-dvd' && $page !== 'hall-of-fame' && $page !== 'search-results')
         <div class="videos-filter">
             <div class="row">
                 <div class="col-xs-12">
@@ -104,6 +104,8 @@
         <h3>Live DVDs</h3>
     @elseif ($page === 'hall-of-fame')
         <h3>Hall of Fame</h3>
+    @elseif ($page === 'search-results')
+        <h3>Search Results</h3>
     @endif
 
     <div class="videos-collection">

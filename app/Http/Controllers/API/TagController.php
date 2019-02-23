@@ -43,4 +43,17 @@ class TagController extends APIController
 
         return $this->respond($tag);
     }
+
+    public function ingestTags() {
+
+        foreach($states as $state) {
+            $tag = [
+                'name' => $state,
+                'slug' => str_replace(" ", "-", strtolower($state)),
+                'type' => 'state'
+            ];
+
+            $this->tagRepo->create($tag);
+        }
+    }
 }

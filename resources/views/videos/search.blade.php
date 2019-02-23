@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="name">Text</label>
-                    <input name="name" id="name" class="form-control" />
+                    <input name="text" id="text" class="form-control" value="{{ isset($text) ? $text : '' }}" />
                 </div>
                 <div class="form-group">
                     <label for="year">Year</label>
@@ -37,6 +37,12 @@
                     <button type="submit" class="btn btn-block btn-lg btn-default">Search</button>
                 </div>
             </form>
+
+            @if(isset($videos))
+                <h3>Search Results</h3>
+
+                @include('videos.partials.collection', ['videos' => $videos])
+            @endif
 
         </div>
     </div>

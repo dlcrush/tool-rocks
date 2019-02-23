@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\IngestYTData::class,
         Commands\FillTVQueue::class,
-        Commands\IngestWPData::class
+        Commands\IngestWPData::class,
+        Commands\IngestTourData::class
     ];
 
     /**

@@ -31,10 +31,12 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
 
     /** Videos **/
     Route::get('videos', 'VideoController@getVideos');
+    Route::get('videos/search', 'VideoController@searchVideos');
     Route::get('videos/{id}', 'VideoController@getVideo');
 
     /** Tags **/
     Route::get('tags', 'TagController@getTags');
+    Route::get('tags/ingest', 'TagController@ingestTags');
     Route::get('tags/{id}', 'TagController@getTag');
 
     /** Ipsums **/
@@ -58,4 +60,11 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
     Route::get('wordpress/pages', 'WordPressController@getPages');
 
     Route::get('tv', 'TVcontroller@getTV');
+
+    Route::get('bands/{bandId}/shows', 'SetlistController@getShows');
+    Route::get('bands/{bandId}/info', 'SetlistController@getBand');
+    Route::get('bands/{bandId}/shows/{year}', 'SetlistController@getShowsByYear');
+    Route::get('ingest/bands/{bandId}/year/{year}', 'SetlistController@ingest');
+    //Route::get('bands/{bandId}/shows/{year}/process', 'SetlistController@')
+
 });

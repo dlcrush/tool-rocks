@@ -52,4 +52,22 @@ class VideoRepository implements VideoRepositoryInterface {
         return json_decode($this->http->get($url), true);
     }
 
+    public function searchVideos($options=array()) {
+        $params = [];
+
+        if (array_has($options, 'text')) {
+            $params['text'] = array_get($options, 'text');
+        }
+        if (array_has($options, 'page')) {
+            $params['page'] = array_get($options, 'page');
+        }
+
+        $url = $this->urlBuilder
+            ->path('videos/search')
+            ->params($params)
+            ->build();
+
+        return json_decode($this->http->get($url), true);
+    }
+
 }

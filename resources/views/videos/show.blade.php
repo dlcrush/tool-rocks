@@ -111,25 +111,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="related-videos-wrapper">
+        <div class="related-videos-wrapper">
+            <div class="col-xs-12">
                 <h3>You May Also Like</h3>
+            </div>
 
-                <div class="related-videos">
-                    @foreach(array_get($video, 'related.data') as $i => $x)
-                        <?php //if (++$i > 4) { break; } ?>
-                        <a href="{{ array_get($x, 'links.web') }}" style="color: white">
-                            <div class="related-video col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                                <img src="{{ array_get($x, 'images.high.url') }}" class="img-responsive" style="max-width: 240px; width: 100%;">
-                                <div class="related-video-info" style="background-color: #131313; max-width: 240px;">
-                                    <div style="padding: 20px;">
-                                        <h5>{{ array_get($x, 'name') }}</h5>
-                                    </div>
+            <div class="related-videos">
+                @foreach(array_get($video, 'related.data') as $i => $x)
+                    <?php //if (++$i > 4) { break; } ?>
+                    <a href="{{ array_get($x, 'links.web') }}" style="color: white">
+                        <div class="related-video col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                            <img src="{{ array_get($x, 'images.high.url') }}" class="img-responsive" style="max-width: 240px; width: 100%;">
+                            <div class="related-video-info" style="background-color: #131313; max-width: 240px;">
+                                <div style="padding: 20px;">
+                                    <h5>{{ array_get($x, 'name') }}</h5>
                                 </div>
                             </div>
-                        </a>
-                    @endforeach
-                </div>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>

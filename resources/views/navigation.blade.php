@@ -25,7 +25,7 @@
                         <a href="/videos" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-play"></i> Videos <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/videos">Browse</a></li>
-                            {{-- <li><a href="/videos/search">Search</a></li> --}}
+                            <li><a href="/videos/search">Search</a></li>
                             <li><a href="/videos?tags=hall-of-fame&page=hall-of-fame">Hall of Fame</a></li>
                             <li><a href="/videos?tags=live-dvd&orderBy=name:desc&page=live-dvd">Live DVDs</a></li>
                         </ul>

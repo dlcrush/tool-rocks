@@ -19,6 +19,8 @@ class Search extends Criteria {
 
     public function apply($model, Repository $repository) {
 
+        $query = $model;
+
         $criteria = $this->criteria;
         $queries = [];
 
@@ -45,6 +47,12 @@ class Search extends Criteria {
             array_push($queries, $typeQuery);
         }
 
+        if (array_has($criteria, 'text')) {
+            $text = array_get($criteria, 'text');
+            $query = $query->where('name', 'like', '%' . $text . '%')
+                        ->orWhere('keywords', 'like', '%' . $text . '%');
+        }
+
         $unions = null;
         foreach($queries as $bacon) {
             if (is_null($unions)) {
@@ -54,12 +62,14 @@ class Search extends Criteria {
             }
         }
 
-        $crazyAssQuery = \DB::table(\DB::raw("(" . $unions->toSql() . ') as t1'))->distinct()->groupBy('t1.id')->havingRaw('Count(*) >= ' . sizeof($queries))->mergeBindings($unions);
-        $ids = $crazyAssQuery->get()->pluck('id');
+        if ($unions) {
+            $crazyAssQuery = \DB::table(\DB::raw("(" . $unions->toSql() . ') as t1'))->distinct()->groupBy('t1.id')->havingRaw('Count(*) >= ' . sizeof($queries))->mergeBindings($unions);
+            $ids = $crazyAssQuery->get()->pluck('id');
 
-        $videosThatMatchMyCrazyAssCriteriaQuery = $model->whereIn('id', $ids);
+            $query = $query->whereIn('id', $ids);
+        }
 
-        return $videosThatMatchMyCrazyAssCriteriaQuery;
+        return $query;
     }
 
 }
