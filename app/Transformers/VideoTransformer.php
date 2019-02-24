@@ -21,6 +21,7 @@ class VideoTransformer extends TransformerAbstract {
             'name' => $video->name,
             'slug' => $video->slug,
             'description' => $video->description,
+            'duration' => $video->duration,
             'views' => $video->views,
             'thumbsUp' => $video->thumbs_up,
             'thumbsDown' => $video->thumbs_down,

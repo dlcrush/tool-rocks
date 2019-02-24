@@ -48,7 +48,8 @@ class YouTubeVideo implements JsonSerializable, Jsonable, Arrayable {
             'images' => $this->images,
             'publishedAt' => $this->publishedAt,
             'favorites' => $this->favorites,
-            'comments' => $this->comments
+            'comments' => $this->comments,
+            'duration' => $this->duration
         ];
     }
 }

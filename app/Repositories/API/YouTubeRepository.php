@@ -34,8 +34,9 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
 
         $includeChannel = array_key_exists('includeChannel', $options) ? $options['includeChannel'] == true : false;
 
+
         $params = array_merge([
-            'part' => 'snippet,statistics'
+            'part' => 'snippet,statistics,contentDetails'
         ], $data);
 
         $url = $this->urlBuilder
@@ -52,6 +53,7 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
 
             $snippet = $v->snippet;
             $statistics = $v->statistics;
+            $contentDetails = $v->contentDetails;
 
             $video->title = $snippet->title;
             $video->description = $snippet->description;
@@ -67,6 +69,8 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
             if ($includeChannel) {
                 $video->channel = $this->getChannelById($video->channelId);
             }
+            $video->duration = isset($contentDetails->duration) ? $this->parseDuration($contentDetails->duration) : null;
+
 
             $videos->push($video);
         }
@@ -167,6 +171,40 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
 
     public function getVideo($data) {
         return $this->getVideos($data, ['includeChannel' => true])->first();
+    }
+
+    private function parseDuration($duration) {
+        $parsedDuration = '';
+
+        $parts = null;
+
+        preg_match_all('/(\d+)/', $duration, $parts);
+
+        $times = $parts[0];
+
+        if (count($times) === 3) {
+            $parsedDuration = $times[0] . ':' . $this->padTime($times[1]) . ':' . $this->padTime($times[2]);
+        } else if (count($times) === 2) {
+            $parsedDuration = $times[0] . ':' . $this->padTime($times[1]);
+        } else if (count($times) === 1) {
+            $parsedDuration = '0:' . $this->padTime($times[0]);
+        }
+
+        return $parsedDuration;
+    }
+
+    private function padTime($time) {
+        $padded = '';
+
+        if (strlen($time) < 2) {
+            for($i = strlen($time); $i < 2; $i ++) {
+                $padded .= '0';
+            }
+        }
+
+        $padded .= $time;
+
+        return $padded;
     }
 
 }
