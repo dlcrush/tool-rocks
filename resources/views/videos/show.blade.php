@@ -43,11 +43,11 @@
             <div class="content">
                 <ul class="nav nav-tabs">
                     <li class="nav-item" data-tab-id="video-youtube-info">
-                        <a class="nav-link active" href="#">Description</a>
+                        <a class="nav-link" href="#">Description</a>
                     </li>
                     @if(count(array_get($video, 'songs.data')) > 1)
                         <li class="nav-item" data-tab-id="video-setlist">
-                            <a class="nav-link" href="#">Set list</a>
+                            <a class="nav-link active" href="#">Set list</a>
                         </li>
                     @endif
                     <li class="nav-item" data-tab-id="video-lyrics">
@@ -55,7 +55,7 @@
                     </li>
                 </ul>
                 <div class="content-wrapper">
-                    <div id="video-youtube-info">
+                    <div id="video-youtube-info" style="display: none;">
                         <a href="https://youtube.com/channel/UCRUq9jueekA0t4uz_z5LZmA">
                             <center><img style="margin-top: 15px; max-height: 120px;" class="img-responsive" src="{{ array_get($video, 'channel.images.high.url') }}"></img></center>
                         </a>
@@ -71,7 +71,7 @@
                             </p>
                         </div>
                     </div>
-                    <div id="video-lyrics" style="display: none;">
+                    <div id="video-lyrics">
                         @foreach(array_get($video, 'songs.data') as $song)
                             <div id="video-lyrics-song-{{ array_get($song, 'slug') }}">
                                 <h4>{{ array_get($song, 'name') }}</h4>
@@ -218,6 +218,10 @@
             // change active tab
             $('.video-info-wrapper .nav-tabs .nav-item .nav-link').removeClass('active');
             $(this).children('.nav-link').addClass('active');
+        });
+
+        $(function() {
+            loadTab('video-setlist');
         });
     </script>
 @endsection
