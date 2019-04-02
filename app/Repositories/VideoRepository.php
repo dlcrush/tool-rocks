@@ -62,6 +62,14 @@ class VideoRepository implements VideoRepositoryInterface {
             $params['page'] = array_get($options, 'page');
         }
 
+        if (array_has($options, 'tags')) {
+            $params['tags'] = array_get($options, 'tags');
+        }
+
+        if (array_has($options, 'year')) {
+            $params['year'] = array_get($options, 'year');
+        }
+
         $url = $this->urlBuilder
             ->path('videos/search')
             ->params($params)

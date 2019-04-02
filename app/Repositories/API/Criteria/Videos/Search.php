@@ -50,7 +50,7 @@ class Search extends Criteria {
         if (array_has($criteria, 'text')) {
             $text = array_get($criteria, 'text');
             $query = $query->where('name', 'like', '%' . $text . '%')
-                        ->orWhere('keywords', 'like', '%' . $text . '%');
+                        ->orWhere('meta_keywords', 'like', '%' . $text . '%');
         }
 
         $unions = null;

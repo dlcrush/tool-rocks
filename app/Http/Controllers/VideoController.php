@@ -60,11 +60,17 @@ class VideoController extends Controller
         if (\Request::has('page')) {
             $searchCriteria['page'] = \Request::get('page');
         }
+        if (\Request::has('tags')) {
+            $searchCriteria['tags'] = \Request::get('tags');
+        }
+        if (\Request::has('year')) {
+            $searchCriteria['year'] = \Request::get('year');
+        }
 
         if (count($searchCriteria) > 0) {
             $videos = $this->videoRepo->searchVideos($searchCriteria);
 
-            $text = $searchCriteria['text'];
+            $text = isset($searchCriteria['text']) ? $searchCriteria['text'] : null;
 
             return view('videos.search', compact('videos', 'text'));
         }

@@ -87,6 +87,18 @@
         @endforeach
     @endif
 </div>
+<div class="form-group">
+    <label for="meta_title">Meta Title</label>
+    <input type="text" class="form-control" id="meta_title" name="meta_title" value="{{ isset($video->meta_title) ? $video->meta_title : '' }}">
+</div>
+<div class="form-group">
+    <label for="meta_description">Meta Description</label>
+    <textarea class="form-control" id="meta_description" name="meta_description">{{ isset($video->meta_description) ? $video->meta_description : '' }}</textarea>
+</div>
+<div class="form-group">
+    <label for="meta_keywords">Meta Keywords</label>
+    <textarea class="form-control" id="meta_keywords" name="meta_keywords">{{ isset($video->meta_keywords) ? $video->meta_keywords : '' }}</textarea>
+</div>
 <button type="submit" class="btn btn-default btn-lg">Submit</button>
 
 <style>

@@ -48,3 +48,46 @@
     </div>
 </div>
 @endsection
+
+@section('js')
+<script>
+    $(function() {
+
+        $.ajax({
+            url: '{{ action('API\TagController@getTags') }}',
+            success: function(data) {
+
+                var selectedIds = $('#tags').val().split(',');
+
+                var tagsList = (data && data.data) || [];
+
+                var tags = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: tagsList
+                });
+                tags.initialize();
+
+                $('#tags').tagsinput({
+                    itemValue: 'id',
+                    itemText: 'name',
+                    cancelConfirmKeysOnEmpty: true,
+                    freeInput: false,
+                    typeaheadjs: {
+                        name: 'tags',
+                        displayKey: 'name',
+                        source: tags.ttAdapter()
+                    }
+                });
+
+                for(var i = 0; i < tagsList.length; i ++) {
+                    var tag = tagsList[i];
+                    if (selectedIds.indexOf(tag.id + "") > -1) {
+                        $('#tags').tagsinput('add', tag);
+                    }
+                }
+            }
+        });
+    });
+</script>
+@endsection

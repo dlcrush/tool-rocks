@@ -56,7 +56,7 @@
                 </ul>
                 <div class="content-wrapper">
                     <div id="video-youtube-info" style="display: none;">
-                        <a href="https://youtube.com/channel/UCRUq9jueekA0t4uz_z5LZmA">
+                        <a href="https://youtube.com/channel/{{ array_get($video, 'channel">
                             <center><img style="margin-top: 15px; max-height: 120px;" class="img-responsive" src="{{ array_get($video, 'channel.images.high.url') }}"></img></center>
                         </a>
                         <p style="margin-top: 10px; text-align: center;"> Uploaded By: <a href="#"> &nbsp; {{ array_get($video, 'channel.name') }}</a></p>

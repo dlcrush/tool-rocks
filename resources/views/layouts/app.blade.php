@@ -28,6 +28,10 @@
             <meta property="og:image" content="{{ array_get($meta, 'image.url') }}"/>
         @endif
         <meta property="og:description" content="{{ array_get($meta, 'description') }}"/>
+
+        <script src=" {{ mix('/js/app.js') }}"></script>
+        <script src="/js/bootstrap-tagsinput.min.js"></script>
+        <script src="/js/typeahead.min.js"></script>
     </head>
 
     <body>
@@ -51,13 +55,13 @@
                 <footer>
                     <div class="padding">
                         <p>
-                            <center>Tool Rocks &copy; 2017. Thanks for visiting.</center>
+                            <center>Tool Rocks &copy; {{ date('Y') }}. Thanks for visiting.</center>
                         </p>
                 </footer>
             </div>
         </div>
 
-        <script src=" {{ mix('/js/app.js') }}"></script>
+
         @yield('js')
     </body>
 </html>
