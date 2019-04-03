@@ -1,6 +1,6 @@
 <?php
 
-$queryString = '?enablejsapi=1&origin=http://toolrocks.test&rel=0&showinfo=0&playsinline=1';
+$queryString = '?enablejsapi=1&origin=' . url("/") . '&rel=0&showinfo=0&playsinline=1';
 
 if (isset($showControls) && $showControls === false) {
     $queryString .= '&controls=0';
