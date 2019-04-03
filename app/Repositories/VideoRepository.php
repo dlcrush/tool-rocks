@@ -78,4 +78,12 @@ class VideoRepository implements VideoRepositoryInterface {
         return json_decode($this->http->get($url), true);
     }
 
+    public function getRandomVideo() {
+        $url = $this->urlBuilder
+            ->path('videos/random')
+            ->build();
+
+        return json_decode($this->http->get($url), true);
+    }
+
 }

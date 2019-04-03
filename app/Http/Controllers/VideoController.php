@@ -77,4 +77,10 @@ class VideoController extends Controller
 
         return view('videos.search');
     }
+
+    public function getRandomVideo() {
+        $video = $this->videoRepo->getRandomVideo();
+
+        return redirect()->action('VideoController@getVideo', ['id' => array_get($video, 'id'), 'slug' => array_get($video, 'slug')]);
+    }
 }

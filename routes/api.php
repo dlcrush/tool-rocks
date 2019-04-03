@@ -32,6 +32,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
     /** Videos **/
     Route::get('videos', 'VideoController@getVideos');
     Route::get('videos/search', 'VideoController@searchVideos');
+    Route::get('videos/random', 'VideoController@getRandomVideo');
     Route::get('videos/{id}', 'VideoController@getVideo');
 
     /** Tags **/

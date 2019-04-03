@@ -12,6 +12,8 @@ use App\Repositories\API\Criteria\Expand;
 use App\Repositories\API\Criteria\Videos\Search;
 use App\Repositories\API\Criteria\OrderBy;
 use App\Repositories\API\Criteria\NotNull;
+use App\Repositories\API\Criteria\Randomize;
+use App\Repositories\API\Criteria\Take;
 
 class VideoController extends APIController
 {
@@ -151,6 +153,25 @@ class VideoController extends APIController
         $this->videoRepo->reset();
 
         return $videos;
+    }
+
+    public function getRandomVideo() {
+        $this->videoRepo->pushCriteria(new Expand(['tags', 'images']));
+        $this->videoRepo->pushCriteria(new Randomize());
+        $this->videoRepo->pushCriteria(new Take(1));
+
+        $video = $this->videoRepo->all()->first();
+
+        $video->channel = $this->youTubeRepo->getChannel(['id' => $video->channel_id]);
+        $video->related = $this->getRelatedVideos($video);
+
+        $video = fractal()
+            ->item($video)
+            ->transformWith($this->videoTransformer)
+            ->parseIncludes(['channel', 'songs', 'tags', 'related'])
+            ->toArray();
+
+        return $this->respond($video);
     }
 
 }
