@@ -88,6 +88,8 @@
                 console.log('video finished');
                 loadNextVideo();
             }
+
+            console.log('event', event);
         }
 
         function loadNextVideo() {
