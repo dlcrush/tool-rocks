@@ -18,6 +18,9 @@
                     <li>
                         <a href="/"><i class="fa fa-home"></i> Home</a>
                     </li>
+                    <li>
+                        <a href="/dailyfix"><i class="fa fa-fire"></i> Daily Fix</a>
+                    </li>
                     {{-- <li>
                         <a href="/tv"><i class="fa fa-tv"></i> TV</a>
                     </li> --}}

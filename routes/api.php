@@ -29,6 +29,9 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
     Route::get('bands/{bandId}/tours/{tourId}', 'BandController@getTour');
     Route::get('bands/{bandId}/tours/{tourId}/shows/{showId}', 'BandController@getShow');
 
+    /** Daily Fix */
+    Route::get('dailyfix', 'VideoController@getDailyFix');
+
     /** Videos **/
     Route::get('videos', 'VideoController@getVideos');
     Route::get('videos/search', 'VideoController@searchVideos');

@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
         Commands\IngestYTData::class,
         Commands\FillTVQueue::class,
         Commands\IngestWPData::class,
-        Commands\IngestTourData::class
+        Commands\IngestTourData::class,
+        Commands\GenerateDailyFix::class
     ];
 
     /**

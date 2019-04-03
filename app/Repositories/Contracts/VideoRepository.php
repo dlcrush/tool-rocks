@@ -6,4 +6,6 @@ interface VideoRepository {
     public function getVideo($id);
     public function getVideos($options);
     public function searchVideos($options);
+    public function getRandomVideo();
+    public function getDailyFix();
 }

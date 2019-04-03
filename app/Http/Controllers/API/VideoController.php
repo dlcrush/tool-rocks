@@ -174,4 +174,19 @@ class VideoController extends APIController
         return $this->respond($video);
     }
 
+    public function getDailyFix() {
+        $this->videoRepo->pushCriteria(new Expand(['tags', 'images']));
+
+        $ids = $this->db->table('dailyfix')->select('video_id')->pluck('video_id');
+
+        $videos = $this->videoRepo->findIn('id', $ids);
+
+        $videos = fractal()
+           ->collection($videos)
+           ->transformWith($this->videoTransformer)
+           ->toArray();
+
+        return $this->respond($videos);
+    }
+
 }

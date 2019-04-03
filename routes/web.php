@@ -18,6 +18,9 @@ Route::get('/', function () {
 /** Ipsum */
 Route::get('ipsum', 'IpsumController@generate');
 
+/** Daily Fix */
+Route::get('dailyfix', 'VideoController@getDailyFix');
+
 /** Videos */
 Route::get('videos/random', 'VideoController@getRandomVideo');
 Route::get('videos/search', 'VideoController@getSearch');

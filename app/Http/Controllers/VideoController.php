@@ -83,4 +83,10 @@ class VideoController extends Controller
 
         return redirect()->action('VideoController@getVideo', ['id' => array_get($video, 'id'), 'slug' => array_get($video, 'slug')]);
     }
+
+    public function getDailyFix() {
+        $videos = array_get($this->videoRepo->getDailyFix(), 'data');
+
+        return view('dailyfix.videos', compact('videos'));
+    }
 }

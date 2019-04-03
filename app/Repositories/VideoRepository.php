@@ -86,4 +86,12 @@ class VideoRepository implements VideoRepositoryInterface {
         return json_decode($this->http->get($url), true);
     }
 
+    public function getDailyFix() {
+        $url = $this->urlBuilder
+            ->path('dailyfix')
+            ->build();
+
+        return json_decode($this->http->get($url), true);
+    }
+
 }
