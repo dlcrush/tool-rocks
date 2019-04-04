@@ -21,7 +21,7 @@
                     <a href="/maynardisms/{{ array_get($maynardism, 'id') }}">
                         <div class="maynardisms-card">
                             <div class="maynardisms-card-image col-xs-12 col-sm-4">
-                                <img src="{{ array_get($maynardism, 'video.images.high.url') }}" class="img-responsive">
+                                <img src="{{ array_get($maynardism, 'video.images.high.url') }}" class="img-responsive" style="max-width: 320px; max-height: 180px;">
                             </div>
                             <div class="maynardisms-card-text col-xs-12 col-sm-8">
                                 <h3>"{!! array_get($maynardism, 'content') !!}"</h3>
