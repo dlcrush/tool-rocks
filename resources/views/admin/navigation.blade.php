@@ -43,6 +43,9 @@
                     <li>
                         <a href="{{ action('Admin\IpsumController@index') }}"> Ipsums</a>
                     </li>
+                    <li>
+                        <a href="{{ action('Admin\MaynardismController@index') }}"> Maynardisms</a>
+                    </li>
                 </ul>
             </div>
         </div>

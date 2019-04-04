@@ -86,6 +86,10 @@ class RepositoryServiceProvider extends ServiceProvider
             return new \App\Repositories\API\SetlistRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'), $apiKey);
         });
 
+        $this->app->bind('App\Repositories\API\Contracts\MaynardismRepository', function($app) {
+            return new \App\Repositories\API\MaynardismRepository($this->app, $app->make('Illuminate\Support\Collection'));
+        });
+
         $this->app->bind('App\Repositories\Contracts\VideoRepository', function($app) {
             return new \App\Repositories\VideoRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
         });
@@ -100,6 +104,10 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Repositories\Contracts\PostRepository', function($app) {
             return new \App\Repositories\PostRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
+        });
+
+        $this->app->bind('App\Repositories\Contracts\MaynardismRepository', function($app) {
+            return new \App\Repositories\MaynardismRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
         });
     }
 }

@@ -44,6 +44,9 @@ Route::get('tv', 'TVController@index');
 Route::get('blog', 'BlogController@getPosts');
 Route::get('blog/post/{id}/{slug?}', 'BlogController@getPost');
 
+/** Maynardisms */
+Route::get('maynardisms', 'MaynardismController@getMaynardisms');
+
 /** Admin Routes **/
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['AdminAuth']], function() {
     Route::resource('bands', 'BandController');
@@ -62,6 +65,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['Adm
     Route::get('tours/{id}/delete', 'TourController@delete');
     Route::resource('videos', 'VideoController');
     Route::get('videos/{id}/delete', 'VideoController@delete');
+    Route::resource('maynardisms', 'MaynardismController');
+    Route::get('maynardisms/{id}/delete', 'MaynardismController@delete');
     Route::get('/', function() {
         return view('admin.home');
     });

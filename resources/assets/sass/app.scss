@@ -457,6 +457,7 @@ span.stat {
 .ipsum-layout,
 .tours-layout,
 .tour-layout,
+.maynardisms-layout,
 .show-layout {
     .header {
         position: relative;
@@ -557,6 +558,28 @@ span.stat {
             }
 
             .post-card-text {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.maynardisms-layout {
+    .maynardisms-collection {
+        .maynardisms-card {
+            color: white;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 25px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background-color: darken($primaryColor, 4%);
+
+            .maynardisms-card-image {
+                display: inline-block;
+            }
+
+            .maynardisms-card-text {
                 display: inline-block;
             }
         }

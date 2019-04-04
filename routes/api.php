@@ -68,7 +68,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
     Route::get('bands/{bandId}/shows', 'SetlistController@getShows');
     Route::get('bands/{bandId}/info', 'SetlistController@getBand');
     Route::get('bands/{bandId}/shows/{year}', 'SetlistController@getShowsByYear');
-    Route::get('ingest/bands/{bandId}/year/{year}', 'SetlistController@ingest');
+    //Route::get('ingest/bands/{bandId}/year/{year}', 'SetlistController@ingest');
     //Route::get('bands/{bandId}/shows/{year}/process', 'SetlistController@')
+
+    Route::get('maynardisms', 'MaynardismController@getMaynardisms');
+    Route::get('maynardisms/{id}', 'MaynardismController@getMaynardism');
 
 });
