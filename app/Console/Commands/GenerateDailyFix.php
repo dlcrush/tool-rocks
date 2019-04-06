@@ -8,6 +8,7 @@ use App\Repositories\API\Criteria\Take;
 use App\Repositories\API\Criteria\Randomize;
 use App\Repositories\API\Criteria\Videos\Search;
 use App\Repositories\API\Criteria\NotNull;
+use App\Repositories\API\Criteria\Not;
 use App\Repositories\API\Criteria\Expand;
 use Illuminate\Database\DatabaseManager;
 use Carbon\Carbon;
@@ -55,6 +56,7 @@ class GenerateDailyFix extends Command
             'tags' => 'live'
         ]));
         $this->videoRepo->pushCriteria(new NotNull(['views']));
+        $this->videoRepo->pushCriteria(new Not('unlisted', true));
         $this->videoRepo->pushCriteria(new Randomize());
         $this->videoRepo->pushCriteria(new Take(5));
 
