@@ -99,6 +99,10 @@
     <label for="meta_keywords">Meta Keywords</label>
     <textarea class="form-control" id="meta_keywords" name="meta_keywords">{{ isset($video->meta_keywords) ? $video->meta_keywords : '' }}</textarea>
 </div>
+<div class="form-group">
+    <label for="unlisted">Unlisted</label>
+    <input type="checkbox" id="unlisted" name="unlisted" {{ isset($video->unlisted) && $video->unlisted == true ? "checked='checked'" : "" }} />
+</div>
 <button type="submit" class="btn btn-default btn-lg">Submit</button>
 
 <style>

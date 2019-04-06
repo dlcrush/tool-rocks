@@ -72,7 +72,8 @@ class VideoController extends Controller
             'description' => $request->description,
             'video_id' => $request->youtube_id,
             'band_id' => $request->band,
-            'source' => 'youtube'
+            'source' => 'youtube',
+            'unlisted' => $request->unlisted == true
         ]);
 
         if ($request->has('tags')) {
@@ -161,7 +162,8 @@ class VideoController extends Controller
             'description' => $request->description,
             'video_id' => $request->youtube_id,
             'band_id' => $request->band,
-            'source' => 'youtube'
+            'source' => 'youtube',
+            'unlisted' => $request->unlisted == true
         ], $id);
 
         // This is kinda dumb, should probably pull the existing to see if anything has changed.

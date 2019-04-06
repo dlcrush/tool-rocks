@@ -14,6 +14,7 @@ use App\Repositories\API\Criteria\OrderBy;
 use App\Repositories\API\Criteria\NotNull;
 use App\Repositories\API\Criteria\Randomize;
 use App\Repositories\API\Criteria\Take;
+use App\Repositories\API\Criteria\Not;
 
 class VideoController extends APIController
 {
@@ -52,6 +53,7 @@ class VideoController extends APIController
 
         $this->videoRepo->pushCriteria(new Expand(['images', 'tags']));
         $this->videoRepo->pushCriteria(new NotNull(['views']));
+        $this->videoRepo->pushCriteria(new Not('unlisted', true));
         $orderBy = explode(':', $orderBy);
         $orderByProp = $orderBy[0];
         $orderByDirection = sizeof($orderBy) > 1 ? $orderBy[1] : 'asc';
