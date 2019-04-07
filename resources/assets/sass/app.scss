@@ -458,6 +458,7 @@ span.stat {
 .tours-layout,
 .tour-layout,
 .maynardisms-layout,
+.maynardism-layout,
 .show-layout {
     .header {
         position: relative;
@@ -649,6 +650,20 @@ span.stat {
 
     .related-video {
         display: inline-block;
+    }
+}
+
+.maynardism-layout {
+    .jumbotron {
+        background-color: darken($primaryColor, 4%);
+
+        #video {
+            display: block;
+        }
+
+        .btn {
+            margin-top: 15px;
+        }
     }
 }
 

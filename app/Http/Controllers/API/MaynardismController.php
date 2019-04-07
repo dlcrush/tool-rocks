@@ -31,9 +31,12 @@ class MaynardismController extends APIController
     }
 
     public function getMaynardism($id) {
+        $this->maynardismRepo->pushCriteria(new Expand('video'));
+
         $maynardism = fractal()
            ->item($this->maynardismRepo->find($id))
            ->transformWith($this->maynardismTransformer)
+           ->parseIncludes('video')
            ->toArray();
 
         return $this->respond($maynardism);

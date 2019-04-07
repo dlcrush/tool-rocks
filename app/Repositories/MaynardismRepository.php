@@ -24,4 +24,12 @@ class MaynardismRepository implements MaynardismRepositoryInterface {
         return json_decode($this->http->get($url), true);
     }
 
+    public function getMaynardism($id) {
+        $url = $this->urlBuilder
+            ->path('maynardisms/' . $id)
+            ->build();
+
+        return json_decode($this->http->get($url), true);
+    }
+
 }

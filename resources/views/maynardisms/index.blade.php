@@ -24,7 +24,7 @@
                                 <img src="{{ array_get($maynardism, 'video.images.high.url') }}" class="img-responsive" style="max-width: 320px; max-height: 180px;">
                             </div>
                             <div class="maynardisms-card-text col-xs-12 col-sm-8">
-                                <h3>"{!! array_get($maynardism, 'content') !!}"</h3>
+                                <h3>&ldquo;{!! array_get($maynardism, 'content') !!}&rdquo;</h3>
                             </div>
                         </div>
                     </a>

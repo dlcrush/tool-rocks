@@ -46,6 +46,7 @@ Route::get('blog/post/{id}/{slug?}', 'BlogController@getPost');
 
 /** Maynardisms */
 Route::get('maynardisms', 'MaynardismController@getMaynardisms');
+Route::get('maynardisms/{id}', 'MaynardismController@getMaynardism');
 
 /** Admin Routes **/
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['AdminAuth']], function() {

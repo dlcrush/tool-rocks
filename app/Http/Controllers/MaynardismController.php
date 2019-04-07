@@ -20,4 +20,10 @@ class MaynardismController extends Controller
 
         return view('maynardisms.index', compact('maynardisms'));
     }
+
+    public function getMaynardism($id) {
+        $maynardism = $this->maynardismRepo->getMaynardism($id);
+
+        return view('maynardisms.show', compact('maynardism'));
+    }
 }
