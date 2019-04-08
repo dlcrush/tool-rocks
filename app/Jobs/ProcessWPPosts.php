@@ -53,6 +53,10 @@ class ProcessWPPosts implements ShouldQueue
             $p->slug = $post->slug;
             $p->type = $post->format;
 
+            if (isset($post->{'_embedded'}->{'wp:featuredmedia'}[0]->source_url)) {
+                $p->image = $post->{'_embedded'}->{'wp:featuredmedia'}[0]->source_url;
+            }
+
             $p->save();
         }
 

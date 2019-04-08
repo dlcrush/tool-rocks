@@ -24,8 +24,6 @@ class WordPressRepository implements WordPressRepositoryInterface {
             ->params([])
             ->build();
 
-        //dd($url);
-
         $response = json_decode($this->http->get($url));
 
         $pages = new Collection();
@@ -35,11 +33,9 @@ class WordPressRepository implements WordPressRepositoryInterface {
 
     public function getPosts($data=[]) {
         $url = $this->urlBuilder
-            ->path('posts')
+            ->path('posts?_embed')
             ->params([])
             ->build();
-
-        //dd($url);
 
         $response = json_decode($this->http->get($url));
 

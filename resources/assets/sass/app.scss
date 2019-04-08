@@ -556,6 +556,20 @@ span.stat {
 
             .post-card-image {
                 display: inline-block;
+
+                .post-card-image-wrapper {
+                    background-color: #000202;
+                    max-width: 320px;
+                    max-height: 180px;
+                    width: 100%;
+
+                    img {
+                        height: 50%;
+                        width: 50%;
+                        z-index: 100;
+                        fill: white;
+                    }
+                }
             }
 
             .post-card-text {
@@ -664,6 +678,15 @@ span.stat {
         .btn {
             margin-top: 15px;
         }
+    }
+}
+
+.post-layout {
+    .blog-post {
+        max-width: 800px;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
     }
 }
 

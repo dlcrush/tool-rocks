@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Transformers\PostTransformer;
 use App\Repositories\API\Contracts\PostRepository;
 use App\Repositories\API\Criteria\Expand;
+use App\Repositories\API\Criteria\Filter;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class PostController extends APIController
@@ -22,7 +23,9 @@ class PostController extends APIController
 
     public function getPosts()
     {
-        $paginator = $this->post->paginate(5);
+        $paginator = $this->post->paginate(10);
+
+        $this->post->pushCriteria(new Filter('status', 'published'));
 
         $posts = fractal()
            ->collection($paginator->getCollection())

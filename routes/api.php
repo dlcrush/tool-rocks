@@ -62,6 +62,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
 
     /** WordPress */
     Route::get('wordpress/pages', 'WordPressController@getPages');
+    Route::get('wordpress/posts', 'WordPressController@getPosts');
 
     Route::get('tv', 'TVcontroller@getTV');
 

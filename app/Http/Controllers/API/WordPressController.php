@@ -21,4 +21,11 @@ class WordPressController extends APIController
         return $this->respond($pages);
     }
 
+    public function getPosts()
+    {
+        $posts = $this->repo->getPosts();
+
+        return $this->respond($posts);
+    }
+
 }

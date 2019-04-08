@@ -25,7 +25,9 @@
                     <a href="/blog/post/{{ array_get($post, 'id') }}/{{ array_get($post, 'slug') }}">
                         <div class="post-card">
                             <div class="post-card-image col-xs-12 col-sm-4">
-                                <img src="http://fakeimg.pl/320x180/000202?text=placeholder" class="img-responsive">
+                                <div class="post-card-image-wrapper">
+                                    <center><img src="/img/sacred-geometry.svg" class="img-responsive" /></center>
+                                </div>
                             </div>
                             <div class="post-card-text col-xs-12 col-sm-8">
                                 <h3>{{ array_get($post, 'title') }}</h3>
