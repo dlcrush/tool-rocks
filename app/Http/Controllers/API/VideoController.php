@@ -92,6 +92,7 @@ class VideoController extends APIController
     public function searchVideos() {
         $this->videoRepo->pushCriteria(new Expand(['tags', 'images']));
         $this->videoRepo->pushCriteria(new NotNull(['views']));
+        $this->videoRepo->pushCriteria(new Not('unlisted', true));
 
         $orderBy = 'views:desc';
         $searchCriteria = [];
@@ -143,6 +144,7 @@ class VideoController extends APIController
             ->join('videos', 'videos_tags.video_id', '=', 'videos.id')
             ->select('videos.id')
             ->where('videos.id', '<>', $video->id)
+            ->where('videos.unlisted', '<>', true)
             ->inRandomOrder()
             ->groupBy('videos.id')
             ->take(6)
@@ -161,6 +163,7 @@ class VideoController extends APIController
         $this->videoRepo->pushCriteria(new Expand(['tags', 'images']));
         $this->videoRepo->pushCriteria(new Randomize());
         $this->videoRepo->pushCriteria(new Take(1));
+        $this->videoRepo->pushCriteria(new Not('unlisted', true));
 
         $video = $this->videoRepo->all()->first();
 
