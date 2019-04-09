@@ -40,7 +40,7 @@ class IpsumController extends Controller
             $paragraphs->push($paragraph);
         }
 
-        return view('ipsum', compact('paragraphs'));
+        return view('ipsum', compact('paragraphs', 'numParagraphs', 'sizeOfParagraph'));
     }
 
     protected function itemsPerParagraph($paragraphSize) {

@@ -19,17 +19,17 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">How Many Paragraphs?</label>
                     <div class="col-sm-1">
-                        <input type="number" name="paragraphs" class="form-control" value="4">
+                        <input type="number" name="paragraphs" class="form-control" value="{{ $numParagraphs }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2">Size of paragraphs?</label>
                     <div class="col-sm-3">
                         <select name="paragraphSize" class="form-control">
-                            <option value="small">Small</option>
-                            <option value="medium" selected="selected">Medium</option>
-                            <option value="large">Large</option>
-                            <option value="huge">YUGE</option>
+                            <option value="small" {{ $sizeOfParagraph === 'small' ? 'selected="selected"' : '' }}>Small</option>
+                            <option value="medium" {{ $sizeOfParagraph === 'medium' ? 'selected="selected"' : '' }}>Medium</option>
+                            <option value="large" {{ $sizeOfParagraph === 'large' ? 'selected="selected"' : '' }}>Large</option>
+                            <option value="huge" {{ $sizeOfParagraph === 'huge' ? 'selected="selected"' : '' }}>YUGE</option>
                         </select>
                     </div>
                 </div>
