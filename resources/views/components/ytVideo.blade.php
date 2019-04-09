@@ -13,7 +13,7 @@ if (isset($showControls) && $showControls === false) {
     class="video"
     width="{{ $width }}"
     height="{{ $height }}"
-    src="https://www.youtube.com/embed/{{ $videoId }}{{ $queryString}}"
+    src="https://www.youtube-nocookie.com/embed/{{ $videoId }}{{ $queryString}}"
     frameborder="0"
     allowfullscreen>
 </iframe>
