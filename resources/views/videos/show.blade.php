@@ -50,9 +50,11 @@
                             <a class="nav-link active" href="#">Set list</a>
                         </li>
                     @endif
-                    <li class="nav-item" data-tab-id="video-lyrics">
-                        <a class="nav-link" href="#">Lyrics</a>
-                    </li>
+                    @if(count(array_get($video, 'songs.data')) > 0)
+                        <li class="nav-item" data-tab-id="video-lyrics">
+                            <a class="nav-link" href="#">Lyrics</a>
+                        </li>
+                    @endif
                 </ul>
                 <div class="content-wrapper">
                     <div id="video-youtube-info" style="display: none;">
@@ -71,7 +73,7 @@
                             </p>
                         </div>
                     </div>
-                    <div id="video-lyrics">
+                    <div id="video-lyrics" style="display: none;">
                         @foreach(array_get($video, 'songs.data') as $song)
                             <div id="video-lyrics-song-{{ array_get($song, 'slug') }}">
                                 <h4>{{ array_get($song, 'name') }}</h4>
@@ -174,6 +176,8 @@
         function loadTab(id) {
             $('.video-info-wrapper .content-wrapper').children().hide();
             $('.video-info-wrapper .content-wrapper #' + id).show();
+            $('.video-info-wrapper .nav-tabs .nav-item .nav-link').removeClass('active');
+            $('.video-info-wrapper .nav [data-tab-id="' + id + '"] .nav-link').addClass('active');
         }
 
         $('.video-jump-to-time').on('click', function(e) {
@@ -221,7 +225,11 @@
         });
 
         $(function() {
-            loadTab('video-setlist');
+            <?php if (sizeof(array_get($video, 'songs.data')) > 1) {
+                echo "loadTab('video-setlist');";
+            } else {
+                echo "loadTab('video-youtube-info');";
+            } ?>
         });
     </script>
 @endsection
