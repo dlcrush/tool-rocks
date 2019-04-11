@@ -1,10 +1,10 @@
 @extends('layouts/app', [
     'wide' => true,
     'meta' => [
-        'title' => array_get($video, 'name'),
-        'description' => 'Check out this awesome performance of Tool!',
-        'keywords' => 'tool live, watch tool live, tool live performances',
-        'image' => array_get($video, 'images.standard'),
+        'title' => array_get($video, 'meta.title') ? array_get($video, 'meta.title') : array_get($video, 'name'),
+        'description' => array_get($video, 'meta.description') ? array_get($video, 'meta.description') : 'Check out this awesome performance of Tool!',
+        'keywords' => array_get($video, 'meta.keywords') ? array_get($video, 'meta.keyowrds') : 'tool live, watch tool live, tool live performances',
+        'image' => array_get($video, 'images.standard')
     ]
 ])
 
@@ -58,10 +58,10 @@
                 </ul>
                 <div class="content-wrapper">
                     <div id="video-youtube-info" style="display: none;">
-                        <a href="https://youtube.com/channel/{{ array_get($video, 'channel.slug') }}">
+                        <a href="https://youtube.com/channel/{{ array_get($video, 'channel.id') }}">
                             <center><img style="margin-top: 15px; max-height: 120px;" class="img-responsive" src="{{ array_get($video, 'channel.images.high.url') }}"></img></center>
                         </a>
-                        <p style="margin-top: 10px; text-align: center;"> Uploaded By: <a href="#"> &nbsp; {{ array_get($video, 'channel.name') }}</a></p>
+                        <p style="margin-top: 10px; text-align: center;"> Uploaded By: <a href="https://youtube.com/channel/{{ array_get($video, 'channel.id') }}"> &nbsp; {{ array_get($video, 'channel.name') }}</a></p>
                         <p style="text-align: center">
                             <i class="fa fa-eye"></i> <span class="stat">{{ array_get($video, 'views') }}</span>
                             <i class="fa fa-thumbs-up"></i> <span class="stat">{{ array_get($video, 'thumbsUp') }}</span>

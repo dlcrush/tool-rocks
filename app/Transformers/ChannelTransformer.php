@@ -10,7 +10,7 @@ class ChannelTransformer extends TransformerAbstract {
     public function transform(YouTubeChannel $channel)
     {
         return [
-            'id' => (int) $channel->id,
+            'id' => $channel->id,
             'name' => $channel->name,
             'slug' => $channel->slug,
             'description' => $channel->description,

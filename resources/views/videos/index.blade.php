@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    @if($page !== 'live-dvd' && $page !== 'hall-of-fame' && $page !== 'search-results')
+    @if($page !== 'live-dvd' && $page !== 'hall-of-fame' && $page !== 'search-results' && $page !== 'music-videos')
         <a href="#" id="toggleFilters" class="btn btn-default visible-xs"><i class="fa fa-filter"></i> Filters</a>
         <div class="videos-filter hidden-xs">
             <br class="visible-xs">
@@ -111,6 +111,8 @@
         <h3>Hall of Fame</h3>
     @elseif ($page === 'search-results')
         <h3>Search Results</h3>
+    @elseif ($page === 'music-videos')
+        <h3>Music Videos</h3>
     @endif
 
     @include('videos.partials.collection', ['videos' => $videos])

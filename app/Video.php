@@ -4,7 +4,7 @@ namespace App;
 
 class Video extends BaseModel
 {
-    protected $fillable = ['name', 'slug', 'description', 'video_id', 'source', 'band_id', 'published_at', 'thumbs_up', 'thumbs_down', 'date', 'duration', 'channel_id', 'channel_name'];
+    protected $fillable = ['name', 'slug', 'description', 'video_id', 'source', 'band_id', 'published_at', 'thumbs_up', 'thumbs_down', 'date', 'duration', 'channel_id', 'channel_name', 'meta_title', 'meta_description', 'meta_keywords', 'unlisted'];
 
     /**
      * The attributes that should be mutated to dates.

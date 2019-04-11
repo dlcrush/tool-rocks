@@ -73,7 +73,10 @@ class VideoController extends Controller
             'video_id' => $request->youtube_id,
             'band_id' => $request->band,
             'source' => 'youtube',
-            'unlisted' => $request->unlisted == true
+            'unlisted' => $request->unlisted == true,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'meta_keywords' => $request->meta_keywords
         ]);
 
         if ($request->has('tags')) {
@@ -163,7 +166,10 @@ class VideoController extends Controller
             'video_id' => $request->youtube_id,
             'band_id' => $request->band,
             'source' => 'youtube',
-            'unlisted' => $request->unlisted == true
+            'unlisted' => $request->unlisted == true,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'meta_keywords' => $request->meta_keywords
         ], $id);
 
         // This is kinda dumb, should probably pull the existing to see if anything has changed.

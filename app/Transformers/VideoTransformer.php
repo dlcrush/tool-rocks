@@ -30,6 +30,11 @@ class VideoTransformer extends TransformerAbstract {
             'published_at' => $video->published_at,
             'links' => [
                 'web' => action('VideoController@getVideo', ['id' => $video->id, 'slug' => $video->slug])
+            ],
+            'meta' => [
+                'title' => $video->meta_title,
+                'description' => $video->meta_description,
+                'keywords' => $video->meta_keywords
             ]
         ];
     }
