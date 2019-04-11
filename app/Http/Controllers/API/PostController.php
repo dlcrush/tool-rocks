@@ -23,9 +23,9 @@ class PostController extends APIController
 
     public function getPosts()
     {
-        $paginator = $this->post->paginate(10);
+        $this->post->pushCriteria(new Filter('status', 'publish'));
 
-        $this->post->pushCriteria(new Filter('status', 'published'));
+        $paginator = $this->post->paginate(10);
 
         $posts = fractal()
            ->collection($paginator->getCollection())

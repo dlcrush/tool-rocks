@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Repositories\API\Contracts\WordPressRepository;
 use App\Repositories\API\Contracts\PostRepository;
+use App\Repositories\API\Criteria\Filter;
 use App\Post;
 use Carbon\Carbon;
 
@@ -60,6 +61,15 @@ class ProcessWPPosts implements ShouldQueue
             $p->save();
         }
 
-        //$videoProcessor->process($this->video, true);
+        $postIds = array_pluck($posts, 'id');
+
+        $postRepo->pushCriteria(new Filter('status', 'publish'));
+
+        $postsNotFound = $postRepo->findNotIn('wp_id', $postIds);
+
+        foreach($postsNotFound as $notFound) {
+            $notFound->status = 'hidden';
+            $notFound->save();
+        }
     }
 }

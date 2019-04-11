@@ -26,7 +26,11 @@
                         <div class="post-card">
                             <div class="post-card-image col-xs-12 col-sm-4">
                                 <div class="post-card-image-wrapper">
-                                    <center><img src="/img/sacred-geometry.svg" class="img-responsive" /></center>
+                                    @if(false && array_get($post, 'image') != null)
+                                        <center><img src="{{ array_get($post, 'image') }}" class="img-responsive" /></center>
+                                    @else
+                                        <center><img src="/img/sacred-geometry.svg" class="img-responsive" /></center>
+                                    @endif
                                 </div>
                             </div>
                             <div class="post-card-text col-xs-12 col-sm-8">
