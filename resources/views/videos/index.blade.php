@@ -12,8 +12,6 @@
 
         $(function() {
             $('.apply-criteria-button').on('click', function(e) {
-                console.log('submit');
-
                 e.preventDefault();
 
                 var year = $('.year-dropdown').val();
@@ -36,6 +34,13 @@
 
                 window.location = filterUrl;
             });
+
+            $('#toggleFilters').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                $('.videos-filter').toggleClass('hidden-xs');
+            });
         });
     </script>
 @endsection
@@ -49,7 +54,9 @@
     </div>
 
     @if($page !== 'live-dvd' && $page !== 'hall-of-fame' && $page !== 'search-results')
-        <div class="videos-filter">
+        <a href="#" id="toggleFilters" class="btn btn-default visible-xs"><i class="fa fa-filter"></i> Filters</a>
+        <div class="videos-filter hidden-xs">
+            <br class="visible-xs">
             <div class="row">
                 <div class="col-xs-12">
                     <form class="form-inline">
@@ -87,10 +94,10 @@
                                 <option value="thumbs_up:desc" {{ $orderBy == 'thumbs_up:desc' ? 'selected="selected"' : '' }}>Thumbs Up</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>Tags:</label>
                             <input type="text" class="form-control" />
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <button class="btn btn-default apply-criteria-button">Apply Criteria</button>
                         </div>
