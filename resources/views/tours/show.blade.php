@@ -29,7 +29,8 @@
                     @forelse(array_get($tour, 'shows.data') as $show)
                         <a href="{{ action('TourController@getShow', ['tourId' => array_get($tour, 'slug'), 'showId' => array_get($show, 'id'), 'slug' => array_get($show, 'slug')]) }}" class="list-group-item">
                             <div class="show-card">
-                                <h4 class="list-group-item-heading">{{ array_get($show, 'name') }}</h4>
+                                <h4 class="list-group-item-heading hidden-xs hidden-sm">{{ array_get($show, 'name') }}</h4>
+                                <h5 class="list-group-item-heading visible-xs-inline-block visible-sm-inline-block">{{ array_get($show, 'name') }}</h5>
                                 @if(array_get($show, 'video') != null)
                                     <div class="pull-right watch-link" data-href="{{ array_get($show, 'video.links.web') }}">
                                         <i class="fa fa-video-camera"></i> Watch

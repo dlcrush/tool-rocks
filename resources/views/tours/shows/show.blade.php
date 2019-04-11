@@ -25,12 +25,18 @@
 
                 <h3>{{ array_get($show, 'name') }}</h3>
 
+                @if (array_has($show, 'video'))
+                    <a href="{{ array_get($show, 'video.links.web') }}" class="btn btn-default btn-lg" style="margin-bottom: 15px"><i class="fa fa-video-camera"></i> Watch Show</a>
+                @endif
+
                 <div class="songs-collection list-group">
-                    @foreach(array_get($show, 'songs.data') as $song)
+                    @forelse(array_get($show, 'songs.data') as $song)
                         <div class="list-group-item">
                             {{ $loop->iteration }}. {{ array_get($song, 'name') }}
                         </div>
-                    @endforeach
+                    @empty
+                        No setlist for this show yet.
+                    @endforelse
                 </div>
             </div>
         </div>

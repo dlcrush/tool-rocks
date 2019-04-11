@@ -34,8 +34,6 @@
                     filterUrl += delimiter + 'orderBy=' + sortBy;
                 }
 
-                console.log('filterUrl', filterUrl);
-
                 window.location = filterUrl;
             });
         });
