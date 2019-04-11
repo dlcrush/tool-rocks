@@ -26,6 +26,8 @@
         <h1>{{ array_get($post, 'title') }}</h1>
 
         <div>{!! html_entity_decode(array_get($post, 'content')) !!}</div>
+
+        @include('components.fbComments', ['width' => 800])
     </div>
 </div>
 @endsection
