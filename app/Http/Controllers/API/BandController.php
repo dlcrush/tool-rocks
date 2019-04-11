@@ -66,6 +66,10 @@ class BandController extends APIController
 
         $band = $this->band->find($id);
 
+        if (! $band) {
+            return $this->respondNotFound();
+        }
+
         $albums = fractal()
            ->collection($band->albums)
            ->transformWith($this->albumTransformer)
@@ -78,6 +82,10 @@ class BandController extends APIController
         $this->band->pushCriteria(new Expand('albums.songs.video'));
 
         $band = $this->getBandByIdOrSlug($bandId);
+
+        if (! $band) {
+            return $this->respondNotFound();
+        }
 
         $bandResp = fractal()
             ->item($band)
@@ -92,7 +100,16 @@ class BandController extends APIController
         $this->band->pushCriteria(new Expand('albums'));
 
         $band = $this->getBandByIdOrSlug($bandId);
+
+        if (! $band) {
+            return $this->respondNotFound();
+        }
+
         $song = $this->getSongByIdOrSlug($band->songs, $songId);
+
+        if (! $song) {
+            return $this->respondNotFound();
+        }
 
         $songResp = fractal()
             ->item($song)
@@ -108,6 +125,10 @@ class BandController extends APIController
 
         $band = $this->getBandByIdOrSlug($bandId);
 
+        if (! $band) {
+            return $this->respondNotFound();
+        }
+
         $tours = fractal()
             ->collection($band->tours)
             ->transformWith($this->tourTransformer)
@@ -122,7 +143,15 @@ class BandController extends APIController
 
         $band = $this->getBandByIdOrSlug($bandId);
 
+        if (! $band) {
+            return $this->respondNotFound();
+        }
+
         $tour = $this->getTourByIdOrSlug($band->tours, $tourId);
+
+        if (! $tour) {
+            return $this->respondNotFound();
+        }
 
         $tourResp = fractal()
             ->item($tour)
@@ -141,6 +170,10 @@ class BandController extends APIController
         $tour = $this->getTourByIdOrSlug($band->tours, $tourId);
 
         $show = $this->getShowByIdOrSlug($tour->shows, $showId);
+
+        if (! $show) {
+            return $this->respondNotFound();
+        }
 
         $showResp = fractal()
             ->item($show)
