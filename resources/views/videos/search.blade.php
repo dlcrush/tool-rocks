@@ -69,7 +69,7 @@
                 tags.initialize();
 
                 $('#tags').tagsinput({
-                    itemValue: 'id',
+                    itemValue: 'slug',
                     itemText: 'name',
                     cancelConfirmKeysOnEmpty: true,
                     freeInput: false,
