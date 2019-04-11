@@ -47,6 +47,12 @@ div.container.frame-wrapper {
   width: 100%;
 }
 
+@media only screen and (min-width: 768px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
 .navbar {
   max-width: $navbar-max-width;
   background-color: $navbar-bg-color;
