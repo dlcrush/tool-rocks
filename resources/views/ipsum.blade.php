@@ -2,7 +2,8 @@
     'meta' => [
         'title' => 'Tool Ipsum',
         'description' => 'Check out this awesome Tool Ipsum generator! The best text to fill space on your site!',
-        'keywords' => 'tool ipsum, ipsum, ipsum generator, tool ipsum generator, tool band ipsum, tool band ipsum generator, tool lorem ipsum, lorem ipsum, lorem ipsum generator'
+        'keywords' => 'tool ipsum, ipsum, ipsum generator, tool ipsum generator, tool band ipsum, tool band ipsum generator, tool lorem ipsum, lorem ipsum, lorem ipsum generator',
+        'url' => action('IpsumController@generate')
     ]
 ])
 
