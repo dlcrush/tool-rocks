@@ -4,7 +4,8 @@
         'title' => array_get($video, 'meta.title') ? array_get($video, 'meta.title') : array_get($video, 'name'),
         'description' => array_get($video, 'meta.description') ? array_get($video, 'meta.description') : 'Check out this awesome performance of Tool!',
         'keywords' => array_get($video, 'meta.keywords') ? array_get($video, 'meta.keyowrds') : 'tool live, watch tool live, tool live performances',
-        'image' => array_get($video, 'images.standard')
+        'image' => array_get($video, 'images.standard'),
+        'url' => array_get($video, 'links.web')
     ]
 ])
 

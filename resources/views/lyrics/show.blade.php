@@ -2,7 +2,8 @@
     'meta' => [
         'title' => array_get($song, 'name') . ' Lyrics',
         'description' => "Check out these awesome lyrics for Tool's hit song \"" . array_get($song, 'name') . '"!',
-        'keywords' => 'tool lyrics, tool band lyrics, tool ' . array_get($song, 'name') . ' lyrics,' . array_get($song, 'name') . ' lyrics'
+        'keywords' => 'tool lyrics, tool band lyrics, tool ' . array_get($song, 'name') . ' lyrics,' . array_get($song, 'name') . ' lyrics',
+        'url' => array_get($song, 'links.web.href')
     ]
 ])
 

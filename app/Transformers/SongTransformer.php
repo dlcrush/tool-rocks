@@ -25,7 +25,7 @@ class SongTransformer extends TransformerAbstract {
             ],
             'links' => [
                 'web' => [
-                    'href' => url("/songs/" . $song->slug)
+                    'href' => url("/lyrics/song/" . $song->slug)
                 ],
                 'self' => [
                     'href' =>  url('/api/v1/songs/' . $song->id)

@@ -15,6 +15,9 @@
         <meta name="keywords" content="tool, toolband, tool band, tool rocks, toolrocks, {{ array_get($meta, 'keywords') }}" />
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
+        @if (array_has($meta, 'url'))
+            <link rel="canonical" href="{{ array_get($meta, 'url') }}" />
+        @endif
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta property="fb:app_id" content="114546565996433" />
         <meta property="og:site_name" content="ToolRocks.com"/>
