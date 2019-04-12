@@ -25,7 +25,7 @@ class HttpServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('App\Library\Http\Contracts\Http', function($app) {
-            return new \App\Library\Http\Http(new Client, []);
+            return new \App\Library\Http\Http(new Client, [], $app->make('Illuminate\Cache\Repository'));
         });
 
         $this->app->bind('App\Library\Http\Contracts\UrlBuilder', function($app) {
