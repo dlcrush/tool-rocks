@@ -2,7 +2,8 @@
     'meta' => [
         'title' => 'Maynardism',
         'description' => array_get($maynardism, 'content'),
-        'keywords' => 'tool, tool band, tool maynardisms, maynard james keenan, maynard james keenan quotes, maynard, maynard quotes, tool maynardisms, tool maynardism'
+        'keywords' => 'tool maynardisms, maynard james keenan, maynard james keenan quotes, maynard, maynard quotes, tool maynardisms, tool maynardism',
+        'url' => action('MaynardismController@getMaynardism', array_get($maynardism, 'id'))
     ]
 ])
 

@@ -3,7 +3,8 @@
     'meta' => [
         'title' => 'Daily Fix',
         'description' => 'Get your Daily Fix of your favorite Live Tool videos here! New playlists generated daily!',
-        'keywords' => 'tool, tool band, tool live, tool tv, tool live stream, tool daily fix, tool playlist, tool live playlist, tool live daily fix'
+        'keywords' => 'tool tv, tool live stream, tool daily fix, tool playlist, tool live playlist, tool live daily fix',
+        'url' => action('VideoController@getDailyFix')
     ]
 ])
 

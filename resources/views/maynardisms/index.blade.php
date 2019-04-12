@@ -2,7 +2,8 @@
     'meta' => [
         'title' => 'Maynardisms',
         'description' => 'Check out these awesome Maynardisms featuring the wisdom of Maynard James Keenan!',
-        'keywords' => 'tool, tool band, tool maynardisms, maynard james keenan, maynard james keenan quotes, maynard, maynard quotes, tool maynardisms'
+        'keywords' => 'tool maynardisms, maynard james keenan, maynard james keenan quotes, maynard, maynard quotes, tool maynardisms',
+        'url' => action('MaynardismController@getMaynardisms')
     ]
 ])
 

@@ -2,7 +2,8 @@
     'meta' => [
         'title' => 'Blog',
         'description' => 'Check out this awesome blog covering Tool!',
-        'keywords' => 'tool blog, tool band blog, tool news, tool rumours'
+        'keywords' => 'tool blog, tool band blog, tool news, tool rumours',
+        'url' => action('BlogController@getPosts')
     ]
 ])
 

@@ -2,7 +2,8 @@
     'meta' => [
         'title' => 'Videos - Search',
         'description' => 'Search our full database of your favorite Tool videos!',
-        'keywords' => 'tool live, watch tool live, tool live performances, search, search tool videos, search tool live videos, find tool videos'
+        'keywords' => 'tool live, watch tool live, tool live performances, search, search tool videos, search tool live videos, find tool videos',
+        'url' => action('VideoController@getSearch')
     ]
 ])
 

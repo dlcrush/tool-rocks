@@ -2,7 +2,8 @@
     'meta' => [
         'title' => 'Lyrics',
         'description' => "Check out these awesome Tool lyrics including your favorites such as 'Schism', 'Vicarious', 'Lateralus', and more!",
-        'keywords' => 'tool lyrics, tool band lyrics'
+        'keywords' => 'tool lyrics, tool band lyrics',
+        'url' => action('LyricController@getLyrics')
     ]
 ])
 

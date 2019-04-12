@@ -2,7 +2,8 @@
     'meta' => [
         'title' => 'Tours',
         'description' => "Check out this awesome collection of Tool's current, past, and upcoming tours!",
-        'keywords' => 'tool tour, tool live, tool live show, tool setlist, tool setlists, tool live shows, tool tours, tool band tours, tool band tour'
+        'keywords' => 'tool tour, tool live, tool live show, tool setlist, tool setlists, tool live shows, tool tours, tool band tours, tool band tour',
+        'url' => action('TourController@getTours')
     ]
 ])
 

@@ -2,7 +2,8 @@
     'meta' => [
         'title' => array_get($tour, 'name') . ' Tour',
         'description' => "Check out all the shows and setlists from Tool's " . array_get($tour, 'name') . " Tour!",
-        'keywords' => 'tool tour, tool live, tool live show, tool setlist, tool setlists, tool band tour, tool band live, tool band live shows'
+        'keywords' => 'tool tour, tool live, tool live show, tool setlist, tool setlists, tool band tour, tool band live, tool band live shows',
+        'url' => action('TourController@getTour', array_get($tour, 'slug'))
     ]
 ])
 
