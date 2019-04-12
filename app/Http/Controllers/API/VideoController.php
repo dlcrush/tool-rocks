@@ -167,13 +167,10 @@ class VideoController extends APIController
 
         $video = $this->videoRepo->all()->first();
 
-        $video->channel = $this->youTubeRepo->getChannel(['id' => $video->channel_id]);
-        $video->related = $this->getRelatedVideos($video);
-
         $video = fractal()
             ->item($video)
             ->transformWith($this->videoTransformer)
-            ->parseIncludes(['channel', 'songs', 'tags', 'related'])
+            ->parseIncludes(['songs', 'tags'])
             ->toArray();
 
         return $this->respond($video);
