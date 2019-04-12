@@ -31,6 +31,7 @@
             <meta property="og:image" content="{{ array_get($meta, 'image.url') }}"/>
         @endif
         <meta property="og:description" content="{{ array_get($meta, 'description') }}"/>
+        <meta property="og:keywords" content="{{ array_get($meta, 'keywords') }}" />
         @if(array_get($meta, 'noindex') === true)
             <meta name="robots" content="noindex">
         @endif
