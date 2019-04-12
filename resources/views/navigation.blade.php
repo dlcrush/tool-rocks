@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/admin">
+                <a class="navbar-brand" href="/">
                     <span class="tool">TOOL</span>
                     <span class="rocks">Rocks</span>
                 </a>
