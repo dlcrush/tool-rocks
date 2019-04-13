@@ -14,6 +14,8 @@ class VideoRepository implements VideoRepositoryInterface {
         $this->http = $http;
         $this->urlBuilder = $urlBuilder;
         $this->urlBuilder->setBaseUrl(url('/') . '/api/v1/');
+        $apiKey = \Config::get('api.api_key');
+        $this->urlBuilder->addParam('key', $apiKey);
     }
 
     public function getVideo($id) {

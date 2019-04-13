@@ -15,10 +15,7 @@ class APIAuth
      */
     public function handle($request, Closure $next)
     {
-        // TODO: actually implement the hasAccess check
-        $hasAccess = strpos(url()->current(), 'toolrocks.test') > -1
-            || strpos(url()->current(), 'toolrocks.com') > -1
-            || strpos(url()->current(), 'stage.toolrocks.com') > -1;
+        $hasAccess = $request->input('key') === \Config::get('api.api_key');
 
         if (! $hasAccess) {
             return response('Unauthenticated.', 401);
