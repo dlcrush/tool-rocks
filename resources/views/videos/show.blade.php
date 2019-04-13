@@ -124,8 +124,8 @@
                     <?php //if (++$i > 4) { break; } ?>
                     <a href="{{ array_get($x, 'links.web') }}" style="color: white">
                         <div class="related-video col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                            <img src="{{ array_get($x, 'images.high.url') }}" class="img-responsive" style="max-width: 240px; width: 100%;">
-                            <div class="related-video-info" style="background-color: #131313; max-width: 240px;">
+                            <img src="{{ array_get($x, 'images.high.url') }}" class="img-responsive">
+                            <div class="related-video-info">
                                 <div style="padding: 20px;">
                                     <h5>{{ array_get($x, 'name') }}</h5>
                                 </div>

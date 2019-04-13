@@ -487,36 +487,11 @@ span.stat {
         padding-bottom: 25px;
         //background-color:rgba(197, 188, 188, 0.8);
 
-        @media (min-width: 801px) and (max-width: 1023px) {
-            //top: 25%;
-        }
-
-        @media (max-width: 800px) {
-            //top: 20%;
-        }
-
-        @media (max-width: 700px) {
-            //top: 17%;
-            //left: 36%;
-        }
-
-        @media (max-width: 600px) {
-            //top: 11%;
-            //left: 33%;
-        }
-
         @media (max-width: 500px) {
-            //top: 10%;
-            //left: 34%;
             padding-left: 25px;
             padding-right: 25px;
             padding-top: 15px;
             padding-bottom: 15px;
-        }
-
-        @media (max-width: 450px) {
-            //top: 3%;
-            //left: 29%;
         }
     }
 }
@@ -670,6 +645,29 @@ span.stat {
 
     .related-video {
         display: inline-block;
+
+        img {
+            max-width: 240px;
+            width: 100%;
+        }
+
+        .related-video-info {
+            max-width: 240px;
+            background-color: #131313;
+        }
+
+        @media (max-width: 768px) {
+            margin-bottom: 10px;
+
+            img {
+                max-width: none;
+            }
+
+            .related-video-info {
+                max-width: none;
+                width: 100%;
+            }
+        }
     }
 }
 
