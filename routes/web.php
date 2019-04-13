@@ -43,6 +43,8 @@ Route::get('tv', 'TVController@index');
 /** Blog */
 Route::get('blog', 'BlogController@getPosts');
 Route::get('blog/post/{id}/{slug?}', 'BlogController@getPost');
+Route::get('about', 'BlogController@getAbout');
+Route::get('links', 'BlogController@getLinks');
 
 /** Maynardisms */
 Route::get('maynardisms', 'MaynardismController@getMaynardisms');

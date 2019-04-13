@@ -47,8 +47,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/ipsum">Ipsum Generator</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/links">Links</a></li>
                             <li><a href="/maynardisms">Maynardisms</a></li>
+                            <li><a href="/ipsum">Ipsum Generator</a></li>
                         </ul>
                     </li>
                 </ul>

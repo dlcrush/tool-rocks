@@ -106,6 +106,10 @@ class RepositoryServiceProvider extends ServiceProvider
             return new \App\Repositories\PostRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
         });
 
+        $this->app->bind('App\Repositories\Contracts\PageRepository', function($app) {
+            return new \App\Repositories\PageRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
+        });
+
         $this->app->bind('App\Repositories\Contracts\MaynardismRepository', function($app) {
             return new \App\Repositories\MaynardismRepository($app->make('App\Library\Http\Http'), $app->make('App\Library\Http\UrlBuilder'));
         });

@@ -29,4 +29,13 @@ class PageController extends APIController
         return $this->respond($pages);
     }
 
+    public function getPage($id) {
+        $page = fractal()
+            ->item($this->page->findByIdOrSlug($id))
+            ->transformWith($this->pageTransformer)
+            ->toArray();
+
+        return $this->respond($page);
+    }
+
 }

@@ -55,6 +55,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
 
     /** Pages */
     Route::get('pages', 'PageController@getPages');
+    Route::get('pages/{id}', 'PageController@getPage');
 
     /** Posts */
     Route::get('posts', 'PostController@getPosts');
