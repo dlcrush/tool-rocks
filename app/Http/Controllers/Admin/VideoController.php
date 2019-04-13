@@ -53,7 +53,9 @@ class VideoController extends Controller
         $this->bandRepo->pushCriteria(new Expand('songs'));
         $bands = $this->bandRepo->all();
 
-        return view('admin.videos.create', compact('bands'));
+        $apiKey = \Config::get('api.api_key');
+
+        return view('admin.videos.create', compact('bands', 'apiKey'));
     }
 
     /**
@@ -145,7 +147,9 @@ class VideoController extends Controller
         $this->bandRepo->pushCriteria(new Expand('songs'));
         $bands = $this->bandRepo->all();
 
-        return view('admin.videos.edit', compact('video', 'bands'));
+        $apiKey = \Config::get('api.api_key');
+
+        return view('admin.videos.edit', compact('video', 'bands', 'apiKey'));
     }
 
     /**

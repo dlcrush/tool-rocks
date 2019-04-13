@@ -142,7 +142,7 @@
             var youtubeId = $('#youtube_id').val();
 
             $.ajax({
-                url: "{{ action('API\YouTubeController@getVideo', ['id' => '']) }}/" + youtubeId,
+                url: "{{ action('API\YouTubeController@getVideo', ['id' => '']) }}/" + youtubeId + '?key={{$apiKey}}',
                 success: function(data) {
                     var name = data.title,
                         description = data.description;
