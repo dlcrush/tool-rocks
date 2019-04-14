@@ -14,7 +14,7 @@
         <meta name="description" content="{{ array_get($meta, 'description') }}" />
         <meta name="keywords" content="tool, toolband, tool band, tool rocks, toolrocks, {{ array_get($meta, 'keywords') }}" />
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-        <link rel="icon" type="image/vnd.microsoft.icon"  href="/images/favicon.ico">
+        <link rel="icon" type="image/vnd.microsoft.icon"  href="/favicon.ico">
         @if (array_has($meta, 'url'))
             <link rel="canonical" href="{{ array_get($meta, 'url') }}" />
         @endif
