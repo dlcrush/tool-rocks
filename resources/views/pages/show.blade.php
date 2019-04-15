@@ -14,6 +14,10 @@ if ($slug === 'about') {
     $title = 'Links';
     $description = 'Check out these awesome links to other great Tool sites.';
     $keywords = 'tool links, tool band links, tool rocks links';
+} else if ($slug === 'contact') {
+    $title = 'Contact';
+    $description = 'Share your feedback for ToolRocks.com here.';
+    $keywords = 'tool rocks feedback, toolrocks feedback, toolrocks.com feedback, tool rocks contact, tool rocks contact us, toolrocks contact, toolrocks contact us';
 }
 
 ?>

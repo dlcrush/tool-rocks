@@ -694,6 +694,67 @@ span.stat {
     }
 }
 
+.home-layout {
+    .related-video {
+        display: inline-block;
+
+        img {
+            max-width: 240px;
+            width: 100%;
+        }
+
+        .related-video-info {
+            max-width: 240px;
+            background-color: #131313;
+        }
+
+        @media (max-width: 768px) {
+            margin-bottom: 10px;
+
+            img {
+                max-width: none;
+            }
+
+            .related-video-info {
+                max-width: none;
+                width: 100%;
+            }
+        }
+    }
+
+    .post-card {
+        color: white;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 25px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: darken($primaryColor, 4%);
+
+        .post-card-image {
+            display: inline-block;
+
+            .post-card-image-wrapper {
+                background-color: #000202;
+                max-width: 320px;
+                max-height: 180px;
+                width: 100%;
+
+                img {
+                    height: 50%;
+                    width: 50%;
+                    z-index: 100;
+                    fill: white;
+                }
+            }
+        }
+
+        .post-card-text {
+            display: inline-block;
+        }
+    }
+}
+
 .borderless {
     td, th {
         border: none !important;

@@ -46,4 +46,8 @@ class BlogController extends Controller
     public function getLinks() {
         return $this->getPage('links');
     }
+
+    public function getContact() {
+        return $this->getPage('contact');
+    }
 }

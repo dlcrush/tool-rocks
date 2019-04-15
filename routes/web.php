@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@getHome');
 
 /** Ipsum */
 Route::get('ipsum', 'IpsumController@generate');
@@ -45,6 +43,7 @@ Route::get('blog', 'BlogController@getPosts');
 Route::get('blog/post/{id}/{slug?}', 'BlogController@getPost');
 Route::get('about', 'BlogController@getAbout');
 Route::get('links', 'BlogController@getLinks');
+Route::get('contact', 'BlogController@getContact');
 
 /** Maynardisms */
 Route::get('maynardisms', 'MaynardismController@getMaynardisms');

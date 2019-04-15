@@ -7,6 +7,7 @@ use App\Transformers\PostTransformer;
 use App\Repositories\API\Contracts\PostRepository;
 use App\Repositories\API\Criteria\Expand;
 use App\Repositories\API\Criteria\Filter;
+use App\Repositories\API\Criteria\OrderBy;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class PostController extends APIController
@@ -24,6 +25,7 @@ class PostController extends APIController
     public function getPosts()
     {
         $this->post->pushCriteria(new Filter('status', 'publish'));
+        $this->post->pushCriteria(new OrderBy('published_at', 'desc'));
 
         $paginator = $this->post->paginate(10);
 

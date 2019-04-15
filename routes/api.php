@@ -67,6 +67,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API', 'middleware' => ['APIAuth'
 
     Route::get('tv', 'TVcontroller@getTV');
 
+    Route::get('home', 'HomeController@getHome');
+
     Route::get('bands/{bandId}/shows', 'SetlistController@getShows');
     Route::get('bands/{bandId}/info', 'SetlistController@getBand');
     Route::get('bands/{bandId}/shows/{year}', 'SetlistController@getShowsByYear');
