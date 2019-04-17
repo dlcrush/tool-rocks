@@ -6,6 +6,7 @@ interface BandRepository {
     public function getBand($bandIdOrSlug);
     public function getBands();
     public function getSong($bandIdOrSlug='tool', $songIdOrSlug);
+    public function getSongs($bandIdOrSlug='tool');
     public function getTours($bandIdOrSlug);
     public function getTour($bandIdOrSlug, $tourId);
     public function getShow($bandIdOrSlug, $tourId, $showId);

@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\VideoRepository;
+use App\Repositories\Contracts\BandRepository;
 
 class VideoController extends Controller
 {
     protected $videoRepo;
 
-    public function __construct(VideoRepository $videoRepo) {
+    public function __construct(VideoRepository $videoRepo, BandRepository $bandRepo) {
         $this->videoRepo = $videoRepo;
+        $this->bandRepo = $bandRepo;
     }
 
     public function getVideo($id, $slug='') {
@@ -53,6 +55,11 @@ class VideoController extends Controller
 
     public function getSearch() {
         $searchCriteria = [];
+        $year = null;
+        $text = null;
+        $type = null;
+        $songs = null;
+        $tags = null;
 
         if (\Request::has('text')) {
            $searchCriteria['text'] = \Request::get('text');
@@ -66,16 +73,33 @@ class VideoController extends Controller
         if (\Request::has('year')) {
             $searchCriteria['year'] = \Request::get('year');
         }
+        if (\Request::has('songs')) {
+            $searchCriteria['songs'] = \Request::get('songs');
+        }
+        if (\Request::has('type')) {
+            $searchCriteria['type'] = \Request::get('type');
+        }
+
+        $allSongs = $this->bandRepo->getSongs('tool');
+
+        $years = [];
+        for($i = 2018; $i > 1990; $i --) {
+            array_push($years, ['id' => $i, 'year' => $i]);
+        }
 
         if (count($searchCriteria) > 0) {
             $videos = $this->videoRepo->searchVideos($searchCriteria);
 
             $text = isset($searchCriteria['text']) ? $searchCriteria['text'] : null;
+            $year = isset($searchCriteria['year']) ? $searchCriteria['year'] : null;
+            $type = isset($searchCriteria['type']) ? $searchCriteria['type'] : null;
+            $songs = isset($searchCriteria['songs']) ? explode(",", $searchCriteria['songs']) : null;
+            $tags = isset($searchCriteria['tags']) ? $searchCriteria['tags'] : null;
 
-            return view('videos.search', compact('videos', 'text'));
+            return view('videos.search', compact('videos', 'text', 'years', 'year', 'allSongs', 'songs', 'type', 'tags'));
         }
 
-        return view('videos.search');
+        return view('videos.search', compact('years', 'allSongs', 'year', 'type', 'songs'));
     }
 
     public function getRandomVideo() {

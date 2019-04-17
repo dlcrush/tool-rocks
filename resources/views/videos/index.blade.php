@@ -105,7 +105,6 @@
                                 <option value="">Select a Type</option>
                                 <option value="live" {{ $type == 'live' ? 'selected="selected"' : '' }}>Live</option>
                                 <option value="lyrics" {{ $type == 'lyrics' ? 'selected="selected"' : '' }}>Lyrics</option>
-                                <option value="studio" {{ $type == 'studio' ? 'selected="selected"' : '' }}>Studio</option>
                                 <option value="music-video" {{ $type == 'music-video' ? 'selected="selected"' : '' }}>Music Video</option>
                             </select>
                         </div>

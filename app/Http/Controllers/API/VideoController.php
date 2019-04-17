@@ -109,6 +109,9 @@ class VideoController extends APIController
         if (\Request::has('type')) {
             $searchCriteria['type'] = \Request::get('type');
         }
+        if (\Request::has('songs')) {
+            $searchCriteria['songs'] = \Request::get('songs');
+        }
         if (\Request::has('orderBy')) {
             $orderBy = \Request::get('orderBy');
         }

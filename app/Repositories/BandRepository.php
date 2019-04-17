@@ -45,6 +45,15 @@ class BandRepository implements BandRepositoryInterface {
         return json_decode($this->http->get($url), true);
     }
 
+    public function getSongs($bandIdOrSlug='tool') {
+        $url = $this->urlBuilder
+            ->path('bands/'.$bandIdOrSlug . '/songs')
+            ->params([])
+            ->build();
+
+        return json_decode($this->http->get($url), true);
+    }
+
     public function getTours($bandIdOrSlug='tool') {
         $url = $this->urlBuilder
             ->path('bands/'. $bandIdOrSlug . '/tours')
