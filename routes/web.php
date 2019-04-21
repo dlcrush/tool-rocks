@@ -73,3 +73,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['Adm
         return view('admin.home');
     });
 });
+
+Auth::routes();

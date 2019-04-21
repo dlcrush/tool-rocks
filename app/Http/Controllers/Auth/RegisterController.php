@@ -51,6 +51,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'code' => 'required|string|min:12|max:12'
         ]);
     }
 
@@ -62,10 +63,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        if ($data['code'] !== \Config::get('auth.registration_code')) {
+            return redirect('/register');
+        }
+
+        User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'is_admin' => true
         ]);
+
+        return redirect('/admin');
     }
 }

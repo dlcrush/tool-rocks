@@ -15,11 +15,10 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
-        // TODO: actually implement the hasAccess check
-        $hasAccess = strpos(url()->current(), 'toolrocks.test') > -1;
+        $user = $request->user();
 
-        if (! $hasAccess) {
-            return redirect('/');
+        if (! isset($user) || ! $user->is_admin) {
+            return redirect('/login');
         }
 
         return $next($request);

@@ -99,4 +99,6 @@ return [
         ],
     ],
 
+    'registration_code' => env('AUTH_REGISTRATION_CODE', '')
+
 ];

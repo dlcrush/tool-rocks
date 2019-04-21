@@ -1,7 +1,9 @@
 @extends('layouts/app', [
-    'title' => 'Home',
-    'description' => "Visit ToolRocks.com to get the latest news, commentary, videos, lyrics, and all other information related to Tool",
-    'keywords' => 'toolrocks.com, tool band news, tool news, tool band commentary, tool commentary, tool videos, tool band videos, tool lyrics, tool band lyrics, tool band info, tool info, tool information, tool band information'
+    'meta' => [
+        'title' => 'Home',
+        'description' => "Visit ToolRocks.com to get the latest news, commentary, videos, lyrics, and all other information related to Tool",
+        'keywords' => 'toolrocks.com, tool band news, tool news, tool band commentary, tool commentary, tool videos, tool band videos, tool lyrics, tool band lyrics, tool band info, tool info, tool information, tool band information'
+    ]
 ])
 
 @section('content')
