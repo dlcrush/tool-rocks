@@ -74,4 +74,4 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['Adm
     });
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
