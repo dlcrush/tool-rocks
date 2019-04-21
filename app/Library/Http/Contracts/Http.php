@@ -22,4 +22,8 @@ interface Http {
 
     public function delete(String $url, $data=[], $options = []);
 
+    public function setTTL($ttl = 15);
+
+    public function getTTL();
+
 }

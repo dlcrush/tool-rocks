@@ -24,6 +24,7 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
         $this->urlBuilder = $urlBuilder;
         $this->urlBuilder->setBaseUrl('https://www.googleapis.com/youtube/v3/');
         $this->urlBuilder->addParam('key', $apiKey);
+        $this->http->setTTL(1);
         $this->apiKey = $apiKey;
     }
 
@@ -97,6 +98,8 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
 
     public function getChannelById($id) {
 
+        $this->http->setTTL(15);
+
         $url = $this->urlBuilder
             ->path('channels')
             ->params([
@@ -106,6 +109,8 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
             ->build();
 
         $res = $this->http->get($url);
+
+        $this->http->setTTL(1);
 
         $items = json_decode($res)->items;
 

@@ -51,6 +51,23 @@ Route::get('maynardisms/{id}', 'MaynardismController@getMaynardism');
 
 /** Admin Routes **/
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['AdminAuth']], function() {
+    // Commands
+    Route::get('commands/videos/ingest', function() {
+        Artisan::call("ingest:yt");
+
+        return redirect('/admin');
+    });
+    Route::get('commands/wordpress/ingest', function() {
+        Artisan::call("ingest:wp");
+
+        return redirect('/admin');
+    });
+    Route::get('commands/dailyfix/generate', function() {
+        Artisan::call("dailyfix:generate");
+
+        return redirect('/admin');
+    });
+
     Route::resource('bands', 'BandController');
     Route::get('bands/{id}/delete', 'BandController@delete');
     Route::resource('albums', 'AlbumController');
