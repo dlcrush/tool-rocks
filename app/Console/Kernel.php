@@ -30,6 +30,11 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->command('ingest:yt')->timezone('America/New_York')->everyTenMinutes();
+        $schedule->command('ingest:wp')->timezone('America/New_York')->everyTenMinutes();
+        $schedule->command('dailyfix:generate')->timezone('America/New_York')->dailyAt('02:00');
+
     }
 
     /**
