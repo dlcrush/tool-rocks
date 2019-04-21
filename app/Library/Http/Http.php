@@ -30,7 +30,7 @@ class Http implements HttpInterface {
         $this->options = array_merge($this->options, $options);
     }
 
-    public function setTTL($ttl = 15) {
+    public function setTTL($ttl = 10) {
         $this->options['ttl'] = $ttl;
     }
 

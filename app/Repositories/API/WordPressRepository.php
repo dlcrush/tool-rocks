@@ -16,6 +16,7 @@ class WordPressRepository implements WordPressRepositoryInterface {
         $this->http = $http;
         $this->urlBuilder = $urlBuilder;
         $this->urlBuilder->setBaseUrl('http://wp.toolrocks.com/toolrocks/wp-json/wp/v2/');
+        $this->http->setTTL(5);
     }
 
     public function getPages($data=[]) {
