@@ -20,6 +20,8 @@
                         <a href="/"> Main site</a>
                     </li>
                     <li>
+                        <a href="/admin"> Home</a>
+                    <li>
                         <a href="{{ action('Admin\BandController@index') }}"> Bands</a>
                     </li>
                     <li>
