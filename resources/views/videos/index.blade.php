@@ -17,6 +17,10 @@
             $metaTitle = 'Music Videos';
             $metaDescription = 'Check out these awesome, official music videos from the band Tool!';
             $metaKeywords = 'tool music videos, tool official music videos, watch tool music videos, watch official tool music videos';
+        } else if ($page === 'full-albums') {
+            $metaTitle = 'Full Albums';
+            $metaDescription = 'Check out these awesome, official full, studio albums from the band Tool!';
+            $metaKeywords = 'tool albums, tool studio albums';
         }
     }
 
@@ -78,7 +82,7 @@
         </div>
     </div>
 
-    @if($page !== 'live-dvd' && $page !== 'hall-of-fame' && $page !== 'search-results' && $page !== 'music-videos')
+    @if($page !== 'live-dvd' && $page !== 'hall-of-fame' && $page !== 'search-results' && $page !== 'music-videos' && $page !== 'full-albums')
         <a href="#" id="toggleFilters" class="btn btn-default visible-xs"><i class="fa fa-filter"></i> Filters</a>
         <div class="videos-filter hidden-xs">
             <br class="visible-xs">
@@ -106,6 +110,7 @@
                                 <option value="live" {{ $type == 'live' ? 'selected="selected"' : '' }}>Live</option>
                                 <option value="lyrics" {{ $type == 'lyrics' ? 'selected="selected"' : '' }}>Lyrics</option>
                                 <option value="music-video" {{ $type == 'music-video' ? 'selected="selected"' : '' }}>Music Video</option>
+                                <option value="full-album" {{ $type == 'full-album' ? 'selected="selected"' : '' }}>Studio Album</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -137,6 +142,14 @@
         <h3>Search Results</h3>
     @elseif ($page === 'music-videos')
         <h3>Music Videos</h3>
+    @elseif ($page === 'full-albums')
+        <h3>Albums</h3>
+    @endif
+
+    @if ($page === 'full-albums')
+        <div class="alert alert-info">
+            <strong>DISCLAIMER</strong> These albums that we love to listen to and give us so much enjoyment take a lot of hard work and effort by the band to create. I list them here with the hope that it will help people who wouldn't otherwise experience Tool get that opportunity. But please, support the band! Do not simply listen for free without giving back. <a href="/support-the-band">See how you can support the band!</a>
+        </div>
     @endif
 
     @include('videos.partials.collection', ['videos' => $videos])

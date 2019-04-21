@@ -50,4 +50,8 @@ class BlogController extends Controller
     public function getContact() {
         return $this->getPage('contact');
     }
+
+    public function getSupportTheBand() {
+        return $this->getPage('support-the-band');
+    }
 }
