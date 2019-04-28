@@ -134,7 +134,9 @@ class Search extends Criteria {
             }
         }
 
-        $query = $query->whereIn('id', $ids);
+        if ($unions || $songsUnions || $tagsUnions) {
+            $query = $query->whereIn('id', $ids);
+        }
 
         return $query;
     }
