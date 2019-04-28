@@ -18,6 +18,14 @@ if ($slug === 'about') {
     $title = 'Contact';
     $description = 'Share your feedback for ToolRocks.com here.';
     $keywords = 'tool rocks feedback, toolrocks feedback, toolrocks.com feedback, tool rocks contact, tool rocks contact us, toolrocks contact, toolrocks contact us';
+} else if ($slug === 'support-the-band') {
+    $title = 'Support The Band';
+    $description = 'Learn more about how you can support the band here.';
+    $keywords = 'support tool, support tool band, support the band';
+} else if ($slug === 'disclaimer') {
+    $title = 'Disclaimer';
+    $description = 'View the ToolRocks disclaimer here.';
+    $keywords = 'tool rocks disclaimer, site disclaimer';
 }
 
 ?>
