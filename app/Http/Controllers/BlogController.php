@@ -58,4 +58,8 @@ class BlogController extends Controller
     public function getDisclaimer() {
         return $this->getPage('disclaimer');
     }
+
+    public function getPrivacyPolicy() {
+        return $this->getPage('privacy-policy');
+    }
 }

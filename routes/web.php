@@ -46,6 +46,7 @@ Route::get('links', 'BlogController@getLinks');
 Route::get('contact', 'BlogController@getContact');
 Route::get('disclaimer', 'BlogController@getDisclaimer');
 Route::get('support-the-band', 'BlogController@getSupportTheBand');
+Route::get('privacy-policy', 'BlogController@getPrivacyPolicy');
 
 /** Maynardisms */
 Route::get('maynardisms', 'MaynardismController@getMaynardisms');
