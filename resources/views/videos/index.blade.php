@@ -4,10 +4,12 @@
             $metaTitle = 'Live DVDs';
             $metaDescription = 'Check out these awesome Live DVDs of amazing performances by Tool. Produced by ToolArchive.';
             $metaKeywords = 'tool live dvd, tool band live dvd, tool live dvds, tool live, tool band live, watch tool live';
+            $metaUrl = url()->current() . '?tags=live-dvd&orderBy=name:desc&page=live-dvd';
         } else if ($page === 'hall-of-fame') {
             $metaTitle = 'Hall of Fame Videos';
             $metaDescription = 'Check out this collection of "Hall of Fame" videos of Tool live performances. These are the best performances ever by Tool!';
             $metaKeywords = 'tool hall of fame, tool hall of fame videos, tool best live performances, tool live, watch tool live';
+            $metaUrl = url()->current() . '?tags=hall-of-fame&page=hall-of-fame';
         } else if ($page === 'search-results') {
             $metaTitle = 'Search Results';
             $metaDescription = 'Search our large database of Tool videos including music videos, live performances, lyric videos, and more!';
@@ -17,10 +19,12 @@
             $metaTitle = 'Music Videos';
             $metaDescription = 'Check out these awesome, official music videos from the band Tool!';
             $metaKeywords = 'tool music videos, tool official music videos, watch tool music videos, watch official tool music videos';
+            $metaUrl = url()->current() . '?type=music-video&page=music-videos';
         } else if ($page === 'full-albums') {
             $metaTitle = 'Full Albums';
             $metaDescription = 'Check out these awesome, official full, studio albums from the band Tool!';
             $metaKeywords = 'tool albums, tool studio albums';
+            $metaUrl = url()->current() . '?type=full-album&page=full-albums&orderBy=created_at:desc';
         }
     }
 
@@ -31,7 +35,8 @@
         'title' => isset($metaTitle) ? $metaTitle : 'Videos',
         'description' => isset($metaDescription) ? $metaDescription : 'Check out this awesome collection of Tool videos including all of your favorite live performances!',
         'keywords' => isset($metaKeywords) ? $metaKeywords : 'tool videos, tool band videos, tool live videos, tool live performances',
-        'noindex' => isset($noindex) ? $noindex === true : false
+        'noindex' => isset($noindex) ? $noindex === true : false,
+        'url' => isset($metaUrl) ? $metaUrl : action('VideoController@getVideos')
     ]
 ])
 
