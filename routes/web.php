@@ -44,6 +44,7 @@ Route::get('blog/post/{id}/{slug?}', 'BlogController@getPost');
 Route::get('about', 'BlogController@getAbout');
 Route::get('links', 'BlogController@getLinks');
 Route::get('contact', 'BlogController@getContact');
+Route::get('disclaimer', 'BlogController@getDisclaimer');
 Route::get('support-the-band', 'BlogController@getSupportTheBand');
 
 /** Maynardisms */

@@ -54,4 +54,8 @@ class BlogController extends Controller
     public function getSupportTheBand() {
         return $this->getPage('support-the-band');
     }
+
+    public function getDisclaimer() {
+        return $this->getPage('disclaimer');
+    }
 }
