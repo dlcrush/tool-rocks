@@ -26,6 +26,10 @@
 
         <h1>{{ array_get($post, 'title') }}</h1>
 
+        <div class="post-info">
+            <span class="post-date">{{ Carbon\Carbon::parse(array_get(array_get($post, 'publishedAt'), 'date'))->format('F j, Y') }}</span>
+        </div>
+
         <div>{!! html_entity_decode(array_get($post, 'content')) !!}</div>
 
         @include('components.fbComments', ['width' => 800, 'url' => action('BlogController@getPost', ['id' => array_get($post, 'id'), 'slug' => array_get($post, 'slug')])])

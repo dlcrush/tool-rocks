@@ -34,6 +34,9 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="post-card-info col-xs-12 col-sm-8">
+                                <div class="post-date">{{ Carbon\Carbon::parse(array_get(array_get($post, 'publishedAt'), 'date'))->format('F j, Y') }}</div>
+                            </div>
                             <div class="post-card-text col-xs-12 col-sm-8">
                                 <h3>{{ array_get($post, 'title') }}</h3>
                                 <p>{!! array_get($post, 'excerpt') !!}</p>
