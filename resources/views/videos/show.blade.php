@@ -123,7 +123,7 @@
                 @foreach(array_get($video, 'related.data') as $i => $x)
                     <?php //if (++$i > 4) { break; } ?>
                     <a href="{{ array_get($x, 'links.web') }}" style="color: white">
-                        <div class="related-video col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <div class="related-video col-xs-12 col-sm-4 col-md-3 col-lg-2 {{ $i > 2 ? 'hidden-sm' : '' }} {{ $i > 3 ? 'hidden-md' : '' }}">
                             <img src="{{ array_get($x, 'images.high.url') }}" class="img-responsive">
                             <div class="related-video-info">
                                 <div style="padding: 20px;">
