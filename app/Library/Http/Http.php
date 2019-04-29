@@ -94,7 +94,8 @@ class Http implements HttpInterface {
 
     private function getDefaultOptions() {
         return [
-            'ttl' => 15
+            'ttl' => 15,
+            'verify' => false
         ];
     }
 
