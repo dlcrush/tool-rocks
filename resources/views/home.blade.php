@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <h3>Latest Video Uploads</h3>
+                <h3>Recently Added</h3>
                 <div class="row">
                     @foreach(array_get($data, 'latestVideos.data') as $video)
                         <a href="{{ array_get($video, 'links.web') }}" style="color: white">
