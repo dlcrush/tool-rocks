@@ -28,6 +28,10 @@ class VideoTransformer extends TransformerAbstract {
             'youtube_video_id' => $video->video_id,
             'images' => $this->transformImages($video->images),
             'published_at' => $video->published_at,
+            'channel' => [
+                'id' => $video->channel_id,
+                'name' => $video->channel_name
+            ],
             'links' => [
                 'web' => action('VideoController@getVideo', ['id' => $video->id, 'slug' => $video->slug])
             ],

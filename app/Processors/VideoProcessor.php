@@ -27,6 +27,7 @@ class VideoProcessor implements VideoProcessorContract {
         $video->thumbs_down = $ytVideo->thumbsDown;
         $video->published_at = $ytVideo->publishedAt;
         $video->channel_id = $ytVideo->channelId;
+        $video->channel_name = $ytVideo->channel->name;
         $video->duration = $ytVideo->duration;
 
         $video->save();

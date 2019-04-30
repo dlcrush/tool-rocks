@@ -21,6 +21,9 @@
                                 @if(array_get($video, 'thumbsUp') != null)
                                     <i class="fa fa-thumbs-up"></i> <span class="stat">{{ array_get($video, 'thumbsUp') }}</span>
                                 @endif
+                                @if(array_get($video, 'channel.name') != null)
+                                    <i class="fa fa-user"></i> <span class="stat">{{ array_get($video, 'channel.name') }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
