@@ -89,7 +89,7 @@ class Http implements HttpInterface {
     }
 
     private function isNoCache($options = []) {
-        return ! isset($options['cache']) || $options['cache'] === false;
+        return isset($options['cache']) && $options['cache'] === false;
     }
 
     private function getDefaultOptions() {

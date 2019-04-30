@@ -98,7 +98,7 @@ class YouTubeRepository implements YouTubeRepositoryInterface {
 
     public function getChannelById($id) {
 
-        $this->http->setTTL(15);
+        $this->http->setTTL(60);
 
         $url = $this->urlBuilder
             ->path('channels')
