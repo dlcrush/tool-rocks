@@ -52,12 +52,13 @@ class Http implements HttpInterface {
         }
 
         $response = $this->client->get($url, $options);
+        $content = $response->getBody()->getContents();
 
         if (! $this->isNoCache($options)) {
-            $this->cache->put($cacheKey, $response->getBody()->getContents(), $options['ttl']);
+            $this->cache->put($cacheKey, $content, $options['ttl']);
         }
 
-        return $response->getBody()->getContents();
+        return $content;
     }
 
     public function getAsync(String $url, $options = []) {
