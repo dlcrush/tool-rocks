@@ -93,7 +93,7 @@ class VideoRepository implements VideoRepositoryInterface {
             ->path('videos/random')
             ->build();
 
-        return json_decode($this->http->get($url), true);
+        return json_decode($this->http->get($url, ['cache' => false]), true);
     }
 
     public function getDailyFix() {
