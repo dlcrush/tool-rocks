@@ -72,7 +72,7 @@
                 <footer>
                     <div class="padding">
                         <p>
-                            <center>Tool Rocks &copy; {{ date('Y') }}. Thanks for visiting.</center>
+                            <center>Tool Rocks &copy; {{ date('Y') }}. Thanks for visiting. Disclaimer: We are not affiliated at all with Tool. This is purely a fansite created by a fan.</center>
                         </p>
                 </footer>
             </div>
